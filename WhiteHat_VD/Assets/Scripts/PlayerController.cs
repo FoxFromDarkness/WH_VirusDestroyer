@@ -6,14 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     public PanelController panelController;
 
-    public GameObject trapGameObject;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Collision with " + collision.gameObject.tag);
 
         QuestionCollisionBehaviour(collision);
-        TrapCollisionBehaviour(collision);
 
     }
 
@@ -31,12 +28,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void TrapCollisionBehaviour(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Trap")
-        {
-            trapGameObject.gameObject.SetActive(true);
-        }
-    }
+
 
 }
