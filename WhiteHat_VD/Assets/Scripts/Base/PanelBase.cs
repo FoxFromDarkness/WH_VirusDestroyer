@@ -8,9 +8,4 @@ public class PanelBase : MonoBehaviour
     {
         this.gameObject.SetActive(!(this.gameObject.activeSelf));
     }
-
-    public void SetVisibility(bool isVisible)
-    {
-        this.gameObject.SetActive(isVisible);
-    }
 }

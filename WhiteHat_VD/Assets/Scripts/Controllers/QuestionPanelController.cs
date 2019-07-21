@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class QuestionPanelController : PanelBase
 {
+    [Header("QuestionPanelController")]
     public GameObject player;
     public QuestionController questionController;
 
@@ -20,12 +21,12 @@ public class QuestionPanelController : PanelBase
 
     private void Start()
     {
-        SetVisibility(false);  
+        this.gameObject.SetActive(false);
     }
 
     public void QuestionBehaviour()
     {
-        SetVisibility(true);
+        gameObject.SetActive(true);
         InitButtons();
         SetQuestion();
     }
