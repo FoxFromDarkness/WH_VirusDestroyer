@@ -13,7 +13,7 @@ public class QuestionBase : MonoBehaviour
 
     public QuestionBase(string fileText)
     {
-        string[] data = fileText.Split(';');
+        string[] data = fileText.Split('|');
 
         question = data[0];
         ansA = data[1];

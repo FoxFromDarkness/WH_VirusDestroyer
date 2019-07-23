@@ -1,1 +1,1 @@
-A hacker locks out users and encrypts their personal computer files and data, holding it hostage until they agree to pay to the attacker. What is this practice called?;Browser hijacker;Ransomware;Brute-force;Its nothing;2
+A hacker locks out users and encrypts their personal computer files and data, holding it hostage until they agree to pay to the attacker. What is this practice called?|Browser hijacker|Ransomware|Brute-force|Its nothing|2

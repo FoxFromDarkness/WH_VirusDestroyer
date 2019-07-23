@@ -10,9 +10,8 @@ public class GameController : MonoBehaviour
     public void StartNewGame()
     {
         player.SetActive(true);
-        player.GetComponent<PlayerBase>().playerStartPosition = new Vector3(-1240.0f, 255.0f);
+        player.GetComponent<PlayerBase>().startPosition = new Vector3(-1240.0f, 255.0f);
         GetComponent<SceneController>().LoadScene("GameLevel_TestLevel");
-        player.transform.position = new Vector3(-1240.0f, 255.0f);
+        player.transform.position = player.GetComponent<PlayerBase>().startPosition;
     }
-
 }
