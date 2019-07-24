@@ -24,19 +24,10 @@ public class PlayerController : MonoBehaviour
         if(canOpenSavePlace)
         {
             if (Input.GetButtonDown("SavePlace"))
-            {
                 savePlacePanel.ChangeVisibility();
-                GetComponent<Platformer2DUserControl>().isPlayerActive = !GetComponent<Platformer2DUserControl>().isPlayerActive;
-            }
-        }
 
-        if(!canOpenSavePlace)
-        {
-            if (Input.GetButtonDown("SavePlace"))
-            {
-                savePlacePanel.ChangeVisibility(false);
+            if(!savePlacePanel.gameObject.activeSelf)
                 GetComponent<Platformer2DUserControl>().isPlayerActive = true;
-            }
         }
     }
 
