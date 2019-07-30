@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
         DeadZoneBehavior(collision);
         BlackCristalBehavior(collision);
         SavePlaceBehavior_Enter(collision);
+        ParticleSystemBehavior_Enter(collision);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -80,6 +81,7 @@ public class PlayerController : MonoBehaviour
         if (collision.GetComponent<SavePlaceBase>())
         {
             uiPanel.showHelperPanel();
+            uiPanel.setHelperPanelText("Kliknij 'P' by wejść do sklepu");
             canOpenSavePlace = true;
         }
     }
@@ -90,6 +92,18 @@ public class PlayerController : MonoBehaviour
         {
             uiPanel.hideHelperPanel();
             canOpenSavePlace = false;
+        }
+    }
+
+    private void ParticleSystemBehavior_Enter(Collider2D collision)
+    {
+        if (collision.GetComponent<ParticleSystem>() && playerStats.BlackCristals >= 3)
+        {
+            collision.gameObject.SetActive(false);
+            uiPanel.showHelperPanel();
+            uiPanel.setHelperPanelText("Congratulations!!");
+            playerStats.BlackCristals = 100;
+            uiPanel.setBlackCristals(playerStats.BlackCristals);
         }
     }
 }

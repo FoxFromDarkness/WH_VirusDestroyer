@@ -13,6 +13,8 @@ public class UIPanelController : PanelBase
         blackCristals = GetComponentInChildren<BlackCristalUI>();
         helperPanel = GetComponentInChildren<HelperPanelUI>();
         hideHelperPanel();
+
+        StartCoroutine(QuickTask());
     }
 
     public void setBlackCristals(int bcAmount)
@@ -33,6 +35,15 @@ public class UIPanelController : PanelBase
     public void hideHelperPanel()
     {
         helperPanel.gameObject.SetActive(false);
+    }
+
+    private IEnumerator QuickTask()
+    {
+        showHelperPanel();
+        setHelperPanelText("Find 3 Black Cristals and shut down a virus machine!");
+
+        yield return new WaitForSeconds(4f);
+        hideHelperPanel();
     }
 
 }
