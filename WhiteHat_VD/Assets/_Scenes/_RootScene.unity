@@ -4865,7 +4865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 247d9d751f483f846adb8a6581c5f846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openStartPanel: 0
+  openStartPanel: 1
   playPanel: {fileID: 568327452}
   optionPanel: {fileID: 815595907}
   gameController: {fileID: 1438499959}

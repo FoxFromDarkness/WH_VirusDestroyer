@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,14 +8,14 @@ public class SceneController : MonoBehaviour
 {
     public LoadingScreenController loadingScreen;
 
-    public void LoadScene(string sceneName)
+    public void LoadScene(string sceneName, Action nextMethod)
     {
         //SceneManager.LoadScene("_RootScene");
-        StartCoroutine(LoadSceneAsynchronously(sceneName));
+        StartCoroutine(LoadSceneAsynchronously(sceneName, nextMethod));
         
     }
 
-    private IEnumerator LoadSceneAsynchronously (string sceneName)
+    private IEnumerator LoadSceneAsynchronously (string sceneName, Action nextMethod)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
@@ -28,6 +29,7 @@ public class SceneController : MonoBehaviour
         }
 
         loadingScreen.gameObject.SetActive(false);
+        nextMethod();
     }
 
 }

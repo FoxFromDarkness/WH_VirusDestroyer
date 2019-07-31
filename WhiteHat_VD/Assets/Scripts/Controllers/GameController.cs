@@ -11,7 +11,11 @@ public class GameController : MonoBehaviour
     {
         player.SetActive(true);
         player.GetComponent<PlayerBase>().startPosition = new Vector3(-1240.0f, 255.0f);
-        GetComponent<SceneController>().LoadScene("GameLevel_TestLevel");
+        GetComponent<SceneController>().LoadScene("GameLevel_TestLevel", SetCharacterPosition);   
+    }
+
+    private void SetCharacterPosition()
+    {
         player.transform.position = player.GetComponent<PlayerBase>().startPosition;
     }
 }
