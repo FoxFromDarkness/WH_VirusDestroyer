@@ -12,38 +12,35 @@ public class UIPanelController : PanelBase
     {
         blackCristals = GetComponentInChildren<BlackCristalUI>();
         helperPanel = GetComponentInChildren<HelperPanelUI>();
-        hideHelperPanel();
+        HideHelperPanel();
 
-        StartCoroutine(QuickTask());
+        ShowHelperPanel("Find 3 Black Cristals and shut down a virus machine!", 4f);
     }
 
-    public void setBlackCristals(int bcAmount)
+    public void SetBlackCristals(int bcAmount)
     {
         blackCristals.bcText.text = bcAmount + "";
     }
 
-    public void setHelperPanelText(string info)
+    public void ShowHelperPanel(string info, float showTimeSek)
     {
-        helperPanel.helpText.text = info;
+        StartCoroutine(CoShowHelperPanel(info, showTimeSek));
     }
 
-    public void showHelperPanel()
-    {
-        helperPanel.gameObject.SetActive(true);
-    }
-
-    public void hideHelperPanel()
+    public void HideHelperPanel()
     {
         helperPanel.gameObject.SetActive(false);
     }
 
-    private IEnumerator QuickTask()
+    private IEnumerator CoShowHelperPanel(string info, float showTimeSek)
     {
-        showHelperPanel();
-        setHelperPanelText("Find 3 Black Cristals and shut down a virus machine!");
+        helperPanel.helpText.text = info;
+        helperPanel.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(4f);
-        hideHelperPanel();
+        if (showTimeSek != 0)
+        {
+            yield return new WaitForSeconds(showTimeSek);
+            helperPanel.gameObject.SetActive(false);
+        }
     }
-
 }

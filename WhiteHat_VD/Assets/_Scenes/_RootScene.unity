@@ -331,6 +331,14 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 0.18039748
       objectReference: {fileID: 0}
+    - target: {fileID: 6100000, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 8f95093c8950fc946bb476fe5bea4977, type: 2}
+    - target: {fileID: 5800000, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 8f95093c8950fc946bb476fe5bea4977, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87a2357765801c34292d6718d8b4d770, type: 3}
 --- !u!1 &118805341
@@ -6794,6 +6802,18 @@ MonoBehaviour:
   uiPanel: {fileID: 1146665409}
   savePlacePanel: {fileID: 1237482215}
   questionPanel: {fileID: 403057165}
+--- !u!114 &2028739130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028739120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a83c7c7527c75734e874e7a22c4c8226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2034621575
 GameObject:
   m_ObjectHideFlags: 0

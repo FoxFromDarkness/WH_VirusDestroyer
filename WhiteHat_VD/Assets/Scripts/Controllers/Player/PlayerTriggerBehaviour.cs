@@ -1,34 +1,14 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityStandardAssets._2D;
 
-public class PlayerController : MonoBehaviour
+public class PlayerTriggerBehaviour : MonoBehaviour
 {
-    private PlayerBase playerStats;
-
-    public UIPanelController uiPanel;
-    public SavePlacePanelController savePlacePanel;
-    public QuestionPanelController questionPanel;
-    
-    private bool canOpenSavePlace;
+    private PlayerController player;
 
     private void Start()
     {
-        playerStats = GetComponent<PlayerBase>();
-    }
-
-    private void Update()
-    {
-        if(canOpenSavePlace)
-        {
-            if (Input.GetButtonDown("SavePlace"))
-                savePlacePanel.ChangeVisibility();
-
-            if(!savePlacePanel.gameObject.activeSelf)
-                GetComponent<Platformer2DUserControl>().isPlayerActive = true;
-        }
+        player = GetComponent<PlayerController>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,9 +29,9 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.GetComponent<QuestionDoorBase>())
         {
-            if (!questionPanel.gameObject.activeSelf)
+            if (!player.questionPanel.gameObject.activeSelf)
             {
-                questionPanel.QuestionBehaviour();
+                player.questionPanel.QuestionBehaviour();
                 collision.gameObject.SetActive(false);
                 this.gameObject.SetActive(false);
             }
@@ -70,8 +50,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.GetComponent<BlackCristalBase>())
         {
-            playerStats.BlackCristals += 1;
-            uiPanel.setBlackCristals(playerStats.BlackCristals);
+            player.AddBlackCristals(1);
             collision.gameObject.SetActive(false);
         }
     }
@@ -80,9 +59,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.GetComponent<SavePlaceBase>())
         {
-            uiPanel.showHelperPanel();
-            uiPanel.setHelperPanelText("Kliknij 'P' by wejść do sklepu");
-            canOpenSavePlace = true;
+            player.uiPanel.ShowHelperPanel("Press 'P' to enter", 0f);
+            player.canOpenSavePlace = true;
         }
     }
 
@@ -90,20 +68,18 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.GetComponent<SavePlaceBase>())
         {
-            uiPanel.hideHelperPanel();
-            canOpenSavePlace = false;
+            player.uiPanel.HideHelperPanel();
+            player.canOpenSavePlace = false;
         }
     }
 
     private void ParticleSystemBehavior_Enter(Collider2D collision)
     {
-        if (collision.GetComponent<ParticleSystem>() && playerStats.BlackCristals >= 3)
+        if (collision.GetComponent<ParticleSystem>() && player.playerStats.BlackCristals >= 3)
         {
             collision.gameObject.SetActive(false);
-            uiPanel.showHelperPanel();
-            uiPanel.setHelperPanelText("Congratulations!!");
-            playerStats.BlackCristals = 100;
-            uiPanel.setBlackCristals(playerStats.BlackCristals);
+            player.uiPanel.ShowHelperPanel("Congratulations!!", 5f);
+            player.AddBlackCristals(97);
         }
     }
 }
