@@ -12,6 +12,9 @@ namespace UnityStandardAssets._2D
 
         public bool isPlayerActive { get; set; }
         public bool isShotKey { get; set; }
+        public bool isSlotChangeImageKey { get; set; }
+        private int numberSlotChangeImageKey;
+        public int NumberSlotChangeImageKey { get { return numberSlotChangeImageKey; } }
 
 
         private void Awake()
@@ -44,7 +47,44 @@ namespace UnityStandardAssets._2D
 
                 //shooting
                 isShotKey = Input.GetKeyDown(KeyCode.Z);
+
+                //ChangeSlotIamge
+                isSlotChangeImageKey = CheckSlotChangeImageKey(out numberSlotChangeImageKey);
             }
+        }
+
+        private bool CheckSlotChangeImageKey(out int number)
+        {
+            bool tmp = false;
+
+            if(Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                number = 1;
+                tmp = true;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                number = 2;
+                tmp = true;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                number = 3;
+                tmp = true;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                number = 4;
+                tmp = true;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                number = 5;
+                tmp = true;
+            }
+
+            number = 0;
+            return tmp;
         }
     }
 }
