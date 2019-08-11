@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private BulletBase bullet;
     public bool isShot;
+    public bool isSlotChangeImageKey;
 
     private void Start()
     {
@@ -31,7 +32,11 @@ public class PlayerController : MonoBehaviour
         if (GetComponent<Platformer2DUserControl>().isShotKey && playerStats.Ammo > 0 && !canOpenSavePlace)
             isShot = true;
 
+        if (GetComponent<Platformer2DUserControl>().isSlotChangeImageKey)
+            isSlotChangeImageKey = true;
+
         Shooting();
+        ChangingSlotImage();
         SavePlaceEnter(); 
     }
 
@@ -46,7 +51,7 @@ public class PlayerController : MonoBehaviour
         playerStats.BlackCristals += value;
         uiPanel.SetBlackCristals(playerStats.BlackCristals);
     }
-    
+
     private void Shooting()
     {
         if (isShot)
@@ -56,7 +61,18 @@ public class PlayerController : MonoBehaviour
             copy_bullet.GetComponent<BulletBase>().Moving = true;
             AddAmmo(-1);
             isShot = false;
-        }    
+        }
+    }
+
+    private void ChangingSlotImage()
+    {
+        if (isSlotChangeImageKey)
+        {
+            int tmpNumber = GetComponent<Platformer2DUserControl>().NumberSlotChangeImageKey;
+
+            uiPanel.SetSlotImage(tmpNumber, playerStats.AmmoTab[tmpNumber-1]);
+            isSlotChangeImageKey = false;
+        }
     }
 
     private void SavePlaceEnter()

@@ -10,6 +10,13 @@ public class PlayerBase : MonoBehaviour
     [SerializeField] private int level;
     [SerializeField] private int exp;
     [SerializeField] private int expToNextLvl;
+    [SerializeField] private int[] ammoTab;
+    public int[] AmmoTab
+    {
+        get { return ammoTab; }
+        set { ammoTab = value; }
+    }
+
 
     [Header("Inventory")]
     [SerializeField] private int blackCristals;
@@ -38,6 +45,13 @@ public class PlayerBase : MonoBehaviour
         expToNextLvl = 500;
         exp = 0;
         ammo = 0;
+
+        ammoTab = new int[4];
+        ammoTab[0] = 10;
+        ammoTab[1] = 20;
+        ammoTab[2] = 30;
+        ammoTab[3] = 40;
+
 
         blackCristals = 0;
         startPosition = new Vector3(0, 0);

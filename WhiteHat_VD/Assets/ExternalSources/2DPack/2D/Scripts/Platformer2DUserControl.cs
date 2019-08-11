@@ -50,40 +50,41 @@ namespace UnityStandardAssets._2D
 
                 //ChangeSlotIamge
                 isSlotChangeImageKey = CheckSlotChangeImageKey(out numberSlotChangeImageKey);
+                Debug.Log(numberSlotChangeImageKey);
             }
         }
 
         private bool CheckSlotChangeImageKey(out int number)
         {
             bool tmp = false;
+            number = 0;
 
-            if(Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                number = 1;
+                number = 0;
                 tmp = true;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                number = 2;
+                number = 1;
                 tmp = true;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                number = 3;
+                number = 2;
                 tmp = true;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                number = 4;
+                number = 3;
                 tmp = true;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha5))
             {
-                number = 5;
+                number = 4;
                 tmp = true;
             }
 
-            number = 0;
             return tmp;
         }
     }
