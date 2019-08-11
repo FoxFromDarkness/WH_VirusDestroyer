@@ -4,7 +4,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets._2D
 {
-    [RequireComponent(typeof (PlatformerCharacter2D))]
+    [RequireComponent(typeof(PlatformerCharacter2D))]
     public class Platformer2DUserControl : MonoBehaviour
     {
         private PlatformerCharacter2D m_Character;
@@ -12,7 +12,9 @@ namespace UnityStandardAssets._2D
 
         public bool isPlayerActive { get; set; }
         public bool isShotKey { get; set; }
-
+        public bool isSlotChangeImageKey { get; set; }
+        private int numberSlotChangeImageKey;
+        public int NumberSlotChangeImageKey { get { return numberSlotChangeImageKey; } }
 
         private void Awake()
         {
@@ -44,11 +46,9 @@ namespace UnityStandardAssets._2D
 
                 //shooting
                 isShotKey = Input.GetKeyDown(KeyCode.Z);
-<<<<<<< HEAD
 
                 //ChangeSlotIamge
                 isSlotChangeImageKey = CheckSlotChangeImageKey(out numberSlotChangeImageKey);
-                Debug.Log(numberSlotChangeImageKey);
             }
         }
 
@@ -84,9 +84,6 @@ namespace UnityStandardAssets._2D
             }
 
             return tmp;
-=======
-            }
->>>>>>> parent of f1d712b... VD || Platformer2DController Update
         }
     }
 }

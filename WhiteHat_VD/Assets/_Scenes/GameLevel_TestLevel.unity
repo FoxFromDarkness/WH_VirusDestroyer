@@ -146,7 +146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26747961}
   m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: 0, w: 0}
-  m_LocalPosition: {x: -0.174, y: 0.06, z: 0}
+  m_LocalPosition: {x: -0.533, y: -0.078, z: 0}
   m_LocalScale: {x: 0.23, y: 0.4, z: -9.8}
   m_Children: []
   m_Father: {fileID: 949066314}
@@ -165,11 +165,11 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.52966595, y: -0.8936652}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 11.23, y: 4.36}
+    oldSize: {x: 5.02, y: 0.16}
     newSize: {x: 19.2, y: 10.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -11817,7 +11817,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1436471357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.087, y: 0.335, z: 0}
+  m_LocalPosition: {x: -0.027, y: -0.578, z: 0}
   m_LocalScale: {x: 0.22, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 949066314}
@@ -11836,11 +11836,11 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.52966595, y: -0.88100135}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 11.23, y: 4.36}
+    oldSize: {x: 5.02, y: 0.16}
     newSize: {x: 19.2, y: 10.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -25696,7 +25696,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085284713}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.172, y: 0.135, z: 0}
+  m_LocalPosition: {x: 0.533, y: -0.064, z: 0}
   m_LocalScale: {x: 0.23, y: 0.4, z: -9.8}
   m_Children: []
   m_Father: {fileID: 949066314}
@@ -25715,11 +25715,11 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.52966595, y: -0.8936652}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 11.23, y: 4.36}
+    oldSize: {x: 5.02, y: 0.16}
     newSize: {x: 19.2, y: 10.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
