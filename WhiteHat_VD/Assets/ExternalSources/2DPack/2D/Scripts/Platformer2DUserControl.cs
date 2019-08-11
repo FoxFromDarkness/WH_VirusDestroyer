@@ -12,9 +12,6 @@ namespace UnityStandardAssets._2D
 
         public bool isPlayerActive { get; set; }
         public bool isShotKey { get; set; }
-        public bool isSlotChangeImageKey { get; set; }
-        private int numberSlotChangeImageKey;
-        public int NumberSlotChangeImageKey { get { return numberSlotChangeImageKey; } }
 
 
         private void Awake()
@@ -47,6 +44,7 @@ namespace UnityStandardAssets._2D
 
                 //shooting
                 isShotKey = Input.GetKeyDown(KeyCode.Z);
+<<<<<<< HEAD
 
                 //ChangeSlotIamge
                 isSlotChangeImageKey = CheckSlotChangeImageKey(out numberSlotChangeImageKey);
@@ -86,6 +84,9 @@ namespace UnityStandardAssets._2D
             }
 
             return tmp;
+=======
+            }
+>>>>>>> parent of f1d712b... VD || Platformer2DController Update
         }
     }
 }
