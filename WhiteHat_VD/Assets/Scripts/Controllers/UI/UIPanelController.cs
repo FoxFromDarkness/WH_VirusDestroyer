@@ -2,21 +2,31 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIPanelController : PanelBase
 {
+    public Sprite emptySlot;
+    public Sprite activeSlot;
+    private UISlotBase[] uISlots;
     private AmmoUI ammonution;
     private BlackCristalUI blackCristals;
-    private HelperPanelUI helperPanel;
+    private HelperPanelUI helperPanel; 
 
     private void Start()
     {
+        uISlots = GetComponentsInChildren<UISlotBase>();
         ammonution = GetComponentInChildren<AmmoUI>();
         blackCristals = GetComponentInChildren<BlackCristalUI>();
         helperPanel = GetComponentInChildren<HelperPanelUI>();
         HideHelperPanel();
 
         ShowHelperPanel("Find 3 Black Cristals and shut down a virus machine!", 4f);
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
 
     public void SetAmmo(int ammoAmount)
@@ -39,6 +49,21 @@ public class UIPanelController : PanelBase
         helperPanel.gameObject.SetActive(false);
     }
 
+    private void ClearSlotImage()
+    {
+        foreach (var item in uISlots)
+        {
+            item.GetComponent<Image>().sprite = emptySlot;
+        }
+    }
+    
+    public void SetSlotImage(int number, int ammoAmount)
+    {
+        ClearSlotImage();
+        uISlots[number].GetComponent<Image>().sprite = activeSlot;
+        SetAmmo(ammoAmount);
+    }
+
     private IEnumerator CoShowHelperPanel(string info, float showTimeSek)
     {
         helperPanel.helpText.text = info;
@@ -50,4 +75,6 @@ public class UIPanelController : PanelBase
             helperPanel.gameObject.SetActive(false);
         }
     }
+
+    
 }
