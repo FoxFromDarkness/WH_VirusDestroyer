@@ -4,7 +4,7 @@ using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets._2D
 {
-    [RequireComponent(typeof (PlatformerCharacter2D))]
+    [RequireComponent(typeof(PlatformerCharacter2D))]
     public class Platformer2DUserControl : MonoBehaviour
     {
         private PlatformerCharacter2D m_Character;
@@ -15,7 +15,6 @@ namespace UnityStandardAssets._2D
         public bool isSlotChangeImageKey { get; set; }
         private int numberSlotChangeImageKey;
         public int NumberSlotChangeImageKey { get { return numberSlotChangeImageKey; } }
-
 
         private void Awake()
         {
@@ -50,7 +49,6 @@ namespace UnityStandardAssets._2D
 
                 //ChangeSlotIamge
                 isSlotChangeImageKey = CheckSlotChangeImageKey(out numberSlotChangeImageKey);
-                Debug.Log(numberSlotChangeImageKey);
             }
         }
 
