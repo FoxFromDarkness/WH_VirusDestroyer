@@ -5,16 +5,23 @@ using UnityEngine;
 
 public class UIPanelController : PanelBase
 {
+    private AmmoUI ammonution;
     private BlackCristalUI blackCristals;
     private HelperPanelUI helperPanel;
 
     private void Start()
     {
+        ammonution = GetComponentInChildren<AmmoUI>();
         blackCristals = GetComponentInChildren<BlackCristalUI>();
         helperPanel = GetComponentInChildren<HelperPanelUI>();
         HideHelperPanel();
 
         ShowHelperPanel("Find 3 Black Cristals and shut down a virus machine!", 4f);
+    }
+
+    public void SetAmmo(int ammoAmount)
+    {
+        ammonution.ammoText.text = ammoAmount + "";
     }
 
     public void SetBlackCristals(int bcAmount)

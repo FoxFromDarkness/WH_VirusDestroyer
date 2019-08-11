@@ -16,6 +16,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         QuestionDoorBehavior(collision);
         DeadZoneBehavior(collision);
         BlackCristalBehavior(collision);
+        AmmoBoxBehavior_Enter(collision);
         SavePlaceBehavior_Enter(collision);
         ParticleSystemBehavior_Enter(collision);
     }
@@ -42,7 +43,10 @@ public class PlayerTriggerBehaviour : MonoBehaviour
     {
         if (collision.GetComponent<DeadZoneBase>())
         {
-            this.gameObject.transform.position = new Vector3(-1240.0f, 255.0f);
+            //TO DELETE
+            player.playerStats.startPosition = new Vector3(-1240.0f, 255.0f);
+            //
+            this.gameObject.transform.position = player.playerStats.startPosition;
         }
     }
 
@@ -52,6 +56,17 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         {
             player.AddBlackCristals(1);
             collision.gameObject.SetActive(false);
+        }
+    }
+
+    private void AmmoBoxBehavior_Enter(Collider2D collision)
+    {
+        if (collision.GetComponent<AmmoBoxBase>())
+        {
+            collision.gameObject.SetActive(false);
+            int tmpAmmo = collision.GetComponent<AmmoBoxBase>().AmmoAmount;
+            player.uiPanel.ShowHelperPanel("Ammo: +" + tmpAmmo, 2f);
+            player.AddAmmo(tmpAmmo);
         }
     }
 

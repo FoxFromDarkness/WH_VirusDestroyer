@@ -19,6 +19,13 @@ public class PlayerBase : MonoBehaviour
         set { blackCristals = value; }
     }
 
+    [SerializeField] private int ammo;
+    public int Ammo
+    {
+        get { return ammo; }
+        set { ammo = value; }
+    }
+
     [SerializeField] private List<WeaponBase> weaponList;
 
     public Vector3 startPosition { get; set; }
@@ -30,6 +37,7 @@ public class PlayerBase : MonoBehaviour
         level = 0;
         expToNextLvl = 500;
         exp = 0;
+        ammo = 0;
 
         blackCristals = 0;
         startPosition = new Vector3(0, 0);

@@ -19,7 +19,6 @@ public class StartPanelController : PanelBase
 
         if (!openStartPanel)
             gameObject.SetActive(false);
-
     }
 
     public void OpenSubPanels(int idx)

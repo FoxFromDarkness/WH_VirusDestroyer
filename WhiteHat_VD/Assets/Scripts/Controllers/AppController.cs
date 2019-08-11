@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AppController : MonoBehaviour
 {
+    [SerializeField] private StartPanelController startPanel;
 
     public void ExitApplication()
     {
@@ -20,6 +21,10 @@ public class AppController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("Cancel"))
+        {
+            startPanel.CloseSubPanels();
+            startPanel.ChangeVisibility();
+        }
     }
 }
