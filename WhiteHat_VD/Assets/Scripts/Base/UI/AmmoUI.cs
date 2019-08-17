@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class AmmoUI : MonoBehaviour
 {
-    [HideInInspector]
-    public TextMeshProUGUI ammoText { get; set; }
+    public TextMeshProUGUI AmmoText { get; set; }
 
     private void Start()
     {
-        ammoText = GetComponentInChildren<TextMeshProUGUI>();
+        AmmoText = GetComponentInChildren<TextMeshProUGUI>();
     }
 }

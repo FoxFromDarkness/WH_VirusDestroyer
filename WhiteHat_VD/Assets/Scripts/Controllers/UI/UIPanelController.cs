@@ -3,40 +3,62 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets._2D;
 
 public class UIPanelController : PanelBase
 {
-    public Sprite emptySlot;
-    public Sprite activeSlot;
+    [SerializeField] private Sprite emptySlot;
+    [SerializeField] private Sprite activeSlot;
     private UISlotBase[] uISlots;
-    private AmmoUI ammonution;
+    private AmmoUI ammunition;
     private BlackCristalUI blackCristals;
-    private HelperPanelUI helperPanel; 
+    private HelperPanelUI helperPanel;
 
     private void Start()
     {
         uISlots = GetComponentsInChildren<UISlotBase>();
-        ammonution = GetComponentInChildren<AmmoUI>();
+        ammunition = GetComponentInChildren<AmmoUI>();
         blackCristals = GetComponentInChildren<BlackCristalUI>();
         helperPanel = GetComponentInChildren<HelperPanelUI>();
         HideHelperPanel();
 
-        ShowHelperPanel("Find 3 Black Cristals and shut down a virus machine!", 4f);
+        DeactiveSlots();
     }
 
-    private void FixedUpdate()
+    private void DeactiveSlots()
     {
-        
+        foreach (var item in uISlots)
+        {
+            if (!item.IsSlot0)
+                item.gameObject.SetActive(false);
+        }
+    }
+
+    public int UnlockNextSlot(Sprite img)
+    {
+        foreach (var item in uISlots)
+        {
+            if (!item.gameObject.activeSelf)
+            {
+                item.AmmoImage = img;
+                item.gameObject.SetActive(true);
+                return item.transform.GetSiblingIndex();
+            }
+        }
+        throw new System.Exception("UnlockNextSlot Error");
     }
 
     public void SetAmmo(int ammoAmount)
     {
-        ammonution.ammoText.text = ammoAmount + "";
+        if (ammoAmount != -1)
+            ammunition.AmmoText.text = ammoAmount + "";
+        else
+            ammunition.AmmoText.text = "∞";
     }
 
     public void SetBlackCristals(int bcAmount)
     {
-        blackCristals.bcText.text = bcAmount + "";
+        blackCristals.BcText.text = bcAmount + "";
     }
 
     public void ShowHelperPanel(string info, float showTimeSek)
@@ -53,20 +75,29 @@ public class UIPanelController : PanelBase
     {
         foreach (var item in uISlots)
         {
-            item.GetComponent<Image>().sprite = emptySlot;
+            if(item.gameObject.activeSelf)
+                item.GetComponent<Image>().sprite = emptySlot;
         }
     }
     
     public void SetSlotImage(int number, int ammoAmount)
     {
         ClearSlotImage();
-        uISlots[number].GetComponent<Image>().sprite = activeSlot;
-        SetAmmo(ammoAmount);
+        if (uISlots[number + 1].gameObject.activeSelf)
+        {
+            uISlots[number + 1].GetComponent<Image>().sprite = activeSlot;
+            SetAmmo(ammoAmount);
+        }
+        else
+        {
+            Platformer2DUserControl.NumberSlotKey = -1;
+            SetAmmo(-1);
+        }
     }
 
     private IEnumerator CoShowHelperPanel(string info, float showTimeSek)
     {
-        helperPanel.helpText.text = info;
+        helperPanel.HelpText.text = info;
         helperPanel.gameObject.SetActive(true);
 
         if (showTimeSek != 0)
@@ -75,6 +106,4 @@ public class UIPanelController : PanelBase
             helperPanel.gameObject.SetActive(false);
         }
     }
-
-    
 }

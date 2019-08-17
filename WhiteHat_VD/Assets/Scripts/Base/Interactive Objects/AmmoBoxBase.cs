@@ -7,16 +7,7 @@ public class AmmoBoxBase : MonoBehaviour
     [SerializeField]
     private int ammoAmount;
     public int AmmoAmount { get { return ammoAmount; } }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    private InventoryItems ammoType;
+    public InventoryItems AmmoType { get { return ammoType; } }
 }

@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class WeaponBase : MonoBehaviour
 {
-    public string name { get; set; }
-    public string ico { get; set; }
-    public string typeOfAmmo { get; set; }
+    public bool IsUnlock { get; set; }
+    public InventoryItems TypeOfAmmo { get; set; }
+    public int AmmoAmount { get; set; }
    
+    public WeaponBase()
+    {
+        IsUnlock = false;
+        this.TypeOfAmmo = InventoryItems.NULL;
+        AmmoAmount = 0;
+    }
 }

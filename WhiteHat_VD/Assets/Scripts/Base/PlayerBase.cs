@@ -4,56 +4,30 @@ using UnityEngine;
 
 public class PlayerBase : MonoBehaviour
 {
-    [Header("Statistics")]
-    [SerializeField] private int hp;
-    [SerializeField] private int hpMax;
-    [SerializeField] private int level;
-    [SerializeField] private int exp;
-    [SerializeField] private int expToNextLvl;
-    [SerializeField] private int[] ammoTab;
-    public int[] AmmoTab
-    {
-        get { return ammoTab; }
-        set { ammoTab = value; }
-    }
+    public int HP { get; set; }
+    public int HP_Max { get; set; }
+    public int Level { get; set; }
+    public int Exp { get; set; }
+    public int ExpToNextLvl { get; set; }
 
+    public int BlackCristals { get; set; }
+    public WeaponBase[] WeaponMods { get; set; }
+    public int[] AmmoBoxSupply { get; set; } 
 
-    [Header("Inventory")]
-    [SerializeField] private int blackCristals;
-    public int BlackCristals
-    {
-        get { return blackCristals; }
-        set { blackCristals = value; }
-    }
-
-    [SerializeField] private int ammo;
-    public int Ammo
-    {
-        get { return ammo; }
-        set { ammo = value; }
-    }
-
-    [SerializeField] private List<WeaponBase> weaponList;
-
-    public Vector3 startPosition { get; set; }
+    public Vector3 StartPosition { get; set; }
 
     private void Start()
     {
-        hpMax = 100;
-        hp = hpMax;
-        level = 0;
-        expToNextLvl = 500;
-        exp = 0;
-        ammo = 0;
+        HP_Max = 100;
+        HP = HP_Max;
+        Level = 0;
+        ExpToNextLvl = 500;
+        Exp = 0;
 
-        ammoTab = new int[4];
-        ammoTab[0] = 10;
-        ammoTab[1] = 20;
-        ammoTab[2] = 30;
-        ammoTab[3] = 40;
-
-
-        blackCristals = 0;
-        startPosition = new Vector3(0, 0);
+        WeaponMods = new WeaponBase[4];
+        AmmoBoxSupply = new int[4];
+        
+        BlackCristals = 0;
+        StartPosition = new Vector3(0, 0);
     }
 }

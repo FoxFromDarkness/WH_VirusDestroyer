@@ -44,9 +44,9 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         if (collision.GetComponent<DeadZoneBase>())
         {
             //TO DELETE
-            player.playerStats.startPosition = new Vector3(-1240.0f, 255.0f);
+            //player.PlayerStats.startPosition = new Vector3(-1240.0f, 255.0f);
             //
-            this.gameObject.transform.position = player.playerStats.startPosition;
+            this.gameObject.transform.position = new Vector3(-1240.0f, 255.0f); //player.PlayerStats.startPosition;
         }
     }
 
@@ -54,7 +54,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
     {
         if (collision.GetComponent<BlackCristalBase>())
         {
-            player.AddBlackCristals(1);
+            player.AddItem(InventoryItems.BLACK_CRISTALS, 1);
             collision.gameObject.SetActive(false);
         }
     }
@@ -64,9 +64,10 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         if (collision.GetComponent<AmmoBoxBase>())
         {
             collision.gameObject.SetActive(false);
-            int tmpAmmo = collision.GetComponent<AmmoBoxBase>().AmmoAmount;
-            player.uiPanel.ShowHelperPanel("Ammo: +" + tmpAmmo, 2f);
-            player.AddAmmo(tmpAmmo);
+            int amountAmmo = collision.GetComponent<AmmoBoxBase>().AmmoAmount;
+            InventoryItems ammoType = collision.GetComponent<AmmoBoxBase>().AmmoType;
+            player.uiPanel.ShowHelperPanel(ammoType.ToString() + ": " + amountAmmo, 2f);
+            player.AddItem(ammoType, amountAmmo);
         }
     }
 
@@ -75,7 +76,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         if (collision.GetComponent<SavePlaceBase>())
         {
             player.uiPanel.ShowHelperPanel("Press 'P' to enter", 0f);
-            player.canOpenSavePlace = true;
+            player.CanOpenSavePlace = true;
         }
     }
 
@@ -84,17 +85,17 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         if (collision.GetComponent<SavePlaceBase>())
         {
             player.uiPanel.HideHelperPanel();
-            player.canOpenSavePlace = false;
+            player.CanOpenSavePlace = false;
         }
     }
 
     private void ParticleSystemBehavior_Enter(Collider2D collision)
     {
-        if (collision.GetComponent<ParticleSystem>() && player.playerStats.BlackCristals >= 3)
+        if (collision.GetComponent<ParticleSystem>() && player.GetItemAmount(InventoryItems.BLACK_CRISTALS) >= 3)
         {
             collision.gameObject.SetActive(false);
             player.uiPanel.ShowHelperPanel("Congratulations!!", 5f);
-            player.AddBlackCristals(97);
+            player.AddItem(InventoryItems.BLACK_CRISTALS, 97);
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoboZombieController : MonoBehaviour
 {
-    public bool isDead { get; set; }
+    public bool IsDead { get; set; }
 
     private void FixedUpdate()
     {

@@ -7,19 +7,20 @@ namespace UnityStandardAssets._2D
     [RequireComponent(typeof(PlatformerCharacter2D))]
     public class Platformer2DUserControl : MonoBehaviour
     {
+        public static int NumberSlotKey { get; set; }
+
         private PlatformerCharacter2D m_Character;
         private bool m_Jump;
 
-        public bool isPlayerActive { get; set; }
-        public bool isShotKey { get; set; }
-        public bool isSlotChangeImageKey { get; set; }
-        private int numberSlotChangeImageKey;
-        public int NumberSlotChangeImageKey { get { return numberSlotChangeImageKey; } }
+        public bool IsPlayerActive { get; set; }
+        public bool IsShotKey { get; set; }
+        public bool IsSlotChangeImageKey { get; set; }
 
         private void Awake()
         {
             m_Character = GetComponent<PlatformerCharacter2D>();
-            isPlayerActive = true;
+            IsPlayerActive = true;
+            NumberSlotKey = -1;
         }
 
 
@@ -35,7 +36,7 @@ namespace UnityStandardAssets._2D
 
         private void FixedUpdate()
         {
-            if (isPlayerActive)
+            if (IsPlayerActive)
             {
                 // Read the inputs.
                 bool crouch = Input.GetKey(KeyCode.LeftControl);
@@ -45,45 +46,47 @@ namespace UnityStandardAssets._2D
                 m_Jump = false;
 
                 //shooting
-                isShotKey = Input.GetKeyDown(KeyCode.Z);
+                IsShotKey = Input.GetKeyDown(KeyCode.Z);
 
                 //ChangeSlotIamge
-                isSlotChangeImageKey = CheckSlotChangeImageKey(out numberSlotChangeImageKey);
+                IsSlotChangeImageKey = CheckSlotChangeImageKey();
             }
         }
 
-        private bool CheckSlotChangeImageKey(out int number)
+        private bool CheckSlotChangeImageKey()
         {
-            bool tmp = false;
-            number = 0;
+            bool clickedKey = false;
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                number = 0;
-                tmp = true;
+                NumberSlotKey = CheckActiveSlot(0);
+                clickedKey = true;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                number = 1;
-                tmp = true;
+                NumberSlotKey = CheckActiveSlot(1);
+                clickedKey = true;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                number = 2;
-                tmp = true;
+                NumberSlotKey = CheckActiveSlot(2);
+                clickedKey = true;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                number = 3;
-                tmp = true;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha5))
-            {
-                number = 4;
-                tmp = true;
+                NumberSlotKey = CheckActiveSlot(3);
+                clickedKey = true;
             }
 
-            return tmp;
+            return clickedKey;
+        }
+
+        private int CheckActiveSlot(int idx)
+        {
+            if (NumberSlotKey == idx)
+                return -1;
+            else
+                return idx;
         }
     }
 }

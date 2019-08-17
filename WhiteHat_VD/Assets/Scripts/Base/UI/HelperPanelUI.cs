@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class HelperPanelUI : MonoBehaviour
 {
-    [HideInInspector]
-    public TextMeshProUGUI helpText { get; set; }
+    public TextMeshProUGUI HelpText { get; set; }
 
     private void Start()
     {
-        helpText = GetComponentInChildren<TextMeshProUGUI>();
+        HelpText = GetComponentInChildren<TextMeshProUGUI>();
     }
 }

@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class BlackCristalUI : MonoBehaviour
 {
-    [HideInInspector]
-    public TextMeshProUGUI bcText { get; set; }
+    public TextMeshProUGUI BcText { get; set; }
 
     private void Start()
     {
-        bcText = GetComponentInChildren<TextMeshProUGUI>();
+        BcText = GetComponentInChildren<TextMeshProUGUI>();
     }
 }
