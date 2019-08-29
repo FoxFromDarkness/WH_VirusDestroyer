@@ -31,6 +31,9 @@ namespace UnityStandardAssets._2D
                 // Read the jump input in Update so button presses aren't missed.
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
+
+            //ChangeSlotIamge
+            IsSlotChangeImageKey = CheckSlotChangeImageKey();
         }
 
 
@@ -48,8 +51,7 @@ namespace UnityStandardAssets._2D
                 //shooting
                 IsShotKey = Input.GetKeyDown(KeyCode.Z);
 
-                //ChangeSlotIamge
-                IsSlotChangeImageKey = CheckSlotChangeImageKey();
+                
             }
         }
 
