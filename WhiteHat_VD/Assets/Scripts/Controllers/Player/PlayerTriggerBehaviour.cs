@@ -98,4 +98,10 @@ public class PlayerTriggerBehaviour : MonoBehaviour
             player.AddItem(InventoryItems.BLACK_CRISTALS, 97);
         }
     }
+
+    private void PortalBehaviour_Enter(Collider2D collision) {
+        if (collision.GetComponent<PortalController>()) {
+            throw new System.Exception();
+        }
+    }
 }

@@ -21,28 +21,29 @@ public class GroundSensor : MonoBehaviour {
     {
     
 
-        if (other.CompareTag("Ground") || other.CompareTag("Block"))
-        {
+        //if (other.CompareTag("Ground") || other.CompareTag("Block"))
+        //{
 
-            if (other.CompareTag("Ground"))
-            {
-                m_root.Is_DownJump_GroundCheck = true;
+        //    if (other.CompareTag("Ground"))
+        //    {
+        //        m_root.Is_DownJump_GroundCheck = true;
 
-            }
-            else
-            {
-                m_root.Is_DownJump_GroundCheck = false;
-            }
+        //    }
+        //    else
+        //    {
+        //        m_root.Is_DownJump_GroundCheck = false;
+        //    }
 
-            if (m_root.m_rigidbody.velocity.y <= 0)
-            {
+        //    if (m_root.m_rigidbody.velocity.y <= 0)
+        //    {
 
-                m_root.isGrounded = true;
-                m_root.currentJumpCount = 0;
-            }
+        //        m_root.isGrounded = true;
+        //        m_root.currentJumpCount = 0;
+        //    }
          
         
-        }
+        //}
+
     }
 
     void OnTriggerExit2D(Collider2D other)
