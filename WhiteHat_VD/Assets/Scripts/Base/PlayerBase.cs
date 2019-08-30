@@ -16,7 +16,7 @@ public class PlayerBase : MonoBehaviour
 
     public Vector3 StartPosition { get; set; }
 
-    private void Start()
+    private void Awake()
     {
         HP_Max = 100;
         HP = HP_Max;
