@@ -6,6 +6,8 @@ public class PlayerTriggerBehaviour : MonoBehaviour
 {
     private PlayerController player;
 
+    private bool inPortal;
+
     private void Start()
     {
         player = GetComponent<PlayerController>();
@@ -19,11 +21,13 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         AmmoBoxBehavior_Enter(collision);
         SavePlaceBehavior_Enter(collision);
         ParticleSystemBehavior_Enter(collision);
+        PortalBehaviour_Enter(collision);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         SavePlaceBehavior_Exit(collision);
+        PortalBehaviour_Exit(collision);
     }
 
     private void QuestionDoorBehavior(Collider2D collision)
@@ -101,7 +105,15 @@ public class PlayerTriggerBehaviour : MonoBehaviour
 
     private void PortalBehaviour_Enter(Collider2D collision) {
         if (collision.GetComponent<PortalController>()) {
-            throw new System.Exception();
+            player.inPortal = true;
+            player.StartTeleportInPortal(collision.GetComponent<PortalController>().GetPortalPosition(0));
         }
     }
+
+    private void PortalBehaviour_Exit(Collider2D collision) {
+        if (collision.GetComponent<PortalController>()) {
+            player.inPortal = false;
+        }
+    }
+
 }

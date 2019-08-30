@@ -29,7 +29,9 @@ public class BulletBase : MonoBehaviour
 
     private void Update()
     {
-        if(isMoving)
+        DestroyMoment();
+
+        if (isMoving)
             this.transform.Translate(new Vector3(1, 0));
     }
 
@@ -58,5 +60,10 @@ public class BulletBase : MonoBehaviour
             case InventoryItems.NULL:
                 break;
         }
+    }
+
+    private void DestroyMoment() {
+        if (this.transform.localPosition.x > 300 || this.transform.localPosition.x < -300)
+            Destroy(this.gameObject);
     }
 }

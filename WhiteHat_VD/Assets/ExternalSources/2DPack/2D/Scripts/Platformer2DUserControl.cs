@@ -83,12 +83,8 @@ namespace UnityStandardAssets._2D
             return clickedKey;
         }
 
-        private int CheckActiveSlot(int idx)
-        {
-            if (NumberSlotKey == idx)
-                return -1;
-            else
-                return idx;
+        private int CheckActiveSlot(int idx) {
+            return NumberSlotKey == idx ? -1 : idx;
         }
     }
 }
