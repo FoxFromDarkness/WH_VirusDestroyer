@@ -14,7 +14,9 @@ public class PlayerController : MonoBehaviour
     public QuestionPanelController questionPanel;
 
     public bool CanOpenSavePlace { get; set; }
-    public bool inPortal { get; set; }
+    //Portals
+    public bool InPortal { get; set; }
+    public Vector2 NewPortalPosition { get; set; }
 
     private BulletBase bullet;
     private bool isShot;
@@ -37,6 +39,9 @@ public class PlayerController : MonoBehaviour
 
         if (GetComponent<Platformer2DUserControl>().IsSlotChangeImageKey)
             isSlotChangeImageKey = true;
+
+        if (InPortal)
+            StartTeleportInPortal(NewPortalPosition);
 
         Shooting();
         ChangingSlotImage();
@@ -140,7 +145,7 @@ public class PlayerController : MonoBehaviour
     {
         if (CanOpenSavePlace)
         {
-            if (Input.GetButtonDown("SavePlace"))
+            if (Input.GetButtonDown("SavePlace") || Input.GetKeyDown(KeyCode.UpArrow)) //Really important. Remember about it
                 savePlacePanel.ChangeVisibility();
 
             if (!savePlacePanel.gameObject.activeSelf)
@@ -344,14 +349,9 @@ public class PlayerController : MonoBehaviour
     
 
     public void StartTeleportInPortal(Vector2 newPosition) {
-        StartCoroutine(CoStartTeleportInPortal(newPosition));
-    }
-
-    private IEnumerator CoStartTeleportInPortal(Vector2 newPosition) {
-        yield return new WaitForSeconds(2.0f);
-        if (inPortal) {
+        if (Input.GetKeyDown(KeyCode.UpArrow)) {
             this.transform.position = newPosition;
-            inPortal = false;
+            InPortal = false;
         }
     }
 }

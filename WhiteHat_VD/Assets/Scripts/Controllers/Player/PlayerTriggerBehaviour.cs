@@ -6,8 +6,6 @@ public class PlayerTriggerBehaviour : MonoBehaviour
 {
     private PlayerController player;
 
-    private bool inPortal;
-
     private void Start()
     {
         player = GetComponent<PlayerController>();
@@ -79,7 +77,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
     {
         if (collision.GetComponent<SavePlaceBase>())
         {
-            player.uiPanel.ShowHelperPanel("Press 'P' to enter", 0f);
+            player.uiPanel.ShowHelperPanel("Press 'Up arrow' to enter", 0f);
             player.CanOpenSavePlace = true;
         }
     }
@@ -105,14 +103,16 @@ public class PlayerTriggerBehaviour : MonoBehaviour
 
     private void PortalBehaviour_Enter(Collider2D collision) {
         if (collision.GetComponent<PortalController>()) {
-            player.inPortal = true;
-            player.StartTeleportInPortal(collision.GetComponent<PortalController>().GetPortalPosition(0));
+            player.uiPanel.ShowHelperPanel("Press 'Up arrow' to enter", 0f);
+            player.NewPortalPosition = collision.GetComponent<PortalController>().GetPortalPosition(0);
+            player.InPortal = true;
         }
     }
 
     private void PortalBehaviour_Exit(Collider2D collision) {
         if (collision.GetComponent<PortalController>()) {
-            player.inPortal = false;
+            player.uiPanel.HideHelperPanel();
+            player.InPortal = false;
         }
     }
 
