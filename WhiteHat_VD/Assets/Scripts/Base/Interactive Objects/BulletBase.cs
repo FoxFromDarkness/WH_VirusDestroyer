@@ -5,64 +5,16 @@ using UnityEngine;
 
 public class BulletBase : MonoBehaviour
 {
-    private float damage = 1;
-    private bool isMoving = false;
-    private ParticleSystem[] bulletEffects;
-
-    private void Awake()
+    public float damage = 1;
+    public float speed = 1;
+    public bool isMoving = false;
+    
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        bulletEffects = GetComponentsInChildren<ParticleSystem>();
-        foreach (var item in bulletEffects)
-            item.Stop();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.GetComponent<RoboZombieController>() && !collision.GetComponent<RoboZombieController>().IsDead)
-        {
-            collision.GetComponent<RoboZombieController>().IsDead = true;
-            collision.GetComponent<Animator>().SetBool("death", true);
-        }
-
         Destroy(this.gameObject);
     }
 
-    private void Update()
-    {
-        DestroyMoment();
-
-        if (isMoving)
-            this.transform.Translate(new Vector3(1, 0));
-    }
-
-    public void InitBullet(InventoryItems weaponAmmo)
-    {
-        this.gameObject.SetActive(true);
-        isMoving = true;
-        switch (weaponAmmo)
-        {
-            case InventoryItems.AMMO_TYPE_1:
-                damage *= 1.1f;
-                bulletEffects[0].Play();
-                break;
-            case InventoryItems.AMMO_TYPE_2:
-                damage *= 1.2f;
-                bulletEffects[1].Play();
-                break;
-            case InventoryItems.AMMO_TYPE_3:
-                damage *= 1.3f;
-                bulletEffects[2].Play();
-                break;
-            case InventoryItems.AMMO_TYPE_4:
-                damage *= 1.4f;
-                bulletEffects[3].Play();
-                break;
-            case InventoryItems.NULL:
-                break;
-        }
-    }
-
-    private void DestroyMoment() {
+    protected void DestroyMoment() {
         if (this.transform.localPosition.x > 300 || this.transform.localPosition.x < -300)
             Destroy(this.gameObject);
     }

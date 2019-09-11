@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public bool InPortal { get; set; }
     public Vector2 NewPortalPosition { get; set; }
 
-    private BulletBase bullet;
+    private BulletPlayerController bullet;
     private bool isShot;
     private bool isSlotChangeImageKey;
 
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         PlayerStats = GetComponent<PlayerBase>();
 
-        bullet = GetComponentInChildren<BulletBase>();
+        bullet = GetComponentInChildren<BulletPlayerController>();
         bullet.gameObject.SetActive(false);
 
         InitPlayerWeaponMods();
@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
         if (isShot)
         {
             var copy_bullet = Instantiate(bullet, bullet.transform.parent);
-            copy_bullet.GetComponent<BulletBase>().InitBullet(GetActiveWeapon());
+            copy_bullet.GetComponent<BulletPlayerController>().InitBullet(GetActiveWeapon());
             AddItem(GetActiveWeapon(), -1);
             isShot = false;
         }
