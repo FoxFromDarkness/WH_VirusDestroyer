@@ -111,6 +111,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void CheckHeroDeath()
+    {
+        if(PlayerStats.HP <= 0)
+        {
+            GetComponent<Platformer2DUserControl>().IsPlayerActive = false;
+            gameObject.SetActive(false);
+            uiPanel.ShowHelperPanel("GAME OVER!", 2.0f);
+        }
+    }
+
     private InventoryItems GetActiveWeapon()
     {
         switch (Platformer2DUserControl.NumberSlotKey)
@@ -153,15 +163,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void ChangeAttribute(PlayerAttributes attribute, int amount)
+    public void ChangeAttribute(PlayerAttributes attribute, float amount)
     {
         switch (attribute)
         {
             case PlayerAttributes.HP:
                 PlayerStats.HP = amount;
+                uiPanel.SetHPBar(PlayerStats.HP / PlayerStats.HP_Max);
                 break;
             case PlayerAttributes.HP_MAX:
                 PlayerStats.HP_Max = amount;
+                uiPanel.SetHPBar(PlayerStats.HP / PlayerStats.HP_Max);
                 break;
             case PlayerAttributes.LEVEL:
                 PlayerStats.Level = amount;
@@ -175,15 +187,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void AddAttribute(PlayerAttributes attribute, int amount)
+    public void AddAttribute(PlayerAttributes attribute, float amount)
     {
         switch (attribute)
         {
             case PlayerAttributes.HP:
                 PlayerStats.HP += amount;
+                uiPanel.SetHPBar(PlayerStats.HP / PlayerStats.HP_Max);
                 break;
             case PlayerAttributes.HP_MAX:
                 PlayerStats.HP_Max += amount;
+                uiPanel.SetHPBar(PlayerStats.HP / PlayerStats.HP_Max);
                 break;
             case PlayerAttributes.LEVEL:
                 PlayerStats.Level += amount;
@@ -276,7 +290,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public int GetAttribute(PlayerAttributes attribute)
+    public float GetAttribute(PlayerAttributes attribute)
     {
         switch (attribute)
         {

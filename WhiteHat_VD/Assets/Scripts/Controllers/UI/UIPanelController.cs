@@ -7,12 +7,16 @@ using UnityStandardAssets._2D;
 
 public class UIPanelController : PanelBase
 {
+    private const float HP_BAR_WIDTH = 500.0f;
+
     [SerializeField] private Sprite emptySlot;
     [SerializeField] private Sprite activeSlot;
+    [SerializeField] private RectTransform hpBar;
     private UISlotBase[] uISlots;
     private AmmoUI ammunition;
     private BlackCristalUI blackCristals;
     private HelperPanelUI helperPanel;
+    private HPBossUI hpBossUI;
 
     private void Start()
     {
@@ -20,9 +24,15 @@ public class UIPanelController : PanelBase
         ammunition = GetComponentInChildren<AmmoUI>();
         blackCristals = GetComponentInChildren<BlackCristalUI>();
         helperPanel = GetComponentInChildren<HelperPanelUI>();
-        HideHelperPanel();
+        hpBossUI = GetComponentInChildren<HPBossUI>();
+        HideObjects();
 
         DeactiveSlots();
+    }
+
+    public void SetHPBar(float hpFraction) 
+    {
+        hpBar.sizeDelta = new Vector2(hpFraction * HP_BAR_WIDTH, hpBar.sizeDelta.y);
     }
 
     private void DeactiveSlots()
@@ -64,6 +74,12 @@ public class UIPanelController : PanelBase
     public void ShowHelperPanel(string info, float showTimeSek)
     {
         StartCoroutine(CoShowHelperPanel(info, showTimeSek));
+    }
+
+    public void HideObjects()
+    {
+        helperPanel.gameObject.SetActive(false);
+        hpBossUI.gameObject.SetActive(false);
     }
 
     public void HideHelperPanel()

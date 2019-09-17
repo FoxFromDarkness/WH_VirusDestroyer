@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerBase : MonoBehaviour
 {
-    public int HP { get; set; }
-    public int HP_Max { get; set; }
-    public int Level { get; set; }
-    public int Exp { get; set; }
-    public int ExpToNextLvl { get; set; }
+    public float HP { get; set; }
+    public float HP_Max { get; set; }
+    public float Level { get; set; }
+    public float Exp { get; set; }
+    public float ExpToNextLvl { get; set; }
 
     public int BlackCristals { get; set; }
     public WeaponBase[] WeaponMods { get; set; }

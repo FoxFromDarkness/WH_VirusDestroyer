@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class BulletEnemyTowerController : BulletBase {
 
-    protected override void OnTriggerEnter2D(Collider2D collision) {
-        base.OnTriggerEnter2D(collision);
+    private void Start()
+    {
+        damage = 10;
     }
 
-    private void FixedUpdate() {
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        //base.OnTriggerEnter2D(collision);
+    }
+
+    private void FixedUpdate()
+    {
         DestroyMoment();
 
         if (isMoving)

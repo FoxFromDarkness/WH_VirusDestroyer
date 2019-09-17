@@ -20,6 +20,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         SavePlaceBehavior_Enter(collision);
         ParticleSystemBehavior_Enter(collision);
         PortalBehaviour_Enter(collision);
+        EnemyBullet_Enter(collision);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -113,6 +114,16 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         if (collision.GetComponent<PortalController>()) {
             player.uiPanel.HideHelperPanel();
             player.InPortal = false;
+        }
+    }
+
+    private void EnemyBullet_Enter(Collider2D collision)
+    {
+        if (collision.GetComponent<BulletEnemyTowerController>())
+        {
+            player.AddAttribute(PlayerAttributes.HP, collision.GetComponent<BulletEnemyTowerController>().damage * -1);
+            player.CheckHeroDeath();
+            Destroy(collision.gameObject);
         }
     }
 
