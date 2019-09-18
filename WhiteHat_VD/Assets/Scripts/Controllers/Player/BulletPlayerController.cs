@@ -12,6 +12,11 @@ public class BulletPlayerController : BulletBase
             item.Stop();
     }
 
+    private void Start()
+    {
+        damage = 1;
+    }
+
     protected override void OnTriggerEnter2D(Collider2D collision) {
 
         //if (collision.GetComponent<RoboZombieController>() && !collision.GetComponent<RoboZombieController>().IsDead) {
@@ -50,6 +55,7 @@ public class BulletPlayerController : BulletBase
                 bulletEffects[3].Play();
                 break;
             case InventoryItems.NULL:
+                damage = 1;
                 break;
         }
     }

@@ -6,6 +6,9 @@ using UnityStandardAssets._2D;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Player Options")]
+    public bool GodMode;
+
     private PlayerBase PlayerStats { get; set; }
 
     [Header("Panels")]
@@ -113,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
     public void CheckHeroDeath()
     {
-        if(PlayerStats.HP <= 0)
+        if(PlayerStats.HP <= 0 && !GodMode)
         {
             GetComponent<Platformer2DUserControl>().IsPlayerActive = false;
             gameObject.SetActive(false);

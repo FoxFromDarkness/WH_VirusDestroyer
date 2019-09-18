@@ -10,9 +10,14 @@ public class Boss1Behaviour : MonoBehaviour {
     public bool isShooting;
 
     [Header("Enemy Options")]
+    public float HP_Max = 20;
     public float speedOfRotation;
     public float speedOfMoving;
+    public float actualHP { get; set; }
 
+    public BossLevel1 boss;
+    [SerializeField]
+    private GameObject explosionEffect;
     private PlayerController player;
     private BulletEnemyTowerController enemyBullet;
     private float actualShotTime;
@@ -32,6 +37,7 @@ public class Boss1Behaviour : MonoBehaviour {
         enemyBullet = GetComponentInChildren<BulletEnemyTowerController>();
         enemyBullet.gameObject.SetActive(false);
         player = FindObjectOfType<PlayerController>();
+        actualHP = HP_Max;
     }
 
     // Update is called once per frame
@@ -73,5 +79,40 @@ public class Boss1Behaviour : MonoBehaviour {
     private float GetRandomValue() {
         float randValue = Random.Range(2.0f, 6.0f);
         return randValue >= 1 ? randValue : 1;
+    }
+
+    public void GetDamage(float bulletDamage)
+    {
+        if (!isMortal)
+        {
+            actualHP -= bulletDamage;
+            Debug.Log(this.name + ": " + actualHP);
+            CheckEnemyDeath();
+            player.uiPanel.hpBossUI.ActualHpBossSlider(boss.CheckHPOfChildren());
+        }
+    }
+
+    private void CheckEnemyDeath()
+    {
+        if (actualHP <= 0)
+        {
+            isMortal = true;
+            isMoving = false;
+            isShooting = false;
+            explosionEffect.SetActive(true);
+            Destroy(explosionEffect, 5.0f);
+            this.GetComponentInChildren<SpriteRenderer>().color = Color.gray;
+            Destroy(this.GetComponent<Animator>());
+            Destroy(this.GetComponent<PolygonCollider2D>());
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<BulletPlayerController>() && !isMortal)
+        {
+            GetDamage(collision.GetComponent<BulletPlayerController>().damage);
+            Destroy(collision.gameObject);
+        }
     }
 }

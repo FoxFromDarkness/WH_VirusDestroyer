@@ -16,7 +16,7 @@ public class UIPanelController : PanelBase
     private AmmoUI ammunition;
     private BlackCristalUI blackCristals;
     private HelperPanelUI helperPanel;
-    private HPBossUI hpBossUI;
+    public HPBossUI hpBossUI { get; set; }
 
     private void Start()
     {

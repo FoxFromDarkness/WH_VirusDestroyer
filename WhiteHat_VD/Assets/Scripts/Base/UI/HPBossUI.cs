@@ -24,16 +24,27 @@ public class HPBossUI : MonoBehaviour
     public void InitHpBossSlider(float bossHP, Color backHPSliderColor, Color frontHPSliderColor)
     {
         bossHP_Max = bossHP;
+        hpBossSlider.value = hpBossSlider.maxValue;
         hpBossText.text = "100%";
-        if (backHPSliderColor != null)
+        if (backHPSliderColor != default)
             hpBackImg.color = backHPSliderColor;
-        if (backHPSliderColor != null)
+        if (backHPSliderColor != default)
             hpFrontImg.color = frontHPSliderColor;
         this.gameObject.SetActive(true);
     }
 
     public void ActualHpBossSlider(float actualBossHP)
     {
-        throw new System.Exception();
+        float value = (actualBossHP / bossHP_Max) * hpBossSlider.maxValue;
+        hpBossSlider.value = value;
+        hpBossText.text = decimal.Round(decimal.Parse(value + ""), 1) + "%";
     }
+
+    //public void ActualHpBossSlider(float actualSingleBossHP) //For single Boss1Behaviour
+    //{
+    //    float actualBossHP = bossHP_Max - actualSingleBossHP;
+    //    float value = (actualBossHP / bossHP_Max) * hpBossSlider.maxValue;
+    //    hpBossSlider.value = value;
+    //    hpBossText.text = decimal.Round(decimal.Parse(value + ""), 1) + "%";
+    //}
 }
