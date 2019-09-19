@@ -11,7 +11,8 @@ public class BulletBase : MonoBehaviour
     
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(this.gameObject);
+        if(!collision.GetComponent<BulletPassObject>())
+            Destroy(this.gameObject);
     }
 
     protected void DestroyMoment() {
