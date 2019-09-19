@@ -9,5 +9,6 @@ public enum InventoryItems
     AMMO_TYPE_2,
     AMMO_TYPE_3,
     AMMO_TYPE_4,
+    HEALTH_POINTS,
     NULL
 }

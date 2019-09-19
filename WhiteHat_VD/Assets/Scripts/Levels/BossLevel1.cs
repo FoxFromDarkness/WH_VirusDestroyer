@@ -24,12 +24,10 @@ public class BossLevel1 : MonoBehaviour
 
     public float CheckHPOfChildren()
     {
-        Debug.LogError("Warunek wygranej do poprawy");
-
         float BossHP = 0;
         foreach (var item in smallBosses)
             BossHP += item.actualHP;
-        if (BossHP <= 0 )//&& player.GetAttribute(PlayerAttributes.HP) > 0)
+        if (BossHP <= 0 && player.GetAttribute(PlayerAttributes.HP) > 0)
             BossDefeated();
         return BossHP;
     }

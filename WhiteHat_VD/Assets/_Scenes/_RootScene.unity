@@ -8686,7 +8686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b592e27e558a0fe46bf0482fad7bb21e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GodMode: 1
+  GodMode: 0
   uiPanel: {fileID: 1146665409}
   savePlacePanel: {fileID: 1237482215}
   questionPanel: {fileID: 403057165}

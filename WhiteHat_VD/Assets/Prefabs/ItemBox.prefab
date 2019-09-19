@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4179608238600378611}
   - component: {fileID: 4179608238600378612}
   m_Layer: 0
-  m_Name: AmmoBox
+  m_Name: ItemBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,8 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42ddfd0d32ea0644862fe9ac9bfde9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoAmount: 666
-  ammoType: 1
+  ItemAmount: 0
+  sprite: {fileID: 0}
+  ItemType: 0
 --- !u!1 &4179608238624772254
 GameObject:
   m_ObjectHideFlags: 0

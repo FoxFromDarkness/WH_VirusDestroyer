@@ -288,6 +288,11 @@ public class PlayerController : MonoBehaviour
                 }
                 else PlayerStats.AmmoBoxSupply[3] += amount;
                 break;
+            case InventoryItems.HEALTH_POINTS:
+                AddAttribute(PlayerAttributes.HP, amount);
+                if (PlayerStats.HP > PlayerStats.HP_Max)
+                    PlayerStats.HP = PlayerStats.HP_Max;
+                break;
             case InventoryItems.NULL:
                 break;
         }

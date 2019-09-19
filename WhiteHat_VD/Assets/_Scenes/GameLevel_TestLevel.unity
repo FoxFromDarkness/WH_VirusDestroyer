@@ -310,7 +310,7 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.14999999, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 5.02, y: 0.16}
     newSize: {x: 19.2, y: 10.8}
@@ -1030,6 +1030,26 @@ PrefabInstance:
         type: 3}
       propertyPath: ammoType
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378612, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: AmmoType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378612, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: AmmoAmount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378612, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: ItemType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378612, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: ItemAmount
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4179608238624772252, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
         type: 3}
@@ -12395,6 +12415,26 @@ PrefabInstance:
       propertyPath: ammoType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378612, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: AmmoType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378612, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: AmmoAmount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378612, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: ItemType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378612, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: ItemAmount
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4179608238624772252, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
         type: 3}
       propertyPath: m_Sprite
@@ -14143,11 +14183,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_SwordMan
       objectReference: {fileID: 0}
-    - target: {fileID: 6293694443904153953, guid: 10d684edd344d68418990fb2d7871dbb,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6293694444442843852, guid: 10d684edd344d68418990fb2d7871dbb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14201,6 +14236,11 @@ PrefabInstance:
     - target: {fileID: 6293694444442843852, guid: 10d684edd344d68418990fb2d7871dbb,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6293694443904153953, guid: 10d684edd344d68418990fb2d7871dbb,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6293694444442843855, guid: 10d684edd344d68418990fb2d7871dbb,
@@ -14732,7 +14772,7 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.14999999, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 5.02, y: 0.16}
     newSize: {x: 19.2, y: 10.8}
@@ -29405,7 +29445,7 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.14999999, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 5.02, y: 0.16}
     newSize: {x: 19.2, y: 10.8}
@@ -29485,6 +29525,26 @@ PrefabInstance:
         type: 3}
       propertyPath: ammoType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378612, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: AmmoAmount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378612, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: AmmoType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378612, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: ItemType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378612, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: ItemAmount
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4179608238624772252, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
         type: 3}
@@ -29566,6 +29626,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AmmoBox_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378612, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: AmmoAmount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378612, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: AmmoType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378612, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: ItemType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378612, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: ItemAmount
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4179608238600378613, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
         type: 3}

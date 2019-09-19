@@ -16,7 +16,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         QuestionDoorBehavior(collision);
         DeadZoneBehavior(collision);
         BlackCristalBehavior(collision);
-        AmmoBoxBehavior_Enter(collision);
+        ItemBoxBehavior_Enter(collision);
         SavePlaceBehavior_Enter(collision);
         ParticleSystemBehavior_Enter(collision);
         PortalBehaviour_Enter(collision);
@@ -62,15 +62,15 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         }
     }
 
-    private void AmmoBoxBehavior_Enter(Collider2D collision)
+    private void ItemBoxBehavior_Enter(Collider2D collision)
     {
-        if (collision.GetComponent<AmmoBoxBase>())
+        if (collision.GetComponent<ItemBoxBase>())
         {
             collision.gameObject.SetActive(false);
-            int amountAmmo = collision.GetComponent<AmmoBoxBase>().AmmoAmount;
-            InventoryItems ammoType = collision.GetComponent<AmmoBoxBase>().AmmoType;
-            player.uiPanel.ShowHelperPanel(ammoType.ToString() + ": " + amountAmmo, 2f);
-            player.AddItem(ammoType, amountAmmo);
+            int amountItem = collision.GetComponent<ItemBoxBase>().ItemAmount;
+            InventoryItems itemType = collision.GetComponent<ItemBoxBase>().ItemType;
+            player.uiPanel.ShowHelperPanel(itemType.ToString() + ": " + amountItem, 2f);
+            player.AddItem(itemType, amountItem);
         }
     }
 
