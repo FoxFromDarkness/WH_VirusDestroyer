@@ -15,6 +15,11 @@ public class SceneController : MonoBehaviour
         
     }
 
+    public void UnloadScene(string sceneName)
+    {
+        SceneManager.UnloadSceneAsync(sceneName);
+    }
+
     private IEnumerator LoadSceneAsynchronously (string sceneName, Action nextMethod)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);

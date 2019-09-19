@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossLevel1 : MonoBehaviour
+public class BossLevel1 : LevelBase
 {
     private PlayerController player;
     private Boss1Behaviour[] smallBosses;
+    public LevelPortalController levelPortal;
 
-    private void Start()
+    protected override void Start()
     {
-        Camera.main.orthographicSize *= 3.0f;
+        base.Start();
         player = FindObjectOfType<PlayerController>();
 
         Invoke("ActivateBoss", 2.0f);
@@ -36,5 +37,7 @@ public class BossLevel1 : MonoBehaviour
     {
         player.uiPanel.HideObjects();
         player.uiPanel.ShowHelperPanel("You Win!", 2.0f);
+        levelPortal.IsActive = true;
+        player.AddItem(InventoryItems.BLACK_CRISTALS, 1000);
     }
 }

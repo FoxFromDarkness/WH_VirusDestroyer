@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletEnemyTowerController : BulletBase {
-
+public class BulletEnemyTowerController : BulletBase
+{
     private void Start()
     {
         damage = 10;

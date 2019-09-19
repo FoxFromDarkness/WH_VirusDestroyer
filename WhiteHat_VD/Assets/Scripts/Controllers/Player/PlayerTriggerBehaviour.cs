@@ -20,6 +20,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         SavePlaceBehavior_Enter(collision);
         ParticleSystemBehavior_Enter(collision);
         PortalBehaviour_Enter(collision);
+        LevelPortalBehaviour_Enter(collision);
         EnemyBullet_Enter(collision);
     }
 
@@ -27,6 +28,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
     {
         SavePlaceBehavior_Exit(collision);
         PortalBehaviour_Exit(collision);
+        LevelPortalBehaviour_Exit(collision);
     }
 
     private void QuestionDoorBehavior(Collider2D collision)
@@ -114,6 +116,32 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         if (collision.GetComponent<PortalController>()) {
             player.uiPanel.HideHelperPanel();
             player.InPortal = false;
+        }
+    }
+
+    private void LevelPortalBehaviour_Enter(Collider2D collision)
+    {
+        if (collision.GetComponent<LevelPortalController>())
+        {
+            if (collision.GetComponent<LevelPortalController>().IsActive)
+            {
+                player.LevelPortalController = collision.GetComponent<LevelPortalController>();
+                player.uiPanel.ShowHelperPanel(player.LevelPortalController.description, 0f);
+                player.InLevelPortal = true;
+            }
+            else
+            {
+                player.uiPanel.ShowHelperPanel("Portal is inactive", 2f);
+            }
+        }
+    }
+
+    private void LevelPortalBehaviour_Exit(Collider2D collision)
+    {
+        if (collision.GetComponent<LevelPortalController>())
+        {
+            player.uiPanel.HideHelperPanel();
+            player.InLevelPortal = false;
         }
     }
 

@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player Options")]
     public bool GodMode;
+    public GameObject _GameManager;
 
     private PlayerBase PlayerStats { get; set; }
 
@@ -17,9 +18,13 @@ public class PlayerController : MonoBehaviour
     public QuestionPanelController questionPanel;
 
     public bool CanOpenSavePlace { get; set; }
+
     //Portals
     public bool InPortal { get; set; }
+    public bool InLevelPortal { get; set; }
     public Vector2 NewPortalPosition { get; set; }
+    public LevelPortalController LevelPortalController { get; set; }
+    //
 
     private BulletPlayerController bullet;
     private bool isShot;
@@ -45,6 +50,9 @@ public class PlayerController : MonoBehaviour
 
         if (InPortal)
             StartTeleportInPortal(NewPortalPosition);
+
+        if (InLevelPortal)
+            StartTeleportInLevelPortal(LevelPortalController);
 
         Shooting();
         ChangingSlotImage();
@@ -196,6 +204,8 @@ public class PlayerController : MonoBehaviour
         {
             case PlayerAttributes.HP:
                 PlayerStats.HP += amount;
+                if (PlayerStats.HP > PlayerStats.HP_Max)
+                    PlayerStats.HP = PlayerStats.HP_Max;
                 uiPanel.SetHPBar(PlayerStats.HP / PlayerStats.HP_Max);
                 break;
             case PlayerAttributes.HP_MAX:
@@ -290,8 +300,6 @@ public class PlayerController : MonoBehaviour
                 break;
             case InventoryItems.HEALTH_POINTS:
                 AddAttribute(PlayerAttributes.HP, amount);
-                if (PlayerStats.HP > PlayerStats.HP_Max)
-                    PlayerStats.HP = PlayerStats.HP_Max;
                 break;
             case InventoryItems.NULL:
                 break;
@@ -375,5 +383,21 @@ public class PlayerController : MonoBehaviour
             this.transform.position = newPosition;
             InPortal = false;
         }
+    }
+
+    public void StartTeleportInLevelPortal(LevelPortalController levelPortalController)
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            InLevelPortal = false;
+            uiPanel.HideHelperPanel();
+            _GameManager.GetComponent<SceneController>().UnloadScene(levelPortalController.thisSceneName);
+            _GameManager.GetComponent<SceneController>().LoadScene(levelPortalController.nextSceneName, SetCharacterPositionAfterChangeLevel);           
+        }
+    }
+
+    private void SetCharacterPositionAfterChangeLevel()
+    {
+        this.transform.position = LevelPortalController.startLevelPosition;
     }
 }

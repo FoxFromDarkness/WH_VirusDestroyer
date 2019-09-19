@@ -12,11 +12,6 @@ public class BulletPlayerController : BulletBase
             item.Stop();
     }
 
-    private void Start()
-    {
-        damage = 1;
-    }
-
     protected override void OnTriggerEnter2D(Collider2D collision) {
 
         //if (collision.GetComponent<RoboZombieController>() && !collision.GetComponent<RoboZombieController>().IsDead) {
@@ -35,28 +30,30 @@ public class BulletPlayerController : BulletBase
     }
 
     public void InitBullet(InventoryItems weaponAmmo) {
+
         this.gameObject.SetActive(true);
         isMoving = true;
+
         switch (weaponAmmo) {
             case InventoryItems.AMMO_TYPE_1:
-                damage *= 1.1f;
+                damage = 2;
                 bulletEffects[0].Play();
                 break;
             case InventoryItems.AMMO_TYPE_2:
-                damage *= 1.2f;
                 bulletEffects[1].Play();
+                damage = 3;
                 break;
             case InventoryItems.AMMO_TYPE_3:
-                damage *= 1.3f;
                 bulletEffects[2].Play();
+                damage = 4;
                 break;
             case InventoryItems.AMMO_TYPE_4:
-                damage *= 1.4f;
                 bulletEffects[3].Play();
+                damage = 5;
                 break;
             case InventoryItems.NULL:
                 damage = 1;
                 break;
-        }
+        }       
     }
 }
