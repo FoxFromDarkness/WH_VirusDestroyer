@@ -87,7 +87,9 @@ public class Boss1Behaviour : MonoBehaviour {
         {
             actualHP -= bulletDamage;
             CheckEnemyDeath();
+            print($"{this.name}: {actualHP} -- AllBoss: {boss.CheckHPOfChildren()}");
             player.uiPanel.hpBossUI.ActualHpBossSlider(boss.CheckHPOfChildren());
+            
         }
     }
 
@@ -95,14 +97,16 @@ public class Boss1Behaviour : MonoBehaviour {
     {
         if (actualHP <= 0)
         {
+            actualHP = 0;
             isMortal = true;
             isMoving = false;
             isShooting = false;
-            explosionEffect.SetActive(true);
-            Destroy(explosionEffect, 5.0f);
             this.GetComponentInChildren<SpriteRenderer>().color = Color.gray;
             Destroy(this.GetComponent<Animator>());
             Destroy(this.GetComponent<PolygonCollider2D>());
+            explosionEffect.SetActive(true);
+            Destroy(explosionEffect, 5.0f);
+            
         }
     }
 

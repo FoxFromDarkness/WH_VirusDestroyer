@@ -69,35 +69,36 @@ public class PlayerController : MonoBehaviour
 
     private bool IsAmmo()
     {
-        bool isAmmo = false;
+        bool isAmmo = true;
 
         switch (Platformer2DUserControl.NumberSlotKey)
         {
+
             case 0:
-                if (PlayerStats.WeaponMods[0].AmmoAmount > 0)
-                    isAmmo = true;
+                if (PlayerStats.WeaponMods[0].AmmoAmount <= 0)
+                    Platformer2DUserControl.NumberSlotKey = -1;
                 break;
 
             case 1:
-                if (PlayerStats.WeaponMods[1].AmmoAmount > 0)
-                    isAmmo = true;
+                if (PlayerStats.WeaponMods[1].AmmoAmount <= 0)
+                    Platformer2DUserControl.NumberSlotKey = -1;
                 break;
 
             case 2:
-                if (PlayerStats.WeaponMods[2].AmmoAmount > 0)
-                    isAmmo = true;
+                if (PlayerStats.WeaponMods[2].AmmoAmount <= 0)
+                    Platformer2DUserControl.NumberSlotKey = -1;
                 break;
 
             case 3:
-                if (PlayerStats.WeaponMods[3].AmmoAmount > 0)
-                    isAmmo = true;
+                if (PlayerStats.WeaponMods[3].AmmoAmount <= 0)
+                    Platformer2DUserControl.NumberSlotKey = -1;
                 break;
 
             default:
-                isAmmo = true;
+                Platformer2DUserControl.NumberSlotKey = -1;
                 break;
         }
-
+        ChangingSlotImage(true);
         return isAmmo;
     }
 
@@ -124,7 +125,7 @@ public class PlayerController : MonoBehaviour
 
     public void CheckHeroDeath()
     {
-        if(PlayerStats.HP <= 0 && !GodMode)
+        if (PlayerStats.HP <= 0 && !GodMode)
         {
             GetComponent<Platformer2DUserControl>().IsPlayerActive = false;
             gameObject.SetActive(false);
@@ -152,6 +153,19 @@ public class PlayerController : MonoBehaviour
     private void ChangingSlotImage()
     {
         if (isSlotChangeImageKey)
+        {
+            var numberSlot = Platformer2DUserControl.NumberSlotKey;
+            if (numberSlot != -1 && PlayerStats.WeaponMods[numberSlot].IsUnlock)
+                uiPanel.SetSlotImage(numberSlot, PlayerStats.WeaponMods[numberSlot].AmmoAmount);
+            else
+                uiPanel.SetSlotImage(numberSlot, -1);
+            isSlotChangeImageKey = false;
+        }
+    }
+
+    private void ChangingSlotImage(bool value)
+    {
+        if (value)
         {
             var numberSlot = Platformer2DUserControl.NumberSlotKey;
             if (numberSlot != -1 && PlayerStats.WeaponMods[numberSlot].IsUnlock)
@@ -264,7 +278,8 @@ public class PlayerController : MonoBehaviour
                 break;
             case InventoryItems.AMMO_TYPE_1:
                 idx = IndexOfWeaponMod(item);
-                if (idx != -1) {
+                if (idx != -1)
+                {
                     PlayerStats.WeaponMods[idx].AmmoAmount += amount;
                     if (Platformer2DUserControl.NumberSlotKey == idx)
                         uiPanel.SetAmmo(PlayerStats.WeaponMods[idx].AmmoAmount);
@@ -273,7 +288,8 @@ public class PlayerController : MonoBehaviour
                 break;
             case InventoryItems.AMMO_TYPE_2:
                 idx = IndexOfWeaponMod(item);
-                if (idx != -1) {
+                if (idx != -1)
+                {
                     PlayerStats.WeaponMods[idx].AmmoAmount += amount;
                     if (Platformer2DUserControl.NumberSlotKey == idx)
                         uiPanel.SetAmmo(PlayerStats.WeaponMods[idx].AmmoAmount);
@@ -282,7 +298,8 @@ public class PlayerController : MonoBehaviour
                 break;
             case InventoryItems.AMMO_TYPE_3:
                 idx = IndexOfWeaponMod(item);
-                if (idx != -1) {
+                if (idx != -1)
+                {
                     PlayerStats.WeaponMods[idx].AmmoAmount += amount;
                     if (Platformer2DUserControl.NumberSlotKey == idx)
                         uiPanel.SetAmmo(PlayerStats.WeaponMods[idx].AmmoAmount);
@@ -291,7 +308,8 @@ public class PlayerController : MonoBehaviour
                 break;
             case InventoryItems.AMMO_TYPE_4:
                 idx = IndexOfWeaponMod(item);
-                if (idx != -1) {
+                if (idx != -1)
+                {
                     PlayerStats.WeaponMods[idx].AmmoAmount += amount;
                     if (Platformer2DUserControl.NumberSlotKey == idx)
                         uiPanel.SetAmmo(PlayerStats.WeaponMods[idx].AmmoAmount);
@@ -376,10 +394,12 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
-    
 
-    public void StartTeleportInPortal(Vector2 newPosition) {
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+
+    public void StartTeleportInPortal(Vector2 newPosition)
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
             this.transform.position = newPosition;
             InPortal = false;
         }
@@ -392,7 +412,7 @@ public class PlayerController : MonoBehaviour
             InLevelPortal = false;
             uiPanel.HideHelperPanel();
             _GameManager.GetComponent<SceneController>().UnloadScene(levelPortalController.thisSceneName);
-            _GameManager.GetComponent<SceneController>().LoadScene(levelPortalController.nextSceneName, SetCharacterPositionAfterChangeLevel);           
+            _GameManager.GetComponent<SceneController>().LoadScene(levelPortalController.nextSceneName, SetCharacterPositionAfterChangeLevel);
         }
     }
 
