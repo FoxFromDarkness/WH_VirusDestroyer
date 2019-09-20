@@ -10,8 +10,9 @@ public class BossLevel1 : LevelBase
     public LevelPortalController levelPortal;
     private bool isDead = false;
 
-    private void Start()
-    { 
+    protected override void Start()
+    {
+        base.Start();
         player = FindObjectOfType<PlayerController>();
 
         Invoke("ActivateBoss", 2.0f);
@@ -40,7 +41,6 @@ public class BossLevel1 : LevelBase
         yield return new WaitForSeconds(2.0f);
         player.uiPanel.HideObjects();
         player.uiPanel.ShowHelperPanel("You Win!", 2.0f);
-        Debug.Log("WIN!");
         levelPortal.IsActive = true;
         player.AddItem(InventoryItems.BLACK_CRISTALS, 1000);
         ortographicSize = DEFAULT_ORTOGRAPHIC_SIZE;

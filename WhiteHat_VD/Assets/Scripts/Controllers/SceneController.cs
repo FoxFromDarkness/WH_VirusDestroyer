@@ -8,9 +8,11 @@ public class SceneController : MonoBehaviour
 {
     public LoadingScreenController loadingScreen;
 
-    public void LoadScene(string sceneName, Action nextMethod)
+    public void LoadScene(bool rootScene, string sceneName, Action nextMethod)
     {
-        //SceneManager.LoadScene("_RootScene");
+        if(rootScene)
+            SceneManager.LoadScene("_RootScene");
+
         StartCoroutine(LoadSceneAsynchronously(sceneName, nextMethod));
         
     }
@@ -18,6 +20,19 @@ public class SceneController : MonoBehaviour
     public void UnloadScene(string sceneName)
     {
         SceneManager.UnloadSceneAsync(sceneName);
+    }
+
+    public void UnloadAllScenes(bool rootScene)
+    {
+        Scene[] scenes = SceneManager.GetAllScenes();
+
+        if(rootScene)
+            SceneManager.UnloadSceneAsync(0);
+
+        for (int i = 1; i < scenes.Length; i++)
+        {
+            SceneManager.UnloadSceneAsync(scenes[i]);
+        }
     }
 
     private IEnumerator LoadSceneAsynchronously (string sceneName, Action nextMethod)

@@ -412,7 +412,7 @@ public class PlayerController : MonoBehaviour
             InLevelPortal = false;
             uiPanel.HideHelperPanel();
             _GameManager.GetComponent<SceneController>().UnloadScene(levelPortalController.thisSceneName);
-            _GameManager.GetComponent<SceneController>().LoadScene(levelPortalController.nextSceneName, SetCharacterPositionAfterChangeLevel);
+            _GameManager.GetComponent<SceneController>().LoadScene(false, levelPortalController.nextSceneName, SetCharacterPositionAfterChangeLevel);
         }
     }
 

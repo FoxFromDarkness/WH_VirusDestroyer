@@ -18,6 +18,12 @@ public class PlayerBase : MonoBehaviour
 
     private void Awake()
     {
+        SetStartPlayerOptions();
+    }
+
+
+    public void SetStartPlayerOptions()
+    {
         HP_Max = 100;
         HP = HP_Max;
         Level = 0;
@@ -26,7 +32,7 @@ public class PlayerBase : MonoBehaviour
 
         WeaponMods = new WeaponBase[4];
         AmmoBoxSupply = new int[4];
-        
+
         BlackCristals = 0;
         StartPosition = new Vector3(0, 0);
     }
