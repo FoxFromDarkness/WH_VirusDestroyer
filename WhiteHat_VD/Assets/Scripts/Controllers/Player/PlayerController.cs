@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (!GameController.IsInputEnable) return;
+
         if (GetComponent<Platformer2DUserControl>().IsShotKey && !CanOpenSavePlace)
             isShot = IsAmmo();
 
@@ -127,7 +129,7 @@ public class PlayerController : MonoBehaviour
     {
         if (PlayerStats.HP <= 0 && !GodMode)
         {
-            GetComponent<Platformer2DUserControl>().IsPlayerActive = false;
+            GameController.IsInputEnable = false;
             gameObject.SetActive(false);
             uiPanel.ShowHelperPanel("GAME OVER!", 2.0f);
         }
@@ -182,9 +184,6 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetButtonDown("SavePlace") || Input.GetKeyDown(KeyCode.UpArrow)) //Really important. Remember about it
                 savePlacePanel.ChangeVisibility();
-
-            if (!savePlacePanel.gameObject.activeSelf)
-                GetComponent<Platformer2DUserControl>().IsPlayerActive = true;
         }
     }
 

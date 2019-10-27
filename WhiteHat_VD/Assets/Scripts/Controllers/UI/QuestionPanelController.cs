@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class QuestionPanelController : PanelBase
 {
     [Header("QuestionPanelController")]
-    public GameObject player;
     public QuestionController questionController;
 
     private TextMeshProUGUI questionTitle;
@@ -58,7 +57,6 @@ public class QuestionPanelController : PanelBase
     {
         if (numberOfButton == questionBase.correctAns)
         {
-            player.SetActive(true);
             ChangeVisibility();
         }
         else

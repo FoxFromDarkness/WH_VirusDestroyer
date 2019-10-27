@@ -12,20 +12,20 @@ namespace UnityStandardAssets._2D
         private PlatformerCharacter2D m_Character;
         private bool m_Jump;
 
-        public bool IsPlayerActive { get; set; }
         public bool IsShotKey { get; set; }
         public bool IsSlotChangeImageKey { get; set; }
 
         private void Awake()
         {
             m_Character = GetComponent<PlatformerCharacter2D>();
-            IsPlayerActive = true;
             NumberSlotKey = -1;
         }
 
 
         private void Update()
         {
+            if (!GameController.IsInputEnable) return;
+
             if (!m_Jump)
             {
                 // Read the jump input in Update so button presses aren't missed.
@@ -39,20 +39,21 @@ namespace UnityStandardAssets._2D
 
         private void FixedUpdate()
         {
-            if (IsPlayerActive)
+            if (!GameController.IsInputEnable)
             {
-                // Read the inputs.
-                bool crouch = Input.GetKey(KeyCode.LeftControl);
-                float h = CrossPlatformInputManager.GetAxis("Horizontal");
-                // Pass all parameters to the character control script.
-                m_Character.Move(h, crouch, m_Jump);
-                m_Jump = false;
-
-                //shooting
-                IsShotKey = Input.GetKeyDown(KeyCode.Z);
-
-                
+                m_Character.Move(0, false, false);
+                return;
             }
+
+            // Read the inputs.
+            bool crouch = Input.GetKey(KeyCode.LeftControl);
+            float h = CrossPlatformInputManager.GetAxis("Horizontal");
+            // Pass all parameters to the character control script.
+            m_Character.Move(h, crouch, m_Jump);
+            m_Jump = false;
+
+            //shooting
+            IsShotKey = Input.GetKeyDown(KeyCode.Z);
         }
 
         private bool CheckSlotChangeImageKey()
