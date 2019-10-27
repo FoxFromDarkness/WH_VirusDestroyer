@@ -36,4 +36,23 @@ public class PlayerBase : MonoBehaviour
         BlackCristals = 0;
         StartPosition = new Vector3(0, 0);
     }
+
+    public void SetStartPlayerOptions(Dictionary<string, string> playerPrefs)
+    {
+        throw new System.Exception("Empty method");
+    }
+
+    public string GetWeaponInfo(int idx)
+    {
+        if (WeaponMods[idx] != null)
+            return WeaponMods[idx].ToString();
+        else
+            return "null";
+
+    }
+
+    public string GetAmmoBoxSupplyInfo(int idx)
+    {
+            return AmmoBoxSupply[idx] + "";
+    }
 }

@@ -14,4 +14,9 @@ public class WeaponBase : MonoBehaviour
         this.TypeOfAmmo = InventoryItems.NULL;
         AmmoAmount = 0;
     }
+
+    public override string ToString()
+    {
+        return $"IsUnlock{IsUnlock}TypeOfAmmo{TypeOfAmmo}AmmoAmount{AmmoAmount}";
+    }
 }

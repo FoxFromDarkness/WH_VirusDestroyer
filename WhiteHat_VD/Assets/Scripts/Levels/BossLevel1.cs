@@ -20,6 +20,8 @@ public class BossLevel1 : LevelBase
 
     public void ActivateBoss()
     {
+
+        SaveController.Instance.SavePrefs();
         smallBosses = GetComponentsInChildren<Boss1Behaviour>();
         player.uiPanel.hpBossUI.InitHpBossSlider(CheckHPOfChildren(), default, default);
         base.isAnimation = true;

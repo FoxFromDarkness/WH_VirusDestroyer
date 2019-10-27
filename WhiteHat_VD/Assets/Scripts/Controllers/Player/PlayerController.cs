@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public bool GodMode;
     public GameObject _GameManager;
 
-    private PlayerBase PlayerStats { get; set; }
+    public PlayerBase PlayerStats { get; set; }
 
     [Header("Panels")]
     public UIPanelController uiPanel;
