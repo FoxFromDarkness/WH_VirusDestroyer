@@ -6,25 +6,31 @@ public class AppController : MonoBehaviour
 {
     [SerializeField] private StartPanelController startPanel;
 
+    public static AppController Instance;
+
+    private void Start()
+    {
+        if (Instance == null)
+            Instance = FindObjectOfType<AppController>();
+    }
+
+    public void ShowHideMainMenu()
+    {
+        startPanel.CloseSubPanels();
+        startPanel.ChangeVisibility();
+    }
+
     public void ExitApplication()
     {
         Debug.Log("Application Exit");
         Application.Quit();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            startPanel.CloseSubPanels();
-            startPanel.ChangeVisibility();
+            ShowHideMainMenu();
         }
     }
 }

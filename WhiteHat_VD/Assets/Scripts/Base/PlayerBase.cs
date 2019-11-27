@@ -21,9 +21,9 @@ public class PlayerBase : MonoBehaviour
         SetStartPlayerOptions();
     }
 
-
     public void SetStartPlayerOptions()
     {
+
         HP_Max = 100;
         HP = HP_Max;
         Level = 0;
@@ -34,25 +34,25 @@ public class PlayerBase : MonoBehaviour
         AmmoBoxSupply = new int[4];
 
         BlackCristals = 0;
-        StartPosition = new Vector3(0, 0);
-    }
-
-    public void SetStartPlayerOptions(Dictionary<string, string> playerPrefs)
-    {
-        throw new System.Exception("Empty method");
+        InitPlayerWeaponMods();
+        //StartPosition = new Vector3(0, 0);
     }
 
     public string GetWeaponInfo(int idx)
     {
-        if (WeaponMods[idx] != null)
             return WeaponMods[idx].ToString();
-        else
-            return "null";
-
     }
 
     public string GetAmmoBoxSupplyInfo(int idx)
     {
             return AmmoBoxSupply[idx] + "";
+    }
+
+    private void InitPlayerWeaponMods()
+    {
+        WeaponMods[0] = new WeaponBase();
+        WeaponMods[1] = new WeaponBase();
+        WeaponMods[2] = new WeaponBase();
+        WeaponMods[3] = new WeaponBase();
     }
 }

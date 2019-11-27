@@ -10,8 +10,6 @@ public class StartPanelController : PanelBase
     public GameObject playPanel;
     public GameObject optionPanel;
 
-    public GameController gameController;
-
     private void Start()
     {
         playPanel.SetActive(false);
@@ -39,11 +37,5 @@ public class StartPanelController : PanelBase
     {
         playPanel.SetActive(false);
         optionPanel.SetActive(false);
-    }
-
-    public void PlayGameClick()
-    {
-        gameController.StartNewGame();
-        this.gameObject.SetActive(false);
     }
 }

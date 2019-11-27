@@ -17,6 +17,7 @@ public class WeaponBase : MonoBehaviour
 
     public override string ToString()
     {
-        return $"IsUnlock{IsUnlock}TypeOfAmmo{TypeOfAmmo}AmmoAmount{AmmoAmount}";
+        return $"{IsUnlock}|{(int)TypeOfAmmo}|{AmmoAmount}";
+        //return $"IsUnlock{IsUnlock}TypeOfAmmo{TypeOfAmmo}AmmoAmount{AmmoAmount}";
     }
 }

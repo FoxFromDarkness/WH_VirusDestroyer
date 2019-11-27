@@ -12,7 +12,7 @@ public class QuestionController : MonoBehaviour
     {
         listOfQuestions.Clear();
 
-        string path = Application.dataPath + "/StreamingAssets/Questions";
+        string path = CONSTANS.QUESTIONS_PATH;
 
         var info = new DirectoryInfo(path);
         var fileInfo = info.GetFiles("*.txt");

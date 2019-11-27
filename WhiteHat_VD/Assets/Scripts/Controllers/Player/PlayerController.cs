@@ -36,8 +36,6 @@ public class PlayerController : MonoBehaviour
 
         bullet = GetComponentInChildren<BulletPlayerController>();
         bullet.gameObject.SetActive(false);
-
-        InitPlayerWeaponMods();
     }
 
     private void Update()
@@ -59,14 +57,6 @@ public class PlayerController : MonoBehaviour
         Shooting();
         ChangingSlotImage();
         SavePlaceEnter();
-    }
-
-    private void InitPlayerWeaponMods()
-    {
-        PlayerStats.WeaponMods[0] = new WeaponBase();
-        PlayerStats.WeaponMods[1] = new WeaponBase();
-        PlayerStats.WeaponMods[2] = new WeaponBase();
-        PlayerStats.WeaponMods[3] = new WeaponBase();
     }
 
     private bool IsAmmo()
@@ -112,6 +102,20 @@ public class PlayerController : MonoBehaviour
                 return i;
         }
         return -1;
+    }
+
+    public string GetFullWeaponInfo(int idx)
+    {
+        return PlayerStats.GetWeaponInfo(idx) + "|" + IndexOfWeaponMod(PlayerStats.WeaponMods[idx].TypeOfAmmo);
+    }
+
+    public void SetFullWeapon(int idx, string data)
+    {
+        string[] weaponsInfo = data.Split('|');
+        if (weaponsInfo[0] == "False") return;
+
+        InventoryItems typeOfAmmo = (InventoryItems)int.Parse(weaponsInfo[1]);
+        SetBoughtItem(int.Parse(weaponsInfo[3]), typeOfAmmo, int.Parse(weaponsInfo[2]), ItemsDataBase.Instance.GetSpriteByItemType(typeOfAmmo));
     }
 
     private void Shooting()
@@ -394,6 +398,34 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void SetBoughtItem(int idx, InventoryItems item, int amount, Sprite sprite) //Loading operation
+    {
+        uiPanel.UnlockSlot(idx+1, sprite);
+
+        PlayerStats.WeaponMods[idx].TypeOfAmmo = item;
+        PlayerStats.WeaponMods[idx].AmmoAmount = amount;
+        PlayerStats.WeaponMods[idx].IsUnlock = true;
+
+        switch (item)
+        {
+            case InventoryItems.AMMO_TYPE_1:
+                PlayerStats.WeaponMods[idx].AmmoAmount += PlayerStats.AmmoBoxSupply[0];
+                PlayerStats.AmmoBoxSupply[0] = 0;
+                break;
+            case InventoryItems.AMMO_TYPE_2:
+                PlayerStats.WeaponMods[idx].AmmoAmount += PlayerStats.AmmoBoxSupply[1];
+                PlayerStats.AmmoBoxSupply[1] = 0;
+                break;
+            case InventoryItems.AMMO_TYPE_3:
+                PlayerStats.WeaponMods[idx].AmmoAmount += PlayerStats.AmmoBoxSupply[2];
+                PlayerStats.AmmoBoxSupply[2] = 0;
+                break;
+            case InventoryItems.AMMO_TYPE_4:
+                PlayerStats.WeaponMods[idx].AmmoAmount += PlayerStats.AmmoBoxSupply[3];
+                PlayerStats.AmmoBoxSupply[3] = 0;
+                break;
+        }
+    }
 
     public void StartTeleportInPortal(Vector2 newPosition)
     {

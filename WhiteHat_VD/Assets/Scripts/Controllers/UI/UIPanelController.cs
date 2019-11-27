@@ -35,7 +35,7 @@ public class UIPanelController : PanelBase
         hpBar.sizeDelta = new Vector2(hpFraction * HP_BAR_WIDTH, hpBar.sizeDelta.y);
     }
 
-    private void DeactiveSlots()
+    public void DeactiveSlots()
     {
         foreach (var item in uISlots)
         {
@@ -56,6 +56,12 @@ public class UIPanelController : PanelBase
             }
         }
         throw new System.Exception("UnlockNextSlot Error");
+    }
+
+    public void UnlockSlot(int idx, Sprite img)
+    {
+        uISlots[idx].AmmoImage = img;
+        uISlots[idx].gameObject.SetActive(true);
     }
 
     public void SetAmmo(int ammoAmount)
