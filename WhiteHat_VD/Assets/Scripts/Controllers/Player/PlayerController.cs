@@ -12,11 +12,6 @@ public class PlayerController : MonoBehaviour
 
     public PlayerBase PlayerStats { get; set; }
 
-    [Header("Panels")]
-    public UIPanelController uiPanel;
-    public SavePlacePanelController savePlacePanel;
-    public QuestionPanelController questionPanel;
-
     public bool CanOpenSavePlace { get; set; }
 
     //Portals
@@ -135,7 +130,7 @@ public class PlayerController : MonoBehaviour
         {
             GameController.IsInputEnable = false;
             gameObject.SetActive(false);
-            uiPanel.ShowHelperPanel("GAME OVER!", 2.0f);
+            HeadPanelController.Instance.uiPanel.ShowHelperPanel("GAME OVER!", 2.0f);
         }
     }
 
@@ -162,9 +157,9 @@ public class PlayerController : MonoBehaviour
         {
             var numberSlot = Platformer2DUserControl.NumberSlotKey;
             if (numberSlot != -1 && PlayerStats.WeaponMods[numberSlot].IsUnlock)
-                uiPanel.SetSlotImage(numberSlot, PlayerStats.WeaponMods[numberSlot].AmmoAmount);
+                HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, PlayerStats.WeaponMods[numberSlot].AmmoAmount);
             else
-                uiPanel.SetSlotImage(numberSlot, -1);
+                HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, -1);
             isSlotChangeImageKey = false;
         }
     }
@@ -175,9 +170,9 @@ public class PlayerController : MonoBehaviour
         {
             var numberSlot = Platformer2DUserControl.NumberSlotKey;
             if (numberSlot != -1 && PlayerStats.WeaponMods[numberSlot].IsUnlock)
-                uiPanel.SetSlotImage(numberSlot, PlayerStats.WeaponMods[numberSlot].AmmoAmount);
+                HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, PlayerStats.WeaponMods[numberSlot].AmmoAmount);
             else
-                uiPanel.SetSlotImage(numberSlot, -1);
+                HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, -1);
             isSlotChangeImageKey = false;
         }
     }
@@ -187,7 +182,7 @@ public class PlayerController : MonoBehaviour
         if (CanOpenSavePlace)
         {
             if (Input.GetButtonDown("SavePlace") || Input.GetKeyDown(KeyCode.UpArrow)) //Really important. Remember about it
-                savePlacePanel.ChangeVisibility();
+                HeadPanelController.Instance.savePlacePanel.ChangeVisibility();
         }
     }
 
@@ -197,11 +192,11 @@ public class PlayerController : MonoBehaviour
         {
             case PlayerAttributes.HP:
                 PlayerStats.HP = amount;
-                uiPanel.SetHPBar(PlayerStats.HP / PlayerStats.HP_Max);
+                HeadPanelController.Instance.uiPanel.SetHPBar(PlayerStats.HP / PlayerStats.HP_Max);
                 break;
             case PlayerAttributes.HP_MAX:
                 PlayerStats.HP_Max = amount;
-                uiPanel.SetHPBar(PlayerStats.HP / PlayerStats.HP_Max);
+                HeadPanelController.Instance.uiPanel.SetHPBar(PlayerStats.HP / PlayerStats.HP_Max);
                 break;
             case PlayerAttributes.LEVEL:
                 PlayerStats.Level = amount;
@@ -223,11 +218,11 @@ public class PlayerController : MonoBehaviour
                 PlayerStats.HP += amount;
                 if (PlayerStats.HP > PlayerStats.HP_Max)
                     PlayerStats.HP = PlayerStats.HP_Max;
-                uiPanel.SetHPBar(PlayerStats.HP / PlayerStats.HP_Max);
+                HeadPanelController.Instance.uiPanel.SetHPBar(PlayerStats.HP / PlayerStats.HP_Max);
                 break;
             case PlayerAttributes.HP_MAX:
                 PlayerStats.HP_Max += amount;
-                uiPanel.SetHPBar(PlayerStats.HP / PlayerStats.HP_Max);
+                HeadPanelController.Instance.uiPanel.SetHPBar(PlayerStats.HP / PlayerStats.HP_Max);
                 break;
             case PlayerAttributes.LEVEL:
                 PlayerStats.Level += amount;
@@ -247,23 +242,23 @@ public class PlayerController : MonoBehaviour
         {
             case InventoryItems.BLACK_CRISTALS:
                 PlayerStats.BlackCristals = amount;
-                uiPanel.SetBlackCristals(PlayerStats.BlackCristals);
+                HeadPanelController.Instance.uiPanel.SetBlackCristals(PlayerStats.BlackCristals);
                 break;
             case InventoryItems.AMMO_TYPE_1:
                 PlayerStats.WeaponMods[IndexOfWeaponMod(item)].AmmoAmount = amount;
-                uiPanel.SetAmmo(PlayerStats.WeaponMods[0].AmmoAmount);
+                HeadPanelController.Instance.uiPanel.SetAmmo(PlayerStats.WeaponMods[0].AmmoAmount);
                 break;
             case InventoryItems.AMMO_TYPE_2:
                 PlayerStats.WeaponMods[IndexOfWeaponMod(item)].AmmoAmount = amount;
-                uiPanel.SetAmmo(PlayerStats.WeaponMods[1].AmmoAmount);
+                HeadPanelController.Instance.uiPanel.SetAmmo(PlayerStats.WeaponMods[1].AmmoAmount);
                 break;
             case InventoryItems.AMMO_TYPE_3:
                 PlayerStats.WeaponMods[IndexOfWeaponMod(item)].AmmoAmount = amount;
-                uiPanel.SetAmmo(PlayerStats.WeaponMods[2].AmmoAmount);
+                HeadPanelController.Instance.uiPanel.SetAmmo(PlayerStats.WeaponMods[2].AmmoAmount);
                 break;
             case InventoryItems.AMMO_TYPE_4:
                 PlayerStats.WeaponMods[IndexOfWeaponMod(item)].AmmoAmount = amount;
-                uiPanel.SetAmmo(PlayerStats.WeaponMods[3].AmmoAmount);
+                HeadPanelController.Instance.uiPanel.SetAmmo(PlayerStats.WeaponMods[3].AmmoAmount);
                 break;
             case InventoryItems.NULL:
                 break;
@@ -277,7 +272,7 @@ public class PlayerController : MonoBehaviour
         {
             case InventoryItems.BLACK_CRISTALS:
                 PlayerStats.BlackCristals += amount;
-                uiPanel.SetBlackCristals(GetItemAmount(InventoryItems.BLACK_CRISTALS));
+                HeadPanelController.Instance.uiPanel.SetBlackCristals(GetItemAmount(InventoryItems.BLACK_CRISTALS));
                 break;
             case InventoryItems.AMMO_TYPE_1:
                 idx = IndexOfWeaponMod(item);
@@ -285,7 +280,7 @@ public class PlayerController : MonoBehaviour
                 {
                     PlayerStats.WeaponMods[idx].AmmoAmount += amount;
                     if (Platformer2DUserControl.NumberSlotKey == idx)
-                        uiPanel.SetAmmo(PlayerStats.WeaponMods[idx].AmmoAmount);
+                        HeadPanelController.Instance.uiPanel.SetAmmo(PlayerStats.WeaponMods[idx].AmmoAmount);
                 }
                 else PlayerStats.AmmoBoxSupply[0] += amount;
                 break;
@@ -295,7 +290,7 @@ public class PlayerController : MonoBehaviour
                 {
                     PlayerStats.WeaponMods[idx].AmmoAmount += amount;
                     if (Platformer2DUserControl.NumberSlotKey == idx)
-                        uiPanel.SetAmmo(PlayerStats.WeaponMods[idx].AmmoAmount);
+                        HeadPanelController.Instance.uiPanel.SetAmmo(PlayerStats.WeaponMods[idx].AmmoAmount);
                 }
                 else PlayerStats.AmmoBoxSupply[1] += amount;
                 break;
@@ -305,7 +300,7 @@ public class PlayerController : MonoBehaviour
                 {
                     PlayerStats.WeaponMods[idx].AmmoAmount += amount;
                     if (Platformer2DUserControl.NumberSlotKey == idx)
-                        uiPanel.SetAmmo(PlayerStats.WeaponMods[idx].AmmoAmount);
+                        HeadPanelController.Instance.uiPanel.SetAmmo(PlayerStats.WeaponMods[idx].AmmoAmount);
                 }
                 else PlayerStats.AmmoBoxSupply[2] += amount;
                 break;
@@ -315,7 +310,7 @@ public class PlayerController : MonoBehaviour
                 {
                     PlayerStats.WeaponMods[idx].AmmoAmount += amount;
                     if (Platformer2DUserControl.NumberSlotKey == idx)
-                        uiPanel.SetAmmo(PlayerStats.WeaponMods[idx].AmmoAmount);
+                        HeadPanelController.Instance.uiPanel.SetAmmo(PlayerStats.WeaponMods[idx].AmmoAmount);
                 }
                 else PlayerStats.AmmoBoxSupply[3] += amount;
                 break;
@@ -367,7 +362,7 @@ public class PlayerController : MonoBehaviour
 
     public void BuyItem(InventoryItems item, Sprite sprite)
     {
-        int idx = uiPanel.UnlockNextSlot(sprite) - 1;
+        int idx = HeadPanelController.Instance.uiPanel.UnlockNextSlot(sprite) - 1;
 
         switch (item)
         {
@@ -400,7 +395,7 @@ public class PlayerController : MonoBehaviour
 
     private void SetBoughtItem(int idx, InventoryItems item, int amount, Sprite sprite) //Loading operation
     {
-        uiPanel.UnlockSlot(idx+1, sprite);
+        HeadPanelController.Instance.uiPanel.UnlockSlot(idx+1, sprite);
 
         PlayerStats.WeaponMods[idx].TypeOfAmmo = item;
         PlayerStats.WeaponMods[idx].AmmoAmount = amount;
@@ -441,7 +436,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             InLevelPortal = false;
-            uiPanel.HideHelperPanel();
+            HeadPanelController.Instance.uiPanel.HideHelperPanel();
             _GameManager.GetComponent<SceneController>().UnloadScene(levelPortalController.thisSceneName);
             _GameManager.GetComponent<SceneController>().LoadScene(false, levelPortalController.nextSceneName, SetCharacterPositionAfterChangeLevel);
         }

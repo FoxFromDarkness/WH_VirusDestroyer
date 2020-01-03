@@ -23,7 +23,7 @@ public class BossLevel1 : LevelBase
 
         SaveController.Instance.SavePrefs();
         smallBosses = GetComponentsInChildren<Boss1Behaviour>();
-        player.uiPanel.hpBossUI.InitHpBossSlider(CheckHPOfChildren(), default, default);
+        HeadPanelController.Instance.uiPanel.hpBossUI.InitHpBossSlider(CheckHPOfChildren(), default, default);
         base.isAnimation = true;
     }
 
@@ -41,8 +41,8 @@ public class BossLevel1 : LevelBase
     {
         isDead = true;
         yield return new WaitForSeconds(2.0f);
-        player.uiPanel.HideObjects();
-        player.uiPanel.ShowHelperPanel("You Win!", 2.0f);
+        HeadPanelController.Instance.uiPanel.HideObjects();
+        HeadPanelController.Instance.uiPanel.ShowHelperPanel("You Win!", 2.0f);
         levelPortal.IsActive = true;
         player.AddItem(InventoryItems.BLACK_CRISTALS, 1000);
         ortographicSize = DEFAULT_ORTOGRAPHIC_SIZE;

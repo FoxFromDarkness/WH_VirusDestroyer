@@ -87,7 +87,7 @@ public class Boss1Behaviour : MonoBehaviour {
         {
             actualHP -= bulletDamage;
             CheckEnemyDeath();
-            player.uiPanel.hpBossUI.ActualHpBossSlider(boss.CheckHPOfChildren());
+            HeadPanelController.Instance.uiPanel.hpBossUI.ActualHpBossSlider(boss.CheckHPOfChildren());
             
         }
     }

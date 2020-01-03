@@ -7,9 +7,9 @@
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
+Assets/Resources/Saves/
 Assets/[Pp]rivateJunk
 Assets/AssetStoreTools*
-
 
 # file on crash reports
 sysinfo.txt
@@ -36,6 +36,8 @@ ExportedObj/
 
 # Unity3D generated meta files
 *.pidb.meta
+*.whvd
+*.whvd.meta
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt

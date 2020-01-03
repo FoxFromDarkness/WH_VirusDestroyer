@@ -10,14 +10,11 @@ public class GameController : MonoBehaviour
 
     [Header("PlayGame Options")]
     public GameObject player;
-    private UIPanelController uIPanel;
 
     private void Start()
     {
         if (Instance == null)
-            Instance = FindObjectOfType<GameController>();
-
-        uIPanel = player.GetComponent<PlayerController>().uiPanel;
+            Instance = this.GetComponent<GameController>();
     }
 
     public void StartNewGame(bool isLoading)
@@ -39,15 +36,15 @@ public class GameController : MonoBehaviour
 
     private void SavePlayerPrefs()
     {
-        uIPanel.DeactiveSlots();
-        uIPanel.SetAmmo(-1);
+        HeadPanelController.Instance.uiPanel.DeactiveSlots();
+        HeadPanelController.Instance.uiPanel.SetAmmo(-1);
         SaveController.Instance.SavePrefs();
     }
 
     private void LoadPlayerPrefs()
     {
-        uIPanel.DeactiveSlots();
-        uIPanel.SetAmmo(-1);
+        HeadPanelController.Instance.uiPanel.DeactiveSlots();
+        HeadPanelController.Instance.uiPanel.SetAmmo(-1);
         SaveController.Instance.LoadPrefs();
     }
 

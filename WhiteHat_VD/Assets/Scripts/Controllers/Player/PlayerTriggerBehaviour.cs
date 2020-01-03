@@ -35,11 +35,12 @@ public class PlayerTriggerBehaviour : MonoBehaviour
     {
         if (collision.GetComponent<QuestionDoorBase>())
         {
-            if (!player.questionPanel.gameObject.activeSelf)
+            if (!HeadPanelController.Instance.questionPanel.gameObject.activeSelf)
             {
-                player.questionPanel.QuestionBehaviour();
+                HeadPanelController.Instance.questionPanel.QuestionBehaviour();
                 collision.gameObject.SetActive(false);
-                this.gameObject.SetActive(false);
+                GameController.IsInputEnable = false;
+                //this.gameObject.SetActive(false);
             }
         }
     }
@@ -71,7 +72,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
             collision.gameObject.SetActive(false);
             int amountItem = collision.GetComponent<ItemBoxBase>().ItemAmount;
             InventoryItems itemType = collision.GetComponent<ItemBoxBase>().ItemType;
-            player.uiPanel.ShowHelperPanel(itemType.ToString() + ": " + amountItem, 2f);
+            HeadPanelController.Instance.uiPanel.ShowHelperPanel(itemType.ToString() + ": " + amountItem, 2f);
             player.AddItem(itemType, amountItem);
         }
     }
@@ -80,7 +81,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
     {
         if (collision.GetComponent<SavePlaceBase>())
         {
-            player.uiPanel.ShowHelperPanel("Press 'Up arrow' to enter", 0f);
+            HeadPanelController.Instance.uiPanel.ShowHelperPanel("Press 'Up arrow' to enter", 0f);
             player.CanOpenSavePlace = true;
         }
     }
@@ -89,7 +90,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
     {
         if (collision.GetComponent<SavePlaceBase>())
         {
-            player.uiPanel.HideHelperPanel();
+            HeadPanelController.Instance.uiPanel.HideHelperPanel();
             player.CanOpenSavePlace = false;
         }
     }
@@ -99,14 +100,14 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         if (collision.GetComponent<ParticleSystem>() && player.GetItemAmount(InventoryItems.BLACK_CRISTALS) >= 3)
         {
             collision.gameObject.SetActive(false);
-            player.uiPanel.ShowHelperPanel("Congratulations!!", 5f);
+            HeadPanelController.Instance.uiPanel.ShowHelperPanel("Congratulations!!", 5f);
             player.AddItem(InventoryItems.BLACK_CRISTALS, 97);
         }
     }
 
     private void PortalBehaviour_Enter(Collider2D collision) {
         if (collision.GetComponent<PortalController>()) {
-            player.uiPanel.ShowHelperPanel("Press 'Up arrow' to enter", 0f);
+            HeadPanelController.Instance.uiPanel.ShowHelperPanel("Press 'Up arrow' to enter", 0f);
             player.NewPortalPosition = collision.GetComponent<PortalController>().GetPortalPosition(0);
             player.InPortal = true;
         }
@@ -114,7 +115,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
 
     private void PortalBehaviour_Exit(Collider2D collision) {
         if (collision.GetComponent<PortalController>()) {
-            player.uiPanel.HideHelperPanel();
+            HeadPanelController.Instance.uiPanel.HideHelperPanel();
             player.InPortal = false;
         }
     }
@@ -126,12 +127,12 @@ public class PlayerTriggerBehaviour : MonoBehaviour
             if (collision.GetComponent<LevelPortalController>().IsActive)
             {
                 player.LevelPortalController = collision.GetComponent<LevelPortalController>();
-                player.uiPanel.ShowHelperPanel(player.LevelPortalController.description, 0f);
+                HeadPanelController.Instance.uiPanel.ShowHelperPanel(player.LevelPortalController.description, 0f);
                 player.InLevelPortal = true;
             }
             else
             {
-                player.uiPanel.ShowHelperPanel("Portal is inactive", 2f);
+                HeadPanelController.Instance.uiPanel.ShowHelperPanel("Portal is inactive", 2f);
             }
         }
     }
@@ -140,7 +141,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
     {
         if (collision.GetComponent<LevelPortalController>())
         {
-            player.uiPanel.HideHelperPanel();
+            HeadPanelController.Instance.uiPanel.HideHelperPanel();
             player.InLevelPortal = false;
         }
     }
