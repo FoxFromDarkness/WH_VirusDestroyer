@@ -22,6 +22,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         PortalBehaviour_Enter(collision);
         LevelPortalBehaviour_Enter(collision);
         EnemyBullet_Enter(collision);
+        ChestBehavior(collision);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -43,6 +44,20 @@ public class PlayerTriggerBehaviour : MonoBehaviour
             }
         }
     }
+
+    private void ChestBehavior(Collider2D collision)
+    {
+        if (collision.GetComponent<ChestBase>())
+        {
+            if (!player.questionPanel.gameObject.activeSelf)
+            {
+                player.questionPanel.QuestionBehaviour();
+                //collision.gameObject.SetActive(false);
+                //this.gameObject.SetActive(false);
+            }
+        }
+    }
+
 
     private void DeadZoneBehavior(Collider2D collision)
     {

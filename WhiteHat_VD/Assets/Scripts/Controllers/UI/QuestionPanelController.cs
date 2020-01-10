@@ -9,6 +9,7 @@ public class QuestionPanelController : PanelBase
 {
     [Header("QuestionPanelController")]
     public QuestionController questionController;
+    public static QuestionStatus questionStatus;
 
     private TextMeshProUGUI questionTitle;
     private Button ans_A;
@@ -51,17 +52,13 @@ public class QuestionPanelController : PanelBase
         ans_B.GetComponentInChildren<TextMeshProUGUI>().text = questionBase.ansB;
         ans_C.GetComponentInChildren<TextMeshProUGUI>().text = questionBase.ansC;
         ans_D.GetComponentInChildren<TextMeshProUGUI>().text = questionBase.ansD;
+
+        questionStatus = QuestionStatus.DEFAULT;
     }
 
     public void CheckAnswer(int numberOfButton)
     {
-        if (numberOfButton == questionBase.correctAns)
-        {
-            ChangeVisibility();
-        }
-        else
-        {
-            SetQuestion();
-        }      
+        ChangeVisibility();
+        questionStatus = numberOfButton == questionBase.correctAns ? QuestionStatus.CORRECT : QuestionStatus.INCORRECT;
     }
 }
