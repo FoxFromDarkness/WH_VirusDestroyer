@@ -424,7 +424,7 @@ public class PlayerController : MonoBehaviour
 
     public void StartTeleportInPortal(Vector2 newPosition)
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             this.transform.position = newPosition;
             InPortal = false;
@@ -433,7 +433,7 @@ public class PlayerController : MonoBehaviour
 
     public void StartTeleportInLevelPortal(LevelPortalController levelPortalController)
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             InLevelPortal = false;
             HeadPanelController.Instance.uiPanel.HideHelperPanel();
