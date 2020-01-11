@@ -9,7 +9,6 @@ public class QuestionPanelController : PanelBase
 {
     [Header("QuestionPanelController")]
     public QuestionController questionController;
-    public static QuestionStatus questionStatus;
 
     private TextMeshProUGUI questionTitle;
     private Button ans_A;
@@ -27,6 +26,7 @@ public class QuestionPanelController : PanelBase
     public void QuestionBehaviour()
     {
         gameObject.SetActive(true);
+        GameController.IsInputEnable = false;
         InitButtons();
         SetQuestion();
     }
@@ -52,13 +52,12 @@ public class QuestionPanelController : PanelBase
         ans_B.GetComponentInChildren<TextMeshProUGUI>().text = questionBase.ansB;
         ans_C.GetComponentInChildren<TextMeshProUGUI>().text = questionBase.ansC;
         ans_D.GetComponentInChildren<TextMeshProUGUI>().text = questionBase.ansD;
-
-        questionStatus = QuestionStatus.DEFAULT;
     }
 
     public void CheckAnswer(int numberOfButton)
     {
         ChangeVisibility();
-        questionStatus = numberOfButton == questionBase.correctAns ? QuestionStatus.CORRECT : QuestionStatus.INCORRECT;
+        GameController.IsInputEnable = true;
+        PlayerController.Chest.QuestionStatus = numberOfButton == questionBase.correctAns ? QuestionStatus.CORRECT : QuestionStatus.INCORRECT;
     }
 }
