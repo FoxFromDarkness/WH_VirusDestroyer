@@ -51,6 +51,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
     {
         if (collision.GetComponent<ChestBase>())
         {
+<<<<<<< HEAD
             ChestBase chest = collision.GetComponent<ChestBase>();
 
             if (chest.QuestionStatus == QuestionStatus.CORRECT || chest.QuestionStatus == QuestionStatus.INCORRECT) return;
@@ -78,6 +79,13 @@ public class PlayerTriggerBehaviour : MonoBehaviour
                 HeadPanelController.Instance.uiPanel.HideHelperPanel();
                 PlayerController.Chest = null;
                 player.CanOpenChest = false;
+=======
+            if (!HeadPanelController.Instance.questionPanel.gameObject.activeSelf)
+            {
+                HeadPanelController.Instance.questionPanel.QuestionBehaviour();
+                //collision.gameObject.SetActive(false);
+                //this.gameObject.SetActive(false);
+>>>>>>> origin/UserInterface
             }
             //HeadPanelController.Instance.questionPanel.QuestionBehaviour();
         }
