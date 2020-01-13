@@ -50,9 +50,9 @@ public class PlayerTriggerBehaviour : MonoBehaviour
     {
         if (collision.GetComponent<ChestBase>())
         {
-            if (!player.questionPanel.gameObject.activeSelf)
+            if (!HeadPanelController.Instance.questionPanel.gameObject.activeSelf)
             {
-                player.questionPanel.QuestionBehaviour();
+                HeadPanelController.Instance.questionPanel.QuestionBehaviour();
                 //collision.gameObject.SetActive(false);
                 //this.gameObject.SetActive(false);
             }
