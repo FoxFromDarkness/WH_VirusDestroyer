@@ -1,32 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ChestBase : MonoBehaviour
 {
-    [SerializeField]
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private QuestionStatus questionStatus = QuestionStatus.DEFAULT;
+    public QuestionStatus QuestionStatus { get { return questionStatus; } set { questionStatus = value;  CheckChestStatus(); } }
 
     [SerializeField]
     private Sprite questionChestSprite, correctChestSprite, incorrectChestSprite;
 
-    [SerializeField]
-    private bool isOpen;
-    public bool IsOpen {
-        get { return isOpen; }
-        set { isOpen = value;
-            if (answerIsCorrect)
-                this.GetComponent<SpriteRenderer>().sprite = correctChestSprite;
-            else
-                this.GetComponent<SpriteRenderer>().sprite = incorrectChestSprite;
-        }
-    }
-
-    [SerializeField]
-    private bool answerIsCorrect;
-
-
-
+    [SerializeField]  private int awardAmount;
 
     // Start is called before the first frame update
     void Start()
@@ -34,16 +19,16 @@ public class ChestBase : MonoBehaviour
         this.GetComponent<SpriteRenderer>().sprite = questionChestSprite;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void CheckChestStatus()
     {
-        switch (QuestionPanelController.questionStatus)
+        switch (questionStatus)
         {
             case QuestionStatus.DEFAULT:
                 this.GetComponent<SpriteRenderer>().sprite = questionChestSprite;
                 break;
             case QuestionStatus.CORRECT:
                 this.GetComponent<SpriteRenderer>().sprite = correctChestSprite;
+                StartCoroutine(OpenChest());
                 break;
             case QuestionStatus.INCORRECT:
                 this.GetComponent<SpriteRenderer>().sprite = incorrectChestSprite;
@@ -51,12 +36,13 @@ public class ChestBase : MonoBehaviour
             default:
                 break;
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-            IsOpen = !IsOpen;
+    private IEnumerator OpenChest()
+    {
+        yield return new WaitForSeconds(2.0f);
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            answerIsCorrect = !answerIsCorrect;
-
+        Debug.Log("Animacja otwarcia skrzyni");
+        Debug.Log("Wysyp " + awardAmount + " bitcoinów");
     }
 }

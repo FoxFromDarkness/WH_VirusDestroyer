@@ -13,7 +13,6 @@ namespace UnityStandardAssets._2D
         private bool m_Jump;
 
         public bool IsShotKey { get; set; }
-        public bool IsSlotChangeImageKey { get; set; }
 
         private void Awake()
         {
@@ -33,7 +32,7 @@ namespace UnityStandardAssets._2D
             }
 
             //ChangeSlotIamge
-            IsSlotChangeImageKey = CheckSlotChangeImageKey();
+            PlayerController.IsSlotChangeImageKey = CheckSlotChangeImageKey();
         }
 
 

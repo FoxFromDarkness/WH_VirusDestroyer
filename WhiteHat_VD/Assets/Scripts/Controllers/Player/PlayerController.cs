@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
 
     public bool CanOpenSavePlace { get; set; }
 
+    //Chests
+    public bool CanOpenChest { get; set; }
+    public static ChestBase Chest { get; set; }
+
     //Portals
     public bool InPortal { get; set; }
     public bool InLevelPortal { get; set; }
@@ -23,7 +27,8 @@ public class PlayerController : MonoBehaviour
 
     private BulletPlayerController bullet;
     private bool isShot;
-    private bool isSlotChangeImageKey;
+
+    public static bool IsSlotChangeImageKey;
 
     private void Start()
     {
@@ -40,9 +45,6 @@ public class PlayerController : MonoBehaviour
         if (GetComponent<Platformer2DUserControl>().IsShotKey && !CanOpenSavePlace)
             isShot = IsAmmo();
 
-        if (GetComponent<Platformer2DUserControl>().IsSlotChangeImageKey)
-            isSlotChangeImageKey = true;
-
         if (InPortal)
             StartTeleportInPortal(NewPortalPosition);
 
@@ -52,6 +54,7 @@ public class PlayerController : MonoBehaviour
         Shooting();
         ChangingSlotImage();
         SavePlaceEnter();
+        OpenChestOperation();
     }
 
     private bool IsAmmo()
@@ -153,14 +156,14 @@ public class PlayerController : MonoBehaviour
 
     private void ChangingSlotImage()
     {
-        if (isSlotChangeImageKey)
+        if (IsSlotChangeImageKey)
         {
             var numberSlot = Platformer2DUserControl.NumberSlotKey;
             if (numberSlot != -1 && PlayerStats.WeaponMods[numberSlot].IsUnlock)
                 HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, PlayerStats.WeaponMods[numberSlot].AmmoAmount);
             else
                 HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, -1);
-            isSlotChangeImageKey = false;
+            IsSlotChangeImageKey = false;
         }
     }
 
@@ -173,7 +176,7 @@ public class PlayerController : MonoBehaviour
                 HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, PlayerStats.WeaponMods[numberSlot].AmmoAmount);
             else
                 HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, -1);
-            isSlotChangeImageKey = false;
+            IsSlotChangeImageKey = false;
         }
     }
 
@@ -183,6 +186,19 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetButtonDown("SavePlace") || Input.GetKeyDown(KeyCode.UpArrow)) //Really important. Remember about it
                 HeadPanelController.Instance.savePlacePanel.ChangeVisibility();
+        }
+    }
+
+    private void OpenChestOperation()
+    {
+        if (CanOpenChest)
+        {
+            if (Input.GetButtonDown("SavePlace") || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                CanOpenChest = false;
+                HeadPanelController.Instance.uiPanel.HideHelperPanel();
+                HeadPanelController.Instance.questionPanel.QuestionBehaviour();
+            }
         }
     }
 

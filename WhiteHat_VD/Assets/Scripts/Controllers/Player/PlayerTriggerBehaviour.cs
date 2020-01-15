@@ -22,7 +22,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         PortalBehaviour_Enter(collision);
         LevelPortalBehaviour_Enter(collision);
         EnemyBullet_Enter(collision);
-        ChestBehavior(collision);
+        ChestBehavior_Enter(collision);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -30,6 +30,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         SavePlaceBehavior_Exit(collision);
         PortalBehaviour_Exit(collision);
         LevelPortalBehaviour_Exit(collision);
+        ChestBehavior_Exit(collision);
     }
 
     private void QuestionDoorBehavior(Collider2D collision)
@@ -46,16 +47,47 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         }
     }
 
-    private void ChestBehavior(Collider2D collision)
+    private void ChestBehavior_Enter(Collider2D collision)
     {
         if (collision.GetComponent<ChestBase>())
         {
+<<<<<<< HEAD
+            ChestBase chest = collision.GetComponent<ChestBase>();
+
+            if (chest.QuestionStatus == QuestionStatus.CORRECT || chest.QuestionStatus == QuestionStatus.INCORRECT) return;
+
+            if (chest.QuestionStatus == QuestionStatus.DEFAULT)
+            {
+                HeadPanelController.Instance.uiPanel.ShowHelperPanel("Press 'Up arrow' to open the chest", 0f);
+                PlayerController.Chest = chest;
+                player.CanOpenChest = true;
+            }
+            //HeadPanelController.Instance.questionPanel.QuestionBehaviour();
+        }
+    }
+
+    private void ChestBehavior_Exit(Collider2D collision)
+    {
+        if (collision.GetComponent<ChestBase>())
+        {
+            ChestBase chest = collision.GetComponent<ChestBase>();
+
+            if (chest.QuestionStatus == QuestionStatus.CORRECT || chest.QuestionStatus == QuestionStatus.INCORRECT) return;
+
+            if (chest.QuestionStatus == QuestionStatus.DEFAULT)
+            {
+                HeadPanelController.Instance.uiPanel.HideHelperPanel();
+                PlayerController.Chest = null;
+                player.CanOpenChest = false;
+=======
             if (!HeadPanelController.Instance.questionPanel.gameObject.activeSelf)
             {
                 HeadPanelController.Instance.questionPanel.QuestionBehaviour();
                 //collision.gameObject.SetActive(false);
                 //this.gameObject.SetActive(false);
+>>>>>>> origin/UserInterface
             }
+            //HeadPanelController.Instance.questionPanel.QuestionBehaviour();
         }
     }
 
