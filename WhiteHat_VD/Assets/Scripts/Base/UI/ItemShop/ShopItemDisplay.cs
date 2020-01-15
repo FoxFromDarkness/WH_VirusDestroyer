@@ -13,6 +13,9 @@ public class ShopItemDisplay : MonoBehaviour
     private ShopItemBase shopItem;
 
     [SerializeField]
+    private Sprite background;
+
+    [SerializeField]
     private TextMeshProUGUI nameText;
     [SerializeField]
     private TextMeshProUGUI priceText;
@@ -24,7 +27,7 @@ public class ShopItemDisplay : MonoBehaviour
     {
         nameText.text = shopItem.itemName.ToString();
         priceText.text = shopItem.itemPrice + " BC";
-        btn.GetComponent<Image>().sprite = shopItem.sprite;
+        btn.GetComponent<Image>().sprite = background;
         btn.onClick.AddListener(() => OnClick());
     }
 
