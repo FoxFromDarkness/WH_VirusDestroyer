@@ -49,11 +49,11 @@ public class PlayerTriggerBehaviour : MonoBehaviour
 
     private void ChestBehavior_Enter(Collider2D collision)
     {
+        
         if (collision.GetComponent<ChestBase>())
         {
-<<<<<<< HEAD
             ChestBase chest = collision.GetComponent<ChestBase>();
-
+            
             if (chest.QuestionStatus == QuestionStatus.CORRECT || chest.QuestionStatus == QuestionStatus.INCORRECT) return;
 
             if (chest.QuestionStatus == QuestionStatus.DEFAULT)
@@ -77,20 +77,19 @@ public class PlayerTriggerBehaviour : MonoBehaviour
             if (chest.QuestionStatus == QuestionStatus.DEFAULT)
             {
                 HeadPanelController.Instance.uiPanel.HideHelperPanel();
-                PlayerController.Chest = null;
+                //PlayerController.Chest = null;
                 player.CanOpenChest = false;
-=======
-            if (!HeadPanelController.Instance.questionPanel.gameObject.activeSelf)
-            {
-                HeadPanelController.Instance.questionPanel.QuestionBehaviour();
-                //collision.gameObject.SetActive(false);
-                //this.gameObject.SetActive(false);
->>>>>>> origin/UserInterface
+
+                if (!HeadPanelController.Instance.questionPanel.gameObject.activeSelf)
+                {
+                    HeadPanelController.Instance.questionPanel.QuestionBehaviour();
+                    //collision.gameObject.SetActive(false);
+                    //this.gameObject.SetActive(false);
+                }
+                //HeadPanelController.Instance.questionPanel.QuestionBehaviour();
             }
-            //HeadPanelController.Instance.questionPanel.QuestionBehaviour();
         }
     }
-
 
     private void DeadZoneBehavior(Collider2D collision)
     {
