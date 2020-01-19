@@ -58,6 +58,7 @@ public class QuestionPanelController : PanelBase
     {
         ChangeVisibility();
         GameController.IsInputEnable = true;
+        
         PlayerController.Chest.QuestionStatus = numberOfButton == questionBase.correctAns ? QuestionStatus.CORRECT : QuestionStatus.INCORRECT;
     }
 }
