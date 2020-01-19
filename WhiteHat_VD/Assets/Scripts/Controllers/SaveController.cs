@@ -187,4 +187,14 @@ public class SaveController : MonoBehaviour
             }
         }
     }
+
+    public void DeleteFile()
+    {
+        
+        string path = CONSTANS.SAVES_PATH + "Save_" + saveNumber + "©" + saveNickName;
+        //FileInfo file = new FileInfo(path);
+        Debug.LogError("Delete: " + path);
+        if (Directory.Exists(path))
+            Directory.Delete(path, true);
+    }
 }

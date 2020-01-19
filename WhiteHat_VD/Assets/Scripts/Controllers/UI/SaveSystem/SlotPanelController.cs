@@ -68,6 +68,8 @@ public class SlotPanelController : PanelBase
                 break;
             case SlotPanelMode.DELETE_GAME:
                 SetTextGameMode("Delete Game");
+                for (int i = 0; i < directoryInfo.Length; i++)
+                    listOfSaveSlots.Add(InitSaveSlotController(i, directoryInfo[i]));
                 break;
             default:
                 break;
@@ -126,6 +128,7 @@ public class SlotPanelController : PanelBase
 
     private void DeleteGameMode()
     {
-        textMesh.text = "Delete Game";
+        SaveController.Instance.DeleteFile();
+        SetPanelMode(2);
     }
 }
