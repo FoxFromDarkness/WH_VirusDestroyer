@@ -23,6 +23,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         LevelPortalBehaviour_Enter(collision);
         EnemyBullet_Enter(collision);
         ChestBehavior_Enter(collision);
+        PlatformEffector_Enter(collision);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -31,6 +32,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         PortalBehaviour_Exit(collision);
         LevelPortalBehaviour_Exit(collision);
         ChestBehavior_Exit(collision);
+        PlatformEffector_Exit(collision);
     }
 
     private void QuestionDoorBehavior(Collider2D collision)
@@ -51,7 +53,6 @@ public class PlayerTriggerBehaviour : MonoBehaviour
     {
         if (collision.GetComponent<ChestBase>())
         {
-<<<<<<< HEAD
             ChestBase chest = collision.GetComponent<ChestBase>();
 
             if (chest.QuestionStatus == QuestionStatus.CORRECT || chest.QuestionStatus == QuestionStatus.INCORRECT) return;
@@ -77,17 +78,18 @@ public class PlayerTriggerBehaviour : MonoBehaviour
             if (chest.QuestionStatus == QuestionStatus.DEFAULT)
             {
                 HeadPanelController.Instance.uiPanel.HideHelperPanel();
-                PlayerController.Chest = null;
+                //PlayerController.Chest = null;
                 player.CanOpenChest = false;
-=======
-            if (!HeadPanelController.Instance.questionPanel.gameObject.activeSelf)
-            {
-                HeadPanelController.Instance.questionPanel.QuestionBehaviour();
-                //collision.gameObject.SetActive(false);
-                //this.gameObject.SetActive(false);
->>>>>>> origin/UserInterface
+
+                if (!HeadPanelController.Instance.questionPanel.gameObject.activeSelf)
+                {
+                    HeadPanelController.Instance.questionPanel.QuestionBehaviour();
+                    //collision.gameObject.SetActive(false);
+                    //this.gameObject.SetActive(false);
+
+                }
+                //HeadPanelController.Instance.questionPanel.QuestionBehaviour();
             }
-            //HeadPanelController.Instance.questionPanel.QuestionBehaviour();
         }
     }
 
@@ -171,10 +173,11 @@ public class PlayerTriggerBehaviour : MonoBehaviour
     {
         if (collision.GetComponent<LevelPortalController>())
         {
-            if (collision.GetComponent<LevelPortalController>().IsActive)
+            var portal = collision.GetComponent<LevelPortalController>();
+            if (portal.IsActive)
             {
-                player.LevelPortalController = collision.GetComponent<LevelPortalController>();
-                HeadPanelController.Instance.uiPanel.ShowHelperPanel(player.LevelPortalController.description, 0f);
+                player.LevelPortalController = portal;
+                HeadPanelController.Instance.uiPanel.ShowHelperPanel(portal.description, 0f);
                 player.InLevelPortal = true;
             }
             else
@@ -203,4 +206,20 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         }
     }
 
+    private void PlatformEffector_Enter(Collider2D collision)
+    {
+        if (collision.GetComponent<PlatformEffector2DBase>())
+        {
+            player.Platform = collision.GetComponent<PlatformEffector2DBase>();
+            player.CanMoveDownPlatform = true;
+        }
+    }
+
+    private void PlatformEffector_Exit(Collider2D collision)
+    {
+        if (collision.GetComponent<PlatformEffector2DBase>())
+        {
+            player.CanMoveDownPlatform = false;
+        }
+    }
 }

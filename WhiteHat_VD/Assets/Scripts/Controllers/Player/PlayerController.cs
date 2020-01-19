@@ -10,13 +10,15 @@ public class PlayerController : MonoBehaviour
     public bool GodMode;
     public GameObject _GameManager;
 
-    public PlayerBase PlayerStats { get; set; }
+    public PlayerBase PlayerStats { get; private set; }
 
+    //
     public bool CanOpenSavePlace { get; set; }
-
-    //Chests
     public bool CanOpenChest { get; set; }
+    public bool CanMoveDownPlatform { get; set; }
+
     public static ChestBase Chest { get; set; }
+    public PlatformEffector2DBase Platform { get; set; }
 
     //Portals
     public bool InPortal { get; set; }
@@ -45,17 +47,16 @@ public class PlayerController : MonoBehaviour
         if (GetComponent<Platformer2DUserControl>().IsShotKey && !CanOpenSavePlace)
             isShot = IsAmmo();
 
-        if (InPortal)
-            StartTeleportInPortal(NewPortalPosition);
-
-        if (InLevelPortal)
-            StartTeleportInLevelPortal(LevelPortalController);
-
+        StartTeleportInPortal(NewPortalPosition);
+        StartTeleportInLevelPortal();
         Shooting();
         ChangingSlotImage();
         SavePlaceEnter();
         OpenChestOperation();
+        PlatformJumpDown();
     }
+
+    #region WEAPONS_SYSTEM
 
     private bool IsAmmo()
     {
@@ -127,16 +128,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void CheckHeroDeath()
-    {
-        if (PlayerStats.HP <= 0 && !GodMode)
-        {
-            GameController.IsInputEnable = false;
-            gameObject.SetActive(false);
-            HeadPanelController.Instance.uiPanel.ShowHelperPanel("GAME OVER!", 2.0f);
-        }
-    }
-
     private InventoryItems GetActiveWeapon()
     {
         switch (Platformer2DUserControl.NumberSlotKey)
@@ -180,27 +171,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void SavePlaceEnter()
-    {
-        if (CanOpenSavePlace)
-        {
-            if (Input.GetButtonDown("SavePlace") || Input.GetKeyDown(KeyCode.UpArrow)) //Really important. Remember about it
-                HeadPanelController.Instance.savePlacePanel.ChangeVisibility();
-        }
-    }
+    #endregion
 
-    private void OpenChestOperation()
-    {
-        if (CanOpenChest)
-        {
-            if (Input.GetButtonDown("SavePlace") || Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                CanOpenChest = false;
-                HeadPanelController.Instance.uiPanel.HideHelperPanel();
-                HeadPanelController.Instance.questionPanel.QuestionBehaviour();
-            }
-        }
-    }
+    #region HERO_OPERATIONS
 
     public void ChangeAttribute(PlayerAttributes attribute, float amount)
     {
@@ -251,6 +224,26 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
+
+    public float GetAttribute(PlayerAttributes attribute)
+    {
+        switch (attribute)
+        {
+            case PlayerAttributes.HP:
+                return PlayerStats.HP;
+            case PlayerAttributes.HP_MAX:
+                return PlayerStats.HP_Max;
+            case PlayerAttributes.LEVEL:
+                return PlayerStats.Level;
+            case PlayerAttributes.EXP:
+                return PlayerStats.Exp;
+            case PlayerAttributes.EXP_TO_NEXT_LVL:
+                return PlayerStats.ExpToNextLvl;
+            default:
+                return -1;
+        }
+    }
+
 
     public void ChangeItemAmount(InventoryItems item, int amount)
     {
@@ -338,25 +331,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public float GetAttribute(PlayerAttributes attribute)
-    {
-        switch (attribute)
-        {
-            case PlayerAttributes.HP:
-                return PlayerStats.HP;
-            case PlayerAttributes.HP_MAX:
-                return PlayerStats.HP_Max;
-            case PlayerAttributes.LEVEL:
-                return PlayerStats.Level;
-            case PlayerAttributes.EXP:
-                return PlayerStats.Exp;
-            case PlayerAttributes.EXP_TO_NEXT_LVL:
-                return PlayerStats.ExpToNextLvl;
-            default:
-                return -1;
-        }
-    }
-
     public int GetItemAmount(InventoryItems item)
     {
         switch (item)
@@ -375,6 +349,20 @@ public class PlayerController : MonoBehaviour
                 return -1;
         }
     }
+
+    public void CheckHeroDeath()
+    {
+        if (PlayerStats.HP <= 0 && !GodMode)
+        {
+            GameController.IsInputEnable = false;
+            gameObject.SetActive(false);
+            HeadPanelController.Instance.uiPanel.ShowHelperPanel("GAME OVER!", 2.0f);
+        }
+    }
+
+    #endregion
+
+    #region SAVE_PLACE_SYSTEM
 
     public void BuyItem(InventoryItems item, Sprite sprite)
     {
@@ -438,23 +426,55 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void StartTeleportInPortal(Vector2 newPosition)
+    #endregion
+
+    #region TRIGGER_OPERATIONS
+
+    private void SavePlaceEnter()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        if (CanOpenSavePlace)
         {
-            this.transform.position = newPosition;
-            InPortal = false;
+            if (Input.GetButtonDown("SavePlace") || Input.GetKeyDown(KeyCode.UpArrow)) //Really important. Remember about it
+                HeadPanelController.Instance.savePlacePanel.ChangeVisibility();
         }
     }
 
-    public void StartTeleportInLevelPortal(LevelPortalController levelPortalController)
+    private void OpenChestOperation()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        if (CanOpenChest)
         {
-            InLevelPortal = false;
-            HeadPanelController.Instance.uiPanel.HideHelperPanel();
-            _GameManager.GetComponent<SceneController>().UnloadScene(levelPortalController.thisSceneName);
-            _GameManager.GetComponent<SceneController>().LoadScene(false, levelPortalController.nextSceneName, SetCharacterPositionAfterChangeLevel);
+            if (Input.GetButtonDown("SavePlace") || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                CanOpenChest = false;
+                HeadPanelController.Instance.uiPanel.HideHelperPanel();
+                HeadPanelController.Instance.questionPanel.QuestionBehaviour();
+            }
+        }
+    }
+
+    public void StartTeleportInPortal(Vector2 newPosition)
+    {
+        if (InPortal)
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            {
+                this.transform.position = newPosition;
+                InPortal = false;
+            }
+        }
+    }
+
+    public void StartTeleportInLevelPortal()
+    {
+        if (InLevelPortal)
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            {
+                InLevelPortal = false;
+                HeadPanelController.Instance.uiPanel.HideHelperPanel();
+                _GameManager.GetComponent<SceneController>().UnloadScene(LevelPortalController.thisSceneName);
+                _GameManager.GetComponent<SceneController>().LoadScene(false, LevelPortalController.nextSceneName, SetCharacterPositionAfterChangeLevel);
+            }
         }
     }
 
@@ -462,4 +482,19 @@ public class PlayerController : MonoBehaviour
     {
         this.transform.position = LevelPortalController.startLevelPosition;
     }
+
+    private void PlatformJumpDown()
+    {
+        if (CanMoveDownPlatform)
+        {
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                CanMoveDownPlatform = false;
+                Platform.RunPlatformOperation();
+            }
+        }
+    }
+
+    #endregion
+
 }
