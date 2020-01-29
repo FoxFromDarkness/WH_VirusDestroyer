@@ -24,6 +24,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         EnemyBullet_Enter(collision);
         ChestBehavior_Enter(collision);
         PlatformEffector_Enter(collision);
+        EnemyIdleArea_Enter(collision);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -33,6 +34,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         LevelPortalBehaviour_Exit(collision);
         ChestBehavior_Exit(collision);
         PlatformEffector_Exit(collision);
+        EnemyIdleArea_Exit(collision);
     }
 
     private void QuestionDoorBehavior(Collider2D collision)
@@ -220,6 +222,22 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         if (collision.GetComponent<PlatformEffector2DBase>())
         {
             player.CanMoveDownPlatform = false;
+        }
+    }
+
+    private void EnemyIdleArea_Enter(Collider2D collision)
+    {
+        if (collision.GetComponent<EnemyIdleArea>())
+        {
+            collision.GetComponent<EnemyIdleArea>().EnemyAreaTrigger(true);
+        }
+    }
+
+    private void EnemyIdleArea_Exit(Collider2D collision)
+    {
+        if (collision.GetComponent<EnemyIdleArea>())
+        {
+            collision.GetComponent<EnemyIdleArea>().EnemyAreaTrigger(false);
         }
     }
 }
