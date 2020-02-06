@@ -32,16 +32,20 @@ public class CasualEnemyController : MonoBehaviour
 
     [SerializeField] private Transform body;
     private SpriteRenderer bodyImage;
+    [SerializeField] private Collider2D bodyCollider;
+    private HP_Canvas hpCanvas;
     [SerializeField] private EnemyType enemyType;
     [SerializeField] private EnemyMovement enemyMovement = EnemyMovement.IDLE;
     [SerializeField] private EnemyAttack enemyAttack;
-    [SerializeField] private float healthPoints = 100;
+    [SerializeField] private float maxHealthPoints = 100;
+    private float currentHealthPoints;
     [SerializeField] private float enemyMovingSpeed = 2;
     [SerializeField] private float enemyAttackSpeed = 2;
     [SerializeField] private bool movingRight = true;
     [SerializeField] private bool canMove = true;
     [SerializeField] private bool canAttack = true;
     [SerializeField] private bool isActive = true;
+    [SerializeField] private GameObject explosionEffect;
 
     //
     private PlayerController target;
@@ -49,7 +53,13 @@ public class CasualEnemyController : MonoBehaviour
 
     private void Start()
     {
+        currentHealthPoints = maxHealthPoints;
+
         bodyImage = body.GetComponent<SpriteRenderer>();
+
+        hpCanvas = body.GetComponentInChildren<HP_Canvas>();
+        hpCanvas.gameObject.SetActive(false); 
+
         target = FindObjectOfType<PlayerController>();
     }
 
@@ -68,13 +78,27 @@ public class CasualEnemyController : MonoBehaviour
                 Attack();
                 break;
             case EnemyMovement.DIE:
-                //wybuch
+                Die();
                 break;
             case EnemyMovement.NONE:
                 break;
             default:
                 break;
         }
+    }
+
+    private void Die()
+    {
+        canAttack = false;
+        canMove = false;
+        isActive = false;
+        bodyImage.enabled = false;
+        Destroy(body.GetComponent<Rigidbody2D>());
+        bodyCollider.enabled = false;
+        explosionEffect.SetActive(true);
+        Destroy(explosionEffect, 4.0f);
+        Destroy(this.gameObject, 7.0f);
+
     }
 
     private void Attack()
@@ -162,5 +186,18 @@ public class CasualEnemyController : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         if (!isTargetInArea) enemyMovement = EnemyMovement.IDLE;
+    }
+
+    public void GetDamage(float damage)
+    {
+        currentHealthPoints -= damage;
+        hpCanvas.SetHP_Canvas(currentHealthPoints / maxHealthPoints);
+        if(!hpCanvas.gameObject.activeSelf) hpCanvas.gameObject.SetActive(true);
+
+        if (currentHealthPoints <= 0)
+        {
+            hpCanvas.gameObject.SetActive(false);
+            enemyMovement = EnemyMovement.DIE;
+        }
     }
 }

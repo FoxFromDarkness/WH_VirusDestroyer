@@ -15,5 +15,8 @@ public class EnemyTriggerBehaviour : MonoBehaviour
     {
         if (collision.GetComponent<EnemyBorder>())
             enemyController.BorderCollision();
+
+        if (collision.GetComponent<BulletPlayerController>())
+            enemyController.GetDamage(collision.GetComponent<BulletPlayerController>().damage);
     }
 }
