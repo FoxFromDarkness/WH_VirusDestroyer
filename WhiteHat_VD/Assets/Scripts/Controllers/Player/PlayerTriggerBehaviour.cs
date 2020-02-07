@@ -22,6 +22,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         PortalBehaviour_Enter(collision);
         LevelPortalBehaviour_Enter(collision);
         EnemyBullet_Enter(collision);
+        CasualEnemyBullet_Enter(collision);
         ChestBehavior_Enter(collision);
         PlatformEffector_Enter(collision);
         EnemyIdleArea_Enter(collision);
@@ -203,6 +204,16 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         if (collision.GetComponent<BulletEnemyTowerController>())
         {
             player.AddAttribute(PlayerAttributes.HP, collision.GetComponent<BulletEnemyTowerController>().damage * -1);
+            player.CheckHeroDeath();
+            Destroy(collision.gameObject);
+        }
+    }
+
+    private void CasualEnemyBullet_Enter(Collider2D collision)
+    {
+        if (collision.GetComponent<BulletEnemyController>())
+        {
+            player.AddAttribute(PlayerAttributes.HP, collision.GetComponent<BulletEnemyController>().damage * -1);
             player.CheckHeroDeath();
             Destroy(collision.gameObject);
         }

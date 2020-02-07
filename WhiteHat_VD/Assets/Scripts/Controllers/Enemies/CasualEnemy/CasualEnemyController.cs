@@ -41,10 +41,12 @@ public class CasualEnemyController : MonoBehaviour
     private float currentHealthPoints;
     [SerializeField] private float enemyMovingSpeed = 2;
     [SerializeField] private float enemyAttackSpeed = 2;
+    private float currentEnemyAttackTime = 0;
     [SerializeField] private bool movingRight = true;
     [SerializeField] private bool canMove = true;
     [SerializeField] private bool canAttack = true;
     [SerializeField] private bool isActive = true;
+    [SerializeField] private BulletEnemyController enemyBullet;
     [SerializeField] private GameObject explosionEffect;
 
     //
@@ -105,9 +107,23 @@ public class CasualEnemyController : MonoBehaviour
     {
         if (!canAttack) return;
 
+        currentEnemyAttackTime += Time.deltaTime;
+
+        if (currentEnemyAttackTime < enemyAttackSpeed) return;
+
+        currentEnemyAttackTime = 0;
+
         switch (enemyAttack)
         {
             case EnemyAttack.SINGLE:
+
+                var copyEnemyBullet = Instantiate(enemyBullet, enemyBullet.transform.parent);
+                copyEnemyBullet.transform.position = enemyBullet.transform.position;
+                copyEnemyBullet.transform.rotation = enemyBullet.transform.rotation;
+                copyEnemyBullet.isMoving = true;
+                copyEnemyBullet.speed *= movingRight == true ? 1 : -1;
+                copyEnemyBullet.gameObject.SetActive(true);
+
                 break;
             case EnemyAttack.REPEATING:
                 break;

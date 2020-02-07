@@ -11,4 +11,10 @@ public class BulletEnemyController : BulletBase
         if (isMoving)
             this.transform.Translate(new Vector3(1, 0) * speed);
     }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.GetComponent<BulletPassObject>() && !collision.GetComponent<EnemyTriggerBehaviour>())
+            Destroy(this.gameObject);
+    }
 }
