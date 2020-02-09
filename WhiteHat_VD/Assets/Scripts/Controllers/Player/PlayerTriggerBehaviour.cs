@@ -177,12 +177,12 @@ public class PlayerTriggerBehaviour : MonoBehaviour
             if (portal.IsActive)
             {
                 player.LevelPortalController = portal;
-                HeadPanelController.Instance.uiPanel.ShowHelperPanel(portal.description, 0f);
+                HeadPanelController.Instance.uiPanel.ShowHelperPanel(portal.descriptionOpen, 0f);
                 player.InLevelPortal = true;
             }
             else
             {
-                HeadPanelController.Instance.uiPanel.ShowHelperPanel("Portal is inactive", 2f);
+                HeadPanelController.Instance.uiPanel.ShowHelperPanel(portal.descriptionClosed, 0f);
             }
         }
     }

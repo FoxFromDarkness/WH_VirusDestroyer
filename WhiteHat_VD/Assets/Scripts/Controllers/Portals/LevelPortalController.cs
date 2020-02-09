@@ -8,7 +8,8 @@ public class LevelPortalController : MonoBehaviour
     [SerializeField]
     private bool isActive = true;
     public bool IsActive { get { return isActive; } set { isActive = value; SetActive(value); } }
-    public string description = "Press 'Up arrow' to enter";
+    public string descriptionOpen = "Press 'Up arrow' to enter";
+    public string descriptionClosed = "Press 'Up arrow' to unlock portal";
     public Vector2 startLevelPosition;
     public string thisSceneName;
     public string nextSceneName;

@@ -8,5 +8,8 @@ public enum PlayerAttributes
     HP_MAX,
     LEVEL,
     EXP,
-    EXP_TO_NEXT_LVL
+    EXP_TO_NEXT_LVL,
+    LUCK,
+    MAGAZINE_CAPACITY,
+    DAMAGE
 }
