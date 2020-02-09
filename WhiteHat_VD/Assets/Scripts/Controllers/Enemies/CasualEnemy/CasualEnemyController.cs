@@ -30,28 +30,46 @@ public class CasualEnemyController : MonoBehaviour
         NONE
     }
 
+    [Header("General")]
     [SerializeField] private Transform body;
     private SpriteRenderer bodyImage;
     [SerializeField] private Collider2D bodyCollider;
     private HP_Canvas hpCanvas;
+    [Space]
+    [Header("Type")]
     [SerializeField] private EnemyType enemyType;
+    [Tooltip("Only for information")]
     [SerializeField] private EnemyMovement enemyMovement = EnemyMovement.IDLE;
     [SerializeField] private EnemyAttack enemyAttack;
+    [Space]
+    [Header("Settings")]
     [SerializeField] private float maxHealthPoints = 100;
     private float currentHealthPoints;
     [SerializeField] private float enemyMovingSpeed = 2;
     [SerializeField] private float enemyAttackSpeed = 2;
+    [Tooltip("Only for 'Repeating Attack'")]
+    [SerializeField] private int amountBulletsInSingleSeries = 3; //Ilość pocisków w serii (Repeating Atack)
     private float currentEnemyAttackTime = 0;
+    [Space]
+    [Header("Permissions")]
     [SerializeField] private bool movingRight = true;
     [SerializeField] private bool canMove = true;
     [SerializeField] private bool canAttack = true;
     [SerializeField] private bool isActive = true;
+    [Space]
+    [Header("Weapons")]
     [SerializeField] private BulletEnemyController enemyBullet;
+    [SerializeField] private BulletEnemyController enemyLaser;
+    private Vector2 enemyLaserStartPos;
     [SerializeField] private GameObject explosionEffect;
 
     //
     private PlayerController target;
     private bool isTargetInArea;
+    //PlayerFollowing
+    private Vector2 direction;
+    private float angle;
+    private Quaternion rotation;
 
     private void Start()
     {
@@ -60,13 +78,13 @@ public class CasualEnemyController : MonoBehaviour
         bodyImage = body.GetComponent<SpriteRenderer>();
 
         hpCanvas = body.GetComponentInChildren<HP_Canvas>();
-        hpCanvas.gameObject.SetActive(false); 
+        hpCanvas.gameObject.SetActive(false);
+
+        enemyLaserStartPos = enemyLaser.transform.localPosition;
 
         target = FindObjectOfType<PlayerController>();
     }
 
-
-    // Update is called once per frame
     void Update()
     {
         if (!isActive) return;
@@ -89,6 +107,111 @@ public class CasualEnemyController : MonoBehaviour
         }
     }
 
+    private void Idle()
+    {
+        if (!canMove) return;
+
+        switch (enemyType)
+        {
+            case EnemyType.PATROL:
+                    body.Translate(enemyMovingSpeed * Time.deltaTime * (movingRight == true ? 1 : -1), 0, 0);
+                break;
+            case EnemyType.GUARD:
+                    body.Translate(enemyMovingSpeed * Time.deltaTime * (movingRight == true ? 1 : -1), 0, 0);
+                break;
+            case EnemyType.TOWER:
+                    PlayerFollowing();
+                break;
+            case EnemyType.NONE:
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void Attack()
+    {
+        if (!canAttack) return;
+
+        currentEnemyAttackTime += Time.deltaTime;
+
+        if (enemyType == EnemyType.TOWER) PlayerFollowing();
+        if (currentEnemyAttackTime < enemyAttackSpeed) return;
+
+        currentEnemyAttackTime = 0;
+
+        
+
+        switch (enemyAttack)
+        {
+            case EnemyAttack.SINGLE:
+                CreateEnemyBullet();
+                break;
+            case EnemyAttack.REPEATING:
+                StartCoroutine(CoRepeatingAttack());
+                break;
+            case EnemyAttack.LASER:
+                StartCoroutine(CoLaserAttack());
+                break;
+            case EnemyAttack.KAMIKADZE:
+                break;
+            case EnemyAttack.NONE:
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    private void CreateEnemyBullet()
+    {
+        var copyEnemyBullet = Instantiate(enemyBullet, enemyBullet.transform.parent);
+        copyEnemyBullet.transform.position = enemyBullet.transform.position;
+        copyEnemyBullet.transform.rotation = enemyBullet.transform.rotation;
+        copyEnemyBullet.isMoving = true;
+        copyEnemyBullet.speed *= movingRight == true ? 1 : -1;
+        copyEnemyBullet.gameObject.SetActive(true);
+    }
+
+    private IEnumerator CoRepeatingAttack()
+    {
+        canAttack = false;
+        for (int i = 0; i < amountBulletsInSingleSeries; i++)
+        {
+            CreateEnemyBullet();
+            yield return new WaitForSeconds(enemyAttackSpeed / amountBulletsInSingleSeries);
+        }
+        canAttack = true;
+    }
+
+    private IEnumerator CoLaserAttack()
+    {
+        canAttack = false;
+        canMove = false;
+        enemyLaser.gameObject.SetActive(true);
+        yield return new WaitForSeconds(enemyAttackSpeed);
+        enemyLaser.gameObject.SetActive(false);
+        canAttack = true;
+        canMove = true;
+    }
+
+    private void CorrectLaserPosition()
+    {
+        if (enemyAttack == EnemyAttack.LASER)
+        {
+            enemyLaser.transform.localPosition = enemyLaserStartPos;
+            enemyLaser.transform.localPosition = new Vector3(enemyLaser.transform.localPosition.x * (movingRight == true ? 1 : -1), enemyLaser.transform.localPosition.y, 0);
+        }
+    }
+
+    private void PlayerFollowing()
+    {
+        Vector2 direction = -target.transform.position + body.transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, enemyMovingSpeed * Time.deltaTime);
+    }
+
     private void Die()
     {
         canAttack = false;
@@ -103,59 +226,16 @@ public class CasualEnemyController : MonoBehaviour
 
     }
 
-    private void Attack()
+    public void GetDamage(float damage)
     {
-        if (!canAttack) return;
+        currentHealthPoints -= damage;
+        hpCanvas.SetHP_Canvas(currentHealthPoints / maxHealthPoints);
+        if(!hpCanvas.gameObject.activeSelf) hpCanvas.gameObject.SetActive(true);
 
-        currentEnemyAttackTime += Time.deltaTime;
-
-        if (currentEnemyAttackTime < enemyAttackSpeed) return;
-
-        currentEnemyAttackTime = 0;
-
-        switch (enemyAttack)
+        if (currentHealthPoints <= 0)
         {
-            case EnemyAttack.SINGLE:
-
-                var copyEnemyBullet = Instantiate(enemyBullet, enemyBullet.transform.parent);
-                copyEnemyBullet.transform.position = enemyBullet.transform.position;
-                copyEnemyBullet.transform.rotation = enemyBullet.transform.rotation;
-                copyEnemyBullet.isMoving = true;
-                copyEnemyBullet.speed *= movingRight == true ? 1 : -1;
-                copyEnemyBullet.gameObject.SetActive(true);
-
-                break;
-            case EnemyAttack.REPEATING:
-                break;
-            case EnemyAttack.LASER:
-                break;
-            case EnemyAttack.KAMIKADZE:
-                break;
-            case EnemyAttack.NONE:
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void Idle()
-    {
-        if (!canMove) return;
-
-        switch (enemyType)
-        {
-            case EnemyType.PATROL:
-                    body.Translate(enemyMovingSpeed * Time.deltaTime * (movingRight == true ? 1 : -1), 0, 0);
-                break;
-            case EnemyType.GUARD:
-                    body.Translate(enemyMovingSpeed * Time.deltaTime * (movingRight == true ? 1 : -1), 0, 0);
-                break;
-            case EnemyType.TOWER:
-                break;
-            case EnemyType.NONE:
-                break;
-            default:
-                break;
+            hpCanvas.gameObject.SetActive(false);
+            enemyMovement = EnemyMovement.DIE;
         }
     }
 
@@ -166,13 +246,15 @@ public class CasualEnemyController : MonoBehaviour
             case EnemyType.PATROL:
                 movingRight = !movingRight;
                 bodyImage.flipX = !bodyImage.flipX; //flipX ==> false (movingRight = true)
+                CorrectLaserPosition();
                 break;
             case EnemyType.GUARD:
                 canMove = false;
                 bodyImage.flipX = !bodyImage.flipX;
+                CorrectLaserPosition();
                 break;
-            case EnemyType.TOWER:
-                break;
+            //case EnemyType.TOWER:
+            //    break;
             case EnemyType.NONE:
                 break;
             default:
@@ -180,14 +262,14 @@ public class CasualEnemyController : MonoBehaviour
         }
     }
 
-
     internal void AreaTrigger(bool isTargetEnter, bool isRightArea)
     {
         isTargetInArea = isTargetEnter;
         movingRight = isRightArea;
         bodyImage.flipX = !movingRight;
+        CorrectLaserPosition();
 
-        if(isTargetInArea)
+        if (isTargetInArea)
         {
             StopCoroutine(EnemyBackToIdle(0));
             enemyMovement = EnemyMovement.ATTACK;
@@ -202,18 +284,5 @@ public class CasualEnemyController : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         if (!isTargetInArea) enemyMovement = EnemyMovement.IDLE;
-    }
-
-    public void GetDamage(float damage)
-    {
-        currentHealthPoints -= damage;
-        hpCanvas.SetHP_Canvas(currentHealthPoints / maxHealthPoints);
-        if(!hpCanvas.gameObject.activeSelf) hpCanvas.gameObject.SetActive(true);
-
-        if (currentHealthPoints <= 0)
-        {
-            hpCanvas.gameObject.SetActive(false);
-            enemyMovement = EnemyMovement.DIE;
-        }
     }
 }

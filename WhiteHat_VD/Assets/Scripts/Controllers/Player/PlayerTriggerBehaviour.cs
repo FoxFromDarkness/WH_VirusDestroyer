@@ -38,6 +38,15 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         EnemyIdleArea_Exit(collision);
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.GetComponent<BulletEnemyController>())
+        {
+            if(collision.GetComponent<BulletEnemyController>().isLaser)
+                CasualEnemyBullet_Enter(collision);
+        }
+    }
+
     private void QuestionDoorBehavior(Collider2D collision)
     {
         if (collision.GetComponent<QuestionDoorBase>())
@@ -215,7 +224,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         {
             player.AddAttribute(PlayerAttributes.HP, collision.GetComponent<BulletEnemyController>().damage * -1);
             player.CheckHeroDeath();
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
         }
     }
 
