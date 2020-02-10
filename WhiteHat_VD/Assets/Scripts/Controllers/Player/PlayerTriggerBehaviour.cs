@@ -22,8 +22,10 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         PortalBehaviour_Enter(collision);
         LevelPortalBehaviour_Enter(collision);
         EnemyBullet_Enter(collision);
+        CasualEnemyBullet_Enter(collision);
         ChestBehavior_Enter(collision);
         PlatformEffector_Enter(collision);
+        EnemyIdleArea_Enter(collision);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -33,6 +35,16 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         LevelPortalBehaviour_Exit(collision);
         ChestBehavior_Exit(collision);
         PlatformEffector_Exit(collision);
+        EnemyIdleArea_Exit(collision);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.GetComponent<BulletEnemyController>())
+        {
+            if(collision.GetComponent<BulletEnemyController>().isLaser)
+                CasualEnemyBullet_Enter(collision);
+        }
     }
 
     private void QuestionDoorBehavior(Collider2D collision)
@@ -204,6 +216,16 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         }
     }
 
+    private void CasualEnemyBullet_Enter(Collider2D collision)
+    {
+        if (collision.GetComponent<BulletEnemyController>())
+        {
+            player.AddAttribute(PlayerAttributes.HP, collision.GetComponent<BulletEnemyController>().damage * -1);
+            player.CheckHeroDeath();
+            //Destroy(collision.gameObject);
+        }
+    }
+
     private void PlatformEffector_Enter(Collider2D collision)
     {
         if (collision.GetComponent<PlatformEffector2DBase>())
@@ -218,6 +240,22 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         if (collision.GetComponent<PlatformEffector2DBase>())
         {
             player.CanMoveDownPlatform = false;
+        }
+    }
+
+    private void EnemyIdleArea_Enter(Collider2D collision)
+    {
+        if (collision.GetComponent<EnemyIdleArea>())
+        {
+            collision.GetComponent<EnemyIdleArea>().EnemyAreaTrigger(true);
+        }
+    }
+
+    private void EnemyIdleArea_Exit(Collider2D collision)
+    {
+        if (collision.GetComponent<EnemyIdleArea>())
+        {
+            collision.GetComponent<EnemyIdleArea>().EnemyAreaTrigger(false);
         }
     }
 }
