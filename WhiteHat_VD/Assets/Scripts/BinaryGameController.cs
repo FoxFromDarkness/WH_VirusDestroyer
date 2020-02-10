@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,11 +10,13 @@ public class BinaryGameController : MonoBehaviour
     private Text targetNumberText;
     [SerializeField]
     private BinaryGameCalculator calculator;
+    [SerializeField]
+    private PlayerController player;
     private int targetNumber;
 
     private void ChooseNewNumber()
     {
-        targetNumber = UnityEngine.Random.RandomRange(0, 255);
+        targetNumber = UnityEngine.Random.RandomRange(1, 255);
         targetNumberText.text = targetNumber.ToString();
     }
 
@@ -21,7 +24,15 @@ public class BinaryGameController : MonoBehaviour
     {
         if (calculator.Total == targetNumber)
         {
-            ChooseNewNumber();
+            targetNumber = -1;
+            transform.parent.gameObject.SetActive(false);
+            player.LevelPortalController.IsActive = true;
         }
+    }
+
+    internal void StartGame()
+    {
+        this.transform.parent.gameObject.SetActive(true);
+        ChooseNewNumber();
     }
 }

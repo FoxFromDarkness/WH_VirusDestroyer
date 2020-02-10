@@ -471,10 +471,17 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
             {
-                InLevelPortal = false;
-                HeadPanelController.Instance.uiPanel.HideHelperPanel();
-                _GameManager.GetComponent<SceneController>().UnloadScene(LevelPortalController.thisSceneName);
-                _GameManager.GetComponent<SceneController>().LoadScene(false, LevelPortalController.nextSceneName, SetCharacterPositionAfterChangeLevel);
+                if (LevelPortalController.IsActive)
+                {
+                    InLevelPortal = false;
+                    HeadPanelController.Instance.uiPanel.HideHelperPanel();
+                    _GameManager.GetComponent<SceneController>().UnloadScene(LevelPortalController.thisSceneName);
+                    _GameManager.GetComponent<SceneController>().LoadScene(false, LevelPortalController.nextSceneName, SetCharacterPositionAfterChangeLevel);
+                }
+                else if(LevelPortalController.isOpenGame)
+                {
+                    HeadPanelController.Instance.binaryGame.StartGame();
+                }
             }
         }
     }

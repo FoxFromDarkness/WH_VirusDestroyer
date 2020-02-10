@@ -2377,8 +2377,8 @@ GameObject:
   - component: {fileID: 378578656}
   - component: {fileID: 378578659}
   - component: {fileID: 378578658}
-  - component: {fileID: 378578657}
   - component: {fileID: 378578660}
+  - component: {fileID: 378578657}
   m_Layer: 5
   m_Name: ButtonBuyAmmo2
   m_TagString: Untagged
@@ -2448,18 +2448,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 378578658}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &378578658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2508,8 +2497,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47eb6b0ecf66b164f82dd396d2205e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemAmount: 10
-  ItemType: 2
 --- !u!1 &382513327
 GameObject:
   m_ObjectHideFlags: 0
@@ -4922,7 +4909,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &864933106
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6156,6 +6143,7 @@ MonoBehaviour:
   savePlacePanel: {fileID: 1237482215}
   startPanel: {fileID: 1562161588}
   loadingScreen: {fileID: 772063410}
+  binaryGame: {fileID: 1116261655}
 --- !u!1 &1013336941
 GameObject:
   m_ObjectHideFlags: 0
@@ -6821,8 +6809,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47eb6b0ecf66b164f82dd396d2205e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemAmount: 10
-  ItemType: 1
 --- !u!114 &1094088026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7165,6 +7151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetNumberText: {fileID: 194841054}
   calculator: {fileID: 1407948979}
+  player: {fileID: 2028739121}
 --- !u!1 &1146665405
 GameObject:
   m_ObjectHideFlags: 0
@@ -14694,7 +14681,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e68b5b6e024652b43a71a0fe159fce5a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 773f059683e280d4e8cdc9def4e01708, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15327,8 +15314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47eb6b0ecf66b164f82dd396d2205e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemAmount: 10
-  ItemType: 4
 --- !u!114 &1993931751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15789,8 +15774,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47eb6b0ecf66b164f82dd396d2205e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemAmount: 10
-  ItemType: 3
 --- !u!114 &2066859098
 MonoBehaviour:
   m_ObjectHideFlags: 0

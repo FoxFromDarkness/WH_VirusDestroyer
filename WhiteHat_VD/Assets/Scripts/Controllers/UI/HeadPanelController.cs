@@ -11,6 +11,7 @@ public class HeadPanelController : MonoBehaviour
     public SavePlacePanelController savePlacePanel;
     public StartPanelController startPanel;
     public LoadingScreenController loadingScreen;
+    public BinaryGameController binaryGame;
 
     private void Start()
     {
