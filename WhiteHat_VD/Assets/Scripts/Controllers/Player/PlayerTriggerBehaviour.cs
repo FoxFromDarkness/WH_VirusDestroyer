@@ -186,16 +186,14 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         if (collision.GetComponent<LevelPortalController>())
         {
             var portal = collision.GetComponent<LevelPortalController>();
-            if (portal.IsActive)
-            {
-                player.LevelPortalController = portal;
-                HeadPanelController.Instance.uiPanel.ShowHelperPanel(portal.description, 0f);
-                player.InLevelPortal = true;
-            }
-            else
-            {
-                HeadPanelController.Instance.uiPanel.ShowHelperPanel("Portal is inactive", 2f);
-            }
+           if (portal.IsActive)
+                HeadPanelController.Instance.uiPanel.ShowHelperPanel(portal.descriptionOpen, 0f);
+           else
+                HeadPanelController.Instance.uiPanel.ShowHelperPanel(portal.descriptionClosed, 0f);
+
+            player.LevelPortalController = portal;
+            player.InLevelPortal = true;
+
         }
     }
 

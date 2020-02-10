@@ -94,8 +94,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -216,6 +216,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1456,6 +1457,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1593,6 +1595,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1604,7 +1607,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1bf17350b510edc43896a851c80e4a85, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1629,11 +1632,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1670392555}
     m_Modifications:
-    - target: {fileID: 2205812902203040098, guid: 507a6ce8f71ebf44babcd11ce1b20cf5,
-        type: 3}
-      propertyPath: m_Name
-      value: Portal
-      objectReference: {fileID: 0}
     - target: {fileID: 2205812902203040097, guid: 507a6ce8f71ebf44babcd11ce1b20cf5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1688,6 +1686,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205812902203040098, guid: 507a6ce8f71ebf44babcd11ce1b20cf5,
+        type: 3}
+      propertyPath: m_Name
+      value: Portal
       objectReference: {fileID: 0}
     - target: {fileID: 2205812902203040102, guid: 507a6ce8f71ebf44babcd11ce1b20cf5,
         type: 3}
@@ -1771,6 +1774,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -46991,7 +46995,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1328794123}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_HorizontalAxis: Horizontal
@@ -47010,7 +47014,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1328794123}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 0}
@@ -47037,11 +47041,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1670392555}
     m_Modifications:
-    - target: {fileID: 2205812902203040098, guid: 507a6ce8f71ebf44babcd11ce1b20cf5,
-        type: 3}
-      propertyPath: m_Name
-      value: Portal (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 2205812902203040097, guid: 507a6ce8f71ebf44babcd11ce1b20cf5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -47096,6 +47095,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205812902203040098, guid: 507a6ce8f71ebf44babcd11ce1b20cf5,
+        type: 3}
+      propertyPath: m_Name
+      value: Portal (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2205812902203040102, guid: 507a6ce8f71ebf44babcd11ce1b20cf5,
         type: 3}
@@ -47180,6 +47184,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -59800,10 +59805,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1670392555}
     m_Modifications:
-    - target: {fileID: 4001986205273639555, guid: 7ded5fe0b52062846954c4dd9cf441e8,
+    - target: {fileID: 825541209654902913, guid: 7ded5fe0b52062846954c4dd9cf441e8,
         type: 3}
-      propertyPath: m_Name
-      value: LevelPortal
+      propertyPath: m_SortingOrder
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4001986205273639552, guid: 7ded5fe0b52062846954c4dd9cf441e8,
         type: 3}
@@ -59875,6 +59880,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -2
       objectReference: {fileID: 0}
+    - target: {fileID: 4001986205273639555, guid: 7ded5fe0b52062846954c4dd9cf441e8,
+        type: 3}
+      propertyPath: m_Name
+      value: LevelPortal
+      objectReference: {fileID: 0}
     - target: {fileID: 4001986205273639566, guid: 7ded5fe0b52062846954c4dd9cf441e8,
         type: 3}
       propertyPath: nextSceneName
@@ -59884,11 +59894,6 @@ PrefabInstance:
         type: 3}
       propertyPath: thisSceneName
       value: Level_1
-      objectReference: {fileID: 0}
-    - target: {fileID: 825541209654902913, guid: 7ded5fe0b52062846954c4dd9cf441e8,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ded5fe0b52062846954c4dd9cf441e8, type: 3}
@@ -59905,10 +59910,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1670392555}
     m_Modifications:
-    - target: {fileID: 4001986205273639555, guid: 7ded5fe0b52062846954c4dd9cf441e8,
+    - target: {fileID: 825541209654902913, guid: 7ded5fe0b52062846954c4dd9cf441e8,
         type: 3}
-      propertyPath: m_Name
-      value: LevelPortal (1)
+      propertyPath: m_SortingOrder
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 4001986205273639552, guid: 7ded5fe0b52062846954c4dd9cf441e8,
         type: 3}
@@ -59980,6 +59985,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -2
       objectReference: {fileID: 0}
+    - target: {fileID: 4001986205273639555, guid: 7ded5fe0b52062846954c4dd9cf441e8,
+        type: 3}
+      propertyPath: m_Name
+      value: LevelPortal (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 4001986205273639566, guid: 7ded5fe0b52062846954c4dd9cf441e8,
         type: 3}
       propertyPath: nextSceneName
@@ -59994,11 +60004,6 @@ PrefabInstance:
         type: 3}
       propertyPath: isActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 825541209654902913, guid: 7ded5fe0b52062846954c4dd9cf441e8,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ded5fe0b52062846954c4dd9cf441e8, type: 3}
@@ -60059,6 +60064,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
