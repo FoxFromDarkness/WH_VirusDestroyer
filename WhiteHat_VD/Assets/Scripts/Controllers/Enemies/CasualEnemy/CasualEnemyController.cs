@@ -62,6 +62,7 @@ public class CasualEnemyController : MonoBehaviour
     [SerializeField] private BulletEnemyController enemyLaser;
     private Vector2 enemyLaserStartPos;
     [SerializeField] private GameObject explosionEffect;
+    [SerializeField] private GameObject damageEffect;
 
     //
     private PlayerController target;
@@ -236,6 +237,10 @@ public class CasualEnemyController : MonoBehaviour
         {
             hpCanvas.gameObject.SetActive(false);
             enemyMovement = EnemyMovement.DIE;
+        }
+        else
+        {
+            damageEffect.GetComponent<ParticleSystem>().Play();
         }
     }
 
