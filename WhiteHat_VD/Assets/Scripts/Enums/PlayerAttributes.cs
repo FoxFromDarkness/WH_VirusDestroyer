@@ -11,5 +11,5 @@ public enum PlayerAttributes
     EXP_TO_NEXT_LVL,
     LUCK,
     MAGAZINE_CAPACITY,
-    DAMAGE
+    ADDITIONAL_DAMAGE
 }
