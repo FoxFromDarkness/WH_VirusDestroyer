@@ -1,0 +1,1735 @@
+fileFormatVersion: 2
+guid: c780d6c05b846e0478c639cc607f9b2c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4905573631731657277
+    second: TileMapBoss_1new4_0
+  - first:
+      213: -1930358350075197595
+    second: TileMapBoss_1new4_1
+  - first:
+      213: -84354082184921316
+    second: TileMapBoss_1new4_2
+  - first:
+      213: 2600610136188540381
+    second: TileMapBoss_1new4_3
+  - first:
+      213: 6758318423773866732
+    second: TileMapBoss_1new4_4
+  - first:
+      213: -5756220794631959038
+    second: TileMapBoss_1new4_5
+  - first:
+      213: -861634180375972785
+    second: TileMapBoss_1new4_6
+  - first:
+      213: 9004001536622859764
+    second: TileMapBoss_1new4_7
+  - first:
+      213: 6602539951105873614
+    second: TileMapBoss_1new4_8
+  - first:
+      213: -8498392721618813780
+    second: TileMapBoss_1new4_9
+  - first:
+      213: -6552639874308760362
+    second: TileMapBoss_1new4_10
+  - first:
+      213: -4020661357357804275
+    second: TileMapBoss_1new4_11
+  - first:
+      213: -3858399317763531941
+    second: TileMapBoss_1new4_12
+  - first:
+      213: 2248178645155526836
+    second: TileMapBoss_1new4_13
+  - first:
+      213: 2767191055583546113
+    second: TileMapBoss_1new4_14
+  - first:
+      213: -9218604252411198158
+    second: TileMapBoss_1new4_15
+  - first:
+      213: 7141943378573021469
+    second: TileMapBoss_1new4_16
+  - first:
+      213: 6367106448934587876
+    second: TileMapBoss_1new4_17
+  - first:
+      213: 5177598940684849656
+    second: TileMapBoss_1new4_18
+  - first:
+      213: -4828375958110119302
+    second: TileMapBoss_1new4_19
+  - first:
+      213: 8809874107660932614
+    second: TileMapBoss_1new4_20
+  - first:
+      213: -4753753139217276602
+    second: TileMapBoss_1new4_21
+  - first:
+      213: -8895276117413613723
+    second: TileMapBoss_1new4_22
+  - first:
+      213: 2153297051694198693
+    second: TileMapBoss_1new4_23
+  - first:
+      213: 5102733025821160273
+    second: TileMapBoss_1new4_24
+  - first:
+      213: -9101321542663455529
+    second: TileMapBoss_1new4_25
+  - first:
+      213: -3331200419685218263
+    second: TileMapBoss_1new4_26
+  - first:
+      213: 5232189721301604329
+    second: TileMapBoss_1new4_27
+  - first:
+      213: 6200153027386030068
+    second: TileMapBoss_1new4_28
+  - first:
+      213: 1388861618385132406
+    second: TileMapBoss_1new4_29
+  - first:
+      213: 5399323066352913061
+    second: TileMapBoss_1new4_30
+  - first:
+      213: 8987154120764274883
+    second: TileMapBoss_1new4_31
+  - first:
+      213: -180362625105145603
+    second: TileMapBoss_1new4_32
+  - first:
+      213: -2564492699419488527
+    second: TileMapBoss_1new4_33
+  - first:
+      213: -6384074501501144991
+    second: TileMapBoss_1new4_34
+  - first:
+      213: -1449727283398231894
+    second: TileMapBoss_1new4_35
+  - first:
+      213: 3846777383036724400
+    second: TileMapBoss_1new4_36
+  - first:
+      213: 8818472239276307191
+    second: TileMapBoss_1new4_37
+  - first:
+      213: 5237152586945549801
+    second: TileMapBoss_1new4_38
+  - first:
+      213: 1961028475690842245
+    second: TileMapBoss_1new4_39
+  - first:
+      213: -8985431392116426230
+    second: TileMapBoss_1new4_40
+  - first:
+      213: -1206357855898920260
+    second: TileMapBoss_1new4_41
+  - first:
+      213: 8843383457854810975
+    second: TileMapBoss_1new4_42
+  - first:
+      213: -4486461104397608987
+    second: TileMapBoss_1new4_43
+  - first:
+      213: -1438941428174540501
+    second: TileMapBoss_1new4_44
+  - first:
+      213: 8157241966039831881
+    second: TileMapBoss_1new4_45
+  - first:
+      213: 2228225111334598581
+    second: TileMapBoss_1new4_46
+  - first:
+      213: 8563939784142429881
+    second: TileMapBoss_1new4_47
+  - first:
+      213: -8148234868932647924
+    second: TileMapBoss_1new4_48
+  - first:
+      213: -1929532861305388633
+    second: TileMapBoss_1new4_49
+  - first:
+      213: 6004435974968353540
+    second: TileMapBoss_1new4_50
+  - first:
+      213: 8434506413356462269
+    second: TileMapBoss_1new4_51
+  - first:
+      213: 5106903564247826337
+    second: TileMapBoss_1new4_52
+  - first:
+      213: -2030101970004917348
+    second: TileMapBoss_1new4_53
+  - first:
+      213: -2773814262280284645
+    second: TileMapBoss_1new4_54
+  - first:
+      213: -6907807078949750291
+    second: TileMapBoss_1new4_55
+  - first:
+      213: 3954787267791429061
+    second: TileMapBoss_1new4_56
+  - first:
+      213: 3325132622977575156
+    second: TileMapBoss_1new4_57
+  - first:
+      213: 6819584455713460177
+    second: TileMapBoss_1new4_58
+  - first:
+      213: -7572152081520487138
+    second: TileMapBoss_1new4_59
+  - first:
+      213: -2729196124537470902
+    second: TileMapBoss_1new4_60
+  - first:
+      213: -3549899595066448974
+    second: TileMapBoss_1new4_61
+  - first:
+      213: 4053852716776831386
+    second: TileMapBoss_1new4_62
+  - first:
+      213: 3611691148983799646
+    second: TileMapBoss_1new4_63
+  - first:
+      213: -8864123442392143726
+    second: TileMapBoss_1new4_64
+  - first:
+      213: -6007694734399123322
+    second: TileMapBoss_1new4_65
+  - first:
+      213: -4294953636067821430
+    second: TileMapBoss_1new4_66
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 50100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 350
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd4d7f5a1faae1445b29a1584acbe33c
+      internalID: -4905573631731657277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 350
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b778bd74872a2c340807b10b1f10ca31
+      internalID: -1930358350075197595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_2
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 350
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c5b713e450e18d4c98eb31a513ca5dd
+      internalID: -84354082184921316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_3
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 350
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18edbef34e8281a4e99b1555242a04e2
+      internalID: 2600610136188540381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_4
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 350
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f870a3e46c3c963439b7ff3ae1fbc3b2
+      internalID: 6758318423773866732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_5
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 350
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ff5d2e942e6167438e200dce47bf3f9
+      internalID: -5756220794631959038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_6
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 350
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4506d53d3d42b9245abc87702ca28635
+      internalID: -861634180375972785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_7
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 350
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce29133d769946a42aa8ba601c79301d
+      internalID: 9004001536622859764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_8
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 350
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b563a63bc9c4b874cb37881360496e27
+      internalID: 6602539951105873614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_9
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 350
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9e3a0fd4242b824cb77c525b2ddb58b
+      internalID: -8498392721618813780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89fcdab538d1a4344bc35b5cafbd4b1f
+      internalID: -6552639874308760362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_11
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 300
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13cfea702049acf4194402ac80b3acbd
+      internalID: -4020661357357804275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_12
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 300
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84699c0591d536644aae3897c58ed8af
+      internalID: -3858399317763531941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_13
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 300
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7218c588de6e6a44a9d1c2312e4df013
+      internalID: 2248178645155526836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_14
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 300
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5733073fca5294b4d8b72b0c8a50065a
+      internalID: 2767191055583546113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_15
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 300
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b830aef1a279ee4b95696907c094622
+      internalID: -9218604252411198158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_16
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 300
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0388011bd456b5498ff87b31e5ea8ad
+      internalID: 7141943378573021469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_17
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 300
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bacdb96a2cf449749881220da733c431
+      internalID: 6367106448934587876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_18
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 300
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f72261a72ce1e54394cb4076494963f
+      internalID: 5177598940684849656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_19
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 300
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1cabff12d26de34386e62edd9a32af8
+      internalID: -4828375958110119302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 250
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba5b4e66fa841904da9cac1e6172c548
+      internalID: 8809874107660932614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_21
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 250
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d57518e6e04b4b54fb8a727bfb908dd9
+      internalID: -4753753139217276602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_22
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 250
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9093817f90b0ec4ba213a3f46b6acfd
+      internalID: -8895276117413613723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_23
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 250
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70219d67fb574374782bce77752cf1d0
+      internalID: 2153297051694198693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_24
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 250
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61d9212d6f446c942a999df509156a07
+      internalID: 5102733025821160273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_25
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 250
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ded2b4730174d95449cd56a24f5465a9
+      internalID: -9101321542663455529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_26
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 250
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a41d5d4f74a80b44381c2f75f0b9997c
+      internalID: -3331200419685218263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_27
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 250
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 607b533614e9f834ba13f46b5cf881d6
+      internalID: 5232189721301604329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_28
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 250
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8066c931e11bfcf458fa797659b77f7c
+      internalID: 6200153027386030068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_29
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 250
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8136245e6ae1c6e429ec322122d55e96
+      internalID: 1388861618385132406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_30
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 200
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17486b1cee71ca44792c0bd8c17cb97f
+      internalID: 5399323066352913061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_31
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 200
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77bbe0c1e811d634881bdbfd8418eaf2
+      internalID: 8987154120764274883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_32
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 200
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6af58e87d62ec7848b1b5a2fd4a2cec7
+      internalID: -180362625105145603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_33
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 200
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb6df0ed1f9e4db4ea06414632c334d0
+      internalID: -2564492699419488527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_34
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 200
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7f192a01df101a4ba8f7ee9e99dc35b
+      internalID: -6384074501501144991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_35
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 150
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a95b5590ee432bd459643b003c88c016
+      internalID: -1449727283398231894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_36
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 150
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79377f3f744c48f45bdc3a48be30d013
+      internalID: 3846777383036724400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_37
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 150
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e24a03c15c3919c42808f2ef7a93dfbb
+      internalID: 8818472239276307191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_38
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 150
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba23e5ff2755daa45b105ae4449d81ae
+      internalID: 5237152586945549801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_39
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 150
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df1ea2d58599d0743956b0e2750ef84c
+      internalID: 1961028475690842245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c50f574a5495984d9fda8984b18ae53
+      internalID: -8985431392116426230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_41
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 100
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ddc53b1e649fba4dad86b49d8fe564d
+      internalID: -1206357855898920260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_42
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 100
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f59ed60706fcbc44bd72a17d78ead07
+      internalID: 8843383457854810975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_43
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 100
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0e2157cda946b742a87b7bc795bfec6
+      internalID: -4486461104397608987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_44
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 100
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6d28e4638852c849878e2591204fc97
+      internalID: -1438941428174540501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_45
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 100
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b12166b2b52a444697e73fb399e8ac3
+      internalID: 8157241966039831881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_46
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 100
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2376569cab653a84f9fe32f80702a0ff
+      internalID: 2228225111334598581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_47
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 50
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca1cf9ac1014fd547b106d278dd3ddda
+      internalID: 8563939784142429881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_48
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 50
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a067dced4148cc140a0810e2a7c8613c
+      internalID: -8148234868932647924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_49
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 50
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b52ba272b486ea54692a63e394b19118
+      internalID: -1929532861305388633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_50
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 50
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4a6b56ee14a78549b2000aa4a7e0cb8
+      internalID: 6004435974968353540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_51
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 50
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bc17148ac7463146b3afa68c1b69e1e
+      internalID: 8434506413356462269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_52
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 50
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae8ecf10dd86e7d4fa489e3e9678a3d6
+      internalID: 5106903564247826337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_53
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 50
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d524d70aa37c7f4bb932cc86a2c4ffd
+      internalID: -2030101970004917348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_54
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 50
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc281254352928d40820c8118aac4d99
+      internalID: -2773814262280284645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_55
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 50
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df807aebe01cebe4199154fb07251dd7
+      internalID: -6907807078949750291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_56
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 50
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d678223e7131f8b44a8fee82034e2f8b
+      internalID: 3954787267791429061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_57
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73776c1352429c24f8643de252802704
+      internalID: 3325132622977575156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_58
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71b3cb93826efe24dbe597f8fa55e681
+      internalID: 6819584455713460177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_59
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18c817a7451a6b0459b6415819173b8d
+      internalID: -7572152081520487138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_60
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2aaa99f0345238488cca1bdbc8b7dc7
+      internalID: -2729196124537470902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_61
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07df36a807efbe44a8f3b7830e751a38
+      internalID: -3549899595066448974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_62
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bded6cf82a041549bdd5ba016161614
+      internalID: 4053852716776831386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_63
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57ba7c9b37a77ed4a863618527315ce6
+      internalID: 3611691148983799646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_64
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4ceeb7531ff600478a57b068037c8e6
+      internalID: -8864123442392143726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_65
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d0a35d90ee05ca45b012759836d1267
+      internalID: -6007694734399123322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMapBoss_1new4_66
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 0
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1da401303246ce44991331da50800272
+      internalID: -4294953636067821430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 82b1612fced6bd34cb4afe24a759f667
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

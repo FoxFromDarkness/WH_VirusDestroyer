@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class SavePlacePanelController : PanelBase
 {
-    // Start is called before the first frame update
+    private BlackCristalUI blackCristals;
     void Start()
     {
         this.gameObject.SetActive(false);
+        blackCristals = GetComponentInChildren<BlackCristalUI>();
+    }
+
+    public void SetBlackCristals(int bcAmount)
+    {
+        blackCristals.BcText.text = bcAmount + "";
     }
 }
