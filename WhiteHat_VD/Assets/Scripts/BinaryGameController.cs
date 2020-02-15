@@ -16,7 +16,7 @@ public class BinaryGameController : MonoBehaviour
 
     private void ChooseNewNumber()
     {
-        targetNumber = UnityEngine.Random.RandomRange(1, 255);
+        targetNumber = UnityEngine.Random.Range(1, 255);
         targetNumberText.text = targetNumber.ToString();
     }
 
@@ -26,7 +26,7 @@ public class BinaryGameController : MonoBehaviour
         {
             targetNumber = -1;
             transform.parent.gameObject.SetActive(false);
-            player.LevelPortalController.IsActive = true;
+            PlayerController.LevelPortalController.IsActive = true;
         }
     }
 

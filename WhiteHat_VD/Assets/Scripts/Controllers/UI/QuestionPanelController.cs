@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class QuestionPanelController : PanelBase
 {
     [Header("QuestionPanelController")]
-    public QuestionController questionController;
 
     private TextMeshProUGUI questionTitle;
     private Button ans_A;
@@ -45,7 +44,7 @@ public class QuestionPanelController : PanelBase
 
     private void SetQuestion()
     {
-        questionBase = questionController.RandQuestion();
+        questionBase = QuestionController.RandQuestion();
 
         questionTitle.text = questionBase.question;
         ans_A.GetComponentInChildren<TextMeshProUGUI>().text = questionBase.ansA;

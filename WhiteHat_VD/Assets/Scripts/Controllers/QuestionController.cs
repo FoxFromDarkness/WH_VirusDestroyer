@@ -6,7 +6,7 @@ using System.IO;
 public class QuestionController : MonoBehaviour
 {
     [HideInInspector]
-    public List<QuestionBase> listOfQuestions;
+    public static List<QuestionBase> listOfQuestions;
 
     private void Start()
     {
@@ -23,7 +23,7 @@ public class QuestionController : MonoBehaviour
         }
     }
 
-    public QuestionBase RandQuestion()
+    public static QuestionBase RandQuestion()
     {
         return listOfQuestions[Random.Range(0, listOfQuestions.Count)];
     }

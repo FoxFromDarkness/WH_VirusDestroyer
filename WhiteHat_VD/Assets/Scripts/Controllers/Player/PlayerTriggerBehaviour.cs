@@ -191,7 +191,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
            else
                 HeadPanelController.Instance.uiPanel.ShowHelperPanel(portal.descriptionClosed, 0f);
 
-            player.LevelPortalController = portal;
+            PlayerController.LevelPortalController = portal;
             player.InLevelPortal = true;
 
         }

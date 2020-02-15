@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AppController : MonoBehaviour
 {
-    [SerializeField] private StartPanelController startPanel;
-
     public static AppController Instance;
 
     private void Start()
@@ -16,8 +14,8 @@ public class AppController : MonoBehaviour
 
     public void ShowHideMainMenu()
     {
-        startPanel.CloseSubPanels();
-        startPanel.ChangeVisibility();
+        HeadPanelController.Instance.startPanel.CloseSubPanels();
+        HeadPanelController.Instance.startPanel.ChangeVisibility();
     }
 
     public void ExitApplication()

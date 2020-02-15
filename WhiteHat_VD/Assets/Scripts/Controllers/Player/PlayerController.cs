@@ -7,7 +7,7 @@ using UnityStandardAssets._2D;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Options")]
-    public bool GodMode;
+    private bool godMode;
     public GameObject _GameManager;
 
     public PlayerBase PlayerStats { get; private set; }
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public bool InPortal { get; set; }
     public bool InLevelPortal { get; set; }
     public Vector2 NewPortalPosition { get; set; }
-    public LevelPortalController LevelPortalController { get; set; }
+    public static LevelPortalController LevelPortalController { get; set; }
     //
 
     private BulletPlayerController bullet;
@@ -55,6 +55,8 @@ public class PlayerController : MonoBehaviour
         SavePlaceEnter();
         OpenChestOperation();
         PlatformJumpDown();
+
+        Cheats();
     }
 
     #region WEAPONS_SYSTEM
@@ -353,7 +355,9 @@ public class PlayerController : MonoBehaviour
 
     public void CheckHeroDeath()
     {
-        if (PlayerStats.HP <= 0 && !GodMode)
+        if (godMode) return;
+
+        if (PlayerStats.HP <= 0)
         {
             GameController.IsInputEnable = false;
             gameObject.SetActive(false);
@@ -504,5 +508,14 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+
+    private void Cheats()
+    {
+        if(Input.GetKeyDown(KeyCode.F12))
+        {
+            godMode = !godMode;
+            Debug.Log("godMode" + godMode);
+        }
+    }
 
 }

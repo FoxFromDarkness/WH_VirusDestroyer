@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    public LoadingScreenController loadingScreen;
 
     public void LoadScene(bool rootScene, string sceneName, Action nextMethod)
     {
@@ -39,16 +38,16 @@ public class SceneController : MonoBehaviour
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
-        loadingScreen.gameObject.SetActive(true);
+        HeadPanelController.Instance.loadingScreen.gameObject.SetActive(true);
 
         while (!operation.isDone)
         {
             yield return new WaitForSeconds(0.2f);
-            loadingScreen.SetSliderValue(operation.progress);
+            HeadPanelController.Instance.loadingScreen.SetSliderValue(operation.progress);
             yield return new WaitForSeconds(0.2f);//null;
         }
 
-        loadingScreen.gameObject.SetActive(false);
+        HeadPanelController.Instance.loadingScreen.gameObject.SetActive(false);
         nextMethod();
     }
 
