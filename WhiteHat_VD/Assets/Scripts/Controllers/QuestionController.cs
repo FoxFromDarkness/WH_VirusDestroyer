@@ -5,8 +5,7 @@ using System.IO;
 
 public class QuestionController : MonoBehaviour
 {
-    [HideInInspector]
-    public static List<QuestionBase> listOfQuestions;
+    private static List<QuestionBase> listOfQuestions = new List<QuestionBase>();
 
     private void Start()
     {

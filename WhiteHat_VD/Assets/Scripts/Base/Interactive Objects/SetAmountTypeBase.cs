@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class SetAmountTypeBase : MonoBehaviour
 {
-    [SerializeField]
     private PlayerController player;
 
     [SerializeField]
@@ -19,6 +18,10 @@ public class SetAmountTypeBase : MonoBehaviour
     [SerializeField]
     private int itemAmount;
 
+    private void Start()
+    {
+        player = FindObjectOfType<PlayerController>();
+    }
 
     public void OnClick()
     {

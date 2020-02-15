@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         PlayerStats = GetComponent<PlayerBase>();
 
         bullet = GetComponentInChildren<BulletPlayerController>();
-        bullet.gameObject.SetActive(false);
+        //bullet.gameObject.SetActive(false);
         
     }
 

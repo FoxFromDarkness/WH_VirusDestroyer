@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class ShopItemDisplay : MonoBehaviour
 {
-    [SerializeField]
     private PlayerController player;
 
     [SerializeField]
@@ -25,6 +24,7 @@ public class ShopItemDisplay : MonoBehaviour
 
     void Start()
     {
+        player = FindObjectOfType<PlayerController>();
         nameText.text = shopItem.itemName.ToString();
         priceText.text = shopItem.itemPrice + " BC";
         btn.GetComponent<Image>().sprite = background;

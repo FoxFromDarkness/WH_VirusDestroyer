@@ -2841,7 +2841,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efaf44d8cbd2254d9c736800c03117b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionController: {fileID: 0}
 --- !u!114 &403057166
 MonoBehaviour:
   m_ObjectHideFlags: 0
