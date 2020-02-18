@@ -905,7 +905,7 @@ MonoBehaviour:
   enemyType: 0
   enemyMovement: 0
   enemyAttack: 0
-  maxHealthPoints: 10
+  maxHealthPoints: 100
   enemyMovingSpeed: 2
   enemyAttackSpeed: 2
   amountBulletsInSingleSeries: 3
