@@ -7,5 +7,6 @@ public class ShopItemBase : ScriptableObject
 {
     public InventoryItems itemName;
     public Sprite sprite;
-    public int itemPrice;  
+    public int itemPrice;
+    public string itemStringName;
 }

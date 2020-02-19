@@ -12,22 +12,24 @@ public class ShopItemDisplay : MonoBehaviour
     private ShopItemBase shopItem;
 
     [SerializeField]
-    private Sprite background;
+    private InventoryItems InventoryItems;
 
     [SerializeField]
     private TextMeshProUGUI nameText;
+
     [SerializeField]
     private TextMeshProUGUI priceText;
+
     [SerializeField]
     private Button btn;
+
     private bool isBought;
 
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
-        nameText.text = shopItem.itemName.ToString();
-        priceText.text = shopItem.itemPrice + " BC";
-        btn.GetComponent<Image>().sprite = background;
+        nameText.text = shopItem.itemStringName.ToString();
+        priceText.text = shopItem.itemPrice + " BitCoin";
         btn.onClick.AddListener(() => OnClick());
     }
 
@@ -41,5 +43,4 @@ public class ShopItemDisplay : MonoBehaviour
             btn.GetComponent<Image>().color = Color.grey;
         }
     }
-
 }
