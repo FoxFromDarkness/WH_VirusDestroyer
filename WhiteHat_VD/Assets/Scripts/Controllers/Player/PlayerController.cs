@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 NewPortalPosition { get; set; }
     public static LevelPortalController LevelPortalController { get; set; }
     //
-
+    [SerializeField]
     private BulletPlayerController bullet;
     private bool isShot;
 
@@ -34,11 +34,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        PlayerStats = GetComponent<PlayerBase>();
-
-        bullet = GetComponentInChildren<BulletPlayerController>();
-        //bullet.gameObject.SetActive(false);
-        
+        PlayerStats = GetComponent<PlayerBase>();      
     }
 
     private void Update()
@@ -64,6 +60,7 @@ public class PlayerController : MonoBehaviour
     private bool IsAmmo()
     {
         bool isAmmo = true;
+        int tmpNumberSlotKey = Platformer2DUserControl.NumberSlotKey;
 
         switch (Platformer2DUserControl.NumberSlotKey)
         {
@@ -92,7 +89,10 @@ public class PlayerController : MonoBehaviour
                 Platformer2DUserControl.NumberSlotKey = -1;
                 break;
         }
-        ChangingSlotImage(true);
+
+        if(tmpNumberSlotKey != Platformer2DUserControl.NumberSlotKey)
+            ChangingSlotOperation();
+
         return isAmmo;
     }
 
@@ -124,6 +124,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isShot)
         {
+            GetComponent<PlatformerCharacter2D>().ShotAnim();
             var copy_bullet = Instantiate(bullet, bullet.transform.parent);
             copy_bullet.GetComponent<BulletPlayerController>().InitBullet(GetActiveWeapon());
             AddItem(GetActiveWeapon(), -1);
@@ -151,28 +152,43 @@ public class PlayerController : MonoBehaviour
     private void ChangingSlotImage()
     {
         if (IsSlotChangeImageKey)
+            ChangingSlotOperation();
+    }
+
+    private void ChangingSlotOperation()
+    {
+        var numberSlot = Platformer2DUserControl.NumberSlotKey;
+        if (numberSlot != -1 && PlayerStats.WeaponMods[numberSlot].IsUnlock)
+            HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, PlayerStats.WeaponMods[numberSlot].AmmoAmount);
+        else
+            HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, -1);
+
+        ChangeHeroAnim();
+        IsSlotChangeImageKey = false;
+    }
+
+    private void ChangeHeroAnim()
+    {
+        switch (GetActiveWeapon())
         {
-            var numberSlot = Platformer2DUserControl.NumberSlotKey;
-            if (numberSlot != -1 && PlayerStats.WeaponMods[numberSlot].IsUnlock)
-                HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, PlayerStats.WeaponMods[numberSlot].AmmoAmount);
-            else
-                HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, -1);
-            IsSlotChangeImageKey = false;
+            case InventoryItems.AMMO_TYPE_1:
+                this.GetComponent<PlatformerCharacter2D>().SetAnimController(1);
+                break;
+            case InventoryItems.AMMO_TYPE_2:
+                this.GetComponent<PlatformerCharacter2D>().SetAnimController(2);
+                break;
+            case InventoryItems.AMMO_TYPE_3:
+                this.GetComponent<PlatformerCharacter2D>().SetAnimController(3);
+                break;
+            case InventoryItems.AMMO_TYPE_4:
+                this.GetComponent<PlatformerCharacter2D>().SetAnimController(4);
+                break;
+            case InventoryItems.NULL:
+                this.GetComponent<PlatformerCharacter2D>().SetAnimController(0);
+                break;
         }
     }
 
-    private void ChangingSlotImage(bool value)
-    {
-        if (value)
-        {
-            var numberSlot = Platformer2DUserControl.NumberSlotKey;
-            if (numberSlot != -1 && PlayerStats.WeaponMods[numberSlot].IsUnlock)
-                HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, PlayerStats.WeaponMods[numberSlot].AmmoAmount);
-            else
-                HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, -1);
-            IsSlotChangeImageKey = false;
-        }
-    }
 
     #endregion
 
@@ -355,12 +371,13 @@ public class PlayerController : MonoBehaviour
 
     public void CheckHeroDeath()
     {
-        if (godMode) return;
+        if (godMode || !GameController.IsInputEnable) return;
 
         if (PlayerStats.HP <= 0)
         {
             GameController.IsInputEnable = false;
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            GetComponent<PlatformerCharacter2D>().DeadAnim();
             HeadPanelController.Instance.uiPanel.ShowHelperPanel("GAME OVER!", 2.0f);
         }
     }

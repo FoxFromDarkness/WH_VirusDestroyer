@@ -38,11 +38,7 @@ namespace UnityStandardAssets._2D
 
         private void FixedUpdate()
         {
-            if (!GameController.IsInputEnable)
-            {
-                m_Character.Move(0, false, false);
-                return;
-            }
+            if (!GameController.IsInputEnable) return;
 
             // Read the inputs.
             bool crouch = Input.GetKey(KeyCode.LeftControl);
@@ -79,7 +75,6 @@ namespace UnityStandardAssets._2D
                 NumberSlotKey = CheckActiveSlot(3);
                 clickedKey = true;
             }
-
             return clickedKey;
         }
 
