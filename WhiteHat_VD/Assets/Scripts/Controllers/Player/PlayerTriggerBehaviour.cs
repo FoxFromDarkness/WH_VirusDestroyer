@@ -16,7 +16,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         QuestionDoorBehavior(collision);
         DeadZoneBehavior(collision);
         BlackCristalBehavior(collision);
-        ItemBoxBehavior_Enter(collision);
+        HelperBoxBehavior(collision); 
         SavePlaceBehavior_Enter(collision);
         ParticleSystemBehavior_Enter(collision);
         PortalBehaviour_Enter(collision);
@@ -26,6 +26,8 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         ChestBehavior_Enter(collision);
         PlatformEffector_Enter(collision);
         EnemyIdleArea_Enter(collision);
+        ItemBoxBehavior_Enter(collision);
+        HelperBoxBehavior(collision);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -59,6 +61,16 @@ public class PlayerTriggerBehaviour : MonoBehaviour
                 //this.gameObject.SetActive(false);
             }
         }
+    }
+
+    private void HelperBoxBehavior(Collider2D collision)
+    {
+        if (collision.GetComponent<HelperBoxBase>())
+        {
+            var helperBox = collision.GetComponent<HelperBoxBase>();
+            HeadPanelController.Instance.uiPanel.ShowHelperPanel(helperBox.description, 2f);
+        }
+        
     }
 
     private void ChestBehavior_Enter(Collider2D collision)
