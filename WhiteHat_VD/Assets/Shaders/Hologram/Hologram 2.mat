@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hologram
+  m_Name: Hologram 2
   m_Shader: {fileID: -6465566751694194690, guid: 21014d00a7579ca41ab030483996e826,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
@@ -35,5 +35,5 @@ Material:
     m_Colors:
     - Color_3E556818: {r: 1.5467163, g: 0.42030334, b: 0, a: 0}
     - Color_E8B1303E: {r: 0.8516895, g: 0.534532, b: 2.90566, a: 0}
-    - Color_ED9BC3C: {r: 0.08690815, g: 0.5943396, b: 0.16641124, a: 0}
+    - Color_ED9BC3C: {r: 0.086274505, g: 0.10861382, b: 0.59607846, a: 0}
     - Vector2_3A0D9813: {r: 1, g: 3, b: 0, a: 0}
