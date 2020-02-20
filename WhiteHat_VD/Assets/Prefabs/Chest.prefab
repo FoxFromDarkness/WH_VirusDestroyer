@@ -58,6 +58,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -69,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: dca7eeede9037734ba2388c5fef7e25e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -119,11 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d263924d94d57f48b1837ea179371c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 7980293937153027526}
+  questionStatus: 0
   questionChestSprite: {fileID: 21300000, guid: dca7eeede9037734ba2388c5fef7e25e,
     type: 3}
   correctChestSprite: {fileID: 21300000, guid: c8cf91f556db35e4c8eac3c0da57ac34, type: 3}
   incorrectChestSprite: {fileID: 21300000, guid: bd13b4542ae77e4498252537c6be1e87,
     type: 3}
-  isOpen: 0
-  answerIsCorrect: 0
+  awardAmount: 0

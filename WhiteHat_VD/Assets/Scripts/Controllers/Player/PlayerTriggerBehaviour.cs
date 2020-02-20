@@ -93,13 +93,13 @@ public class PlayerTriggerBehaviour : MonoBehaviour
                 //PlayerController.Chest = null;
                 player.CanOpenChest = false;
 
-                if (!HeadPanelController.Instance.questionPanel.gameObject.activeSelf)
-                {
-                    HeadPanelController.Instance.questionPanel.QuestionBehaviour();
-                    //collision.gameObject.SetActive(false);
-                    //this.gameObject.SetActive(false);
+                //if (!HeadPanelController.Instance.questionPanel.gameObject.activeSelf)
+                //{
+                //    HeadPanelController.Instance.questionPanel.QuestionBehaviour();
+                //    //collision.gameObject.SetActive(false);
+                //    //this.gameObject.SetActive(false);
 
-                }
+                //}
                 //HeadPanelController.Instance.questionPanel.QuestionBehaviour();
             }
         }

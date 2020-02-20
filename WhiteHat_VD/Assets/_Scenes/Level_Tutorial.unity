@@ -228,7 +228,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 1bf17350b510edc43896a851c80e4a85, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -349,7 +349,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -1220,6 +1220,31 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378610, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378611, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378611, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378611, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4179608238600378611, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4179608238600378612, guid: 8b43de3eb4f0a3247b1faf011cdfef2f,
         type: 3}
       propertyPath: ItemType
@@ -1506,7 +1531,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -18917,7 +18942,7 @@ PrefabInstance:
     - target: {fileID: 2205812902203040097, guid: 507a6ce8f71ebf44babcd11ce1b20cf5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1276.77
+      value: 1274
       objectReference: {fileID: 0}
     - target: {fileID: 2205812902203040097, guid: 507a6ce8f71ebf44babcd11ce1b20cf5,
         type: 3}

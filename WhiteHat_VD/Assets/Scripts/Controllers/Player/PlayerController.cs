@@ -164,6 +164,7 @@ public class PlayerController : MonoBehaviour
             HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, -1);
 
         ChangeHeroAnim();
+        HeadPanelController.Instance.uiPanel.UnlockSlot(0, ItemsDataBase.Instance.GetSpriteByItemType(GetActiveWeapon()));
         IsSlotChangeImageKey = false;
     }
 
@@ -271,6 +272,7 @@ public class PlayerController : MonoBehaviour
             case InventoryItems.BLACK_CRISTALS:
                 PlayerStats.BlackCristals = amount;
                 HeadPanelController.Instance.uiPanel.SetBlackCristals(PlayerStats.BlackCristals);
+                HeadPanelController.Instance.savePlacePanel.SetBlackCristals(GetItemAmount(InventoryItems.BLACK_CRISTALS));
                 break;
             case InventoryItems.AMMO_TYPE_1:
                 PlayerStats.WeaponMods[IndexOfWeaponMod(item)].AmmoAmount = amount;
@@ -301,6 +303,7 @@ public class PlayerController : MonoBehaviour
             case InventoryItems.BLACK_CRISTALS:
                 PlayerStats.BlackCristals += amount;
                 HeadPanelController.Instance.uiPanel.SetBlackCristals(GetItemAmount(InventoryItems.BLACK_CRISTALS));
+                HeadPanelController.Instance.savePlacePanel.SetBlackCristals(GetItemAmount(InventoryItems.BLACK_CRISTALS));
                 break;
             case InventoryItems.AMMO_TYPE_1:
                 idx = IndexOfWeaponMod(item);
@@ -457,7 +460,10 @@ public class PlayerController : MonoBehaviour
         if (CanOpenSavePlace)
         {
             if (Input.GetButtonDown("SavePlace") || Input.GetKeyDown(KeyCode.UpArrow)) //Really important. Remember about it
+            {
                 HeadPanelController.Instance.savePlacePanel.ChangeVisibility();
+                HeadPanelController.Instance.savePlacePanel.SetBlackCristals(GetItemAmount(InventoryItems.BLACK_CRISTALS));
+            }
         }
     }
 
