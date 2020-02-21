@@ -37,50 +37,26 @@ public class UpgradeBase : MonoBehaviour
             switch (PlayerAttributes)
             {
                 case PlayerAttributes.HP_MAX:
+                    player.AddValue(PlayerAttributes.HP_MAX, int.Parse(PlayerAttributes.HP_MAX.ToString()) * percentImprovement);
                     hpPercentUpgrade = hpPercentUpgrade + percentImprovement;
                     percentUpgrade.text = hpPercentUpgrade.ToString() + "%";
                     break;
                 case PlayerAttributes.LUCK:
+                    player.AddValue(PlayerAttributes.LUCK, int.Parse(PlayerAttributes.LUCK.ToString()) * percentImprovement);
                     luckPercentUpgrade = luckPercentUpgrade + percentImprovement;
                     percentUpgrade.text = luckPercentUpgrade.ToString() + "%";
                     break;
                 case PlayerAttributes.MAGAZINE_CAPACITY:
+                    player.AddValue(PlayerAttributes.MAGAZINE_CAPACITY, int.Parse(PlayerAttributes.MAGAZINE_CAPACITY.ToString()) * percentImprovement);
                     magazineCapacityPercentUpgrade = magazineCapacityPercentUpgrade + percentImprovement;
                     percentUpgrade.text = magazineCapacityPercentUpgrade.ToString() + "%";
                     break;
                 case PlayerAttributes.ADDITIONAL_DAMAGE:
+                    player.AddValue(PlayerAttributes.ADDITIONAL_DAMAGE, int.Parse(PlayerAttributes.ADDITIONAL_DAMAGE.ToString()) * percentImprovement);
                     additionalDamagePercentUpgrade = additionalDamagePercentUpgrade + percentImprovement;
                     percentUpgrade.text = additionalDamagePercentUpgrade.ToString() + "%";
                     break;
             }
-            /*
-             
-            player.AddItem(InventoryItems.BLACK_CRISTALS, -itemPrice);  // implementation example
-            switch (PlayerAttributes)
-            {
-                case PlayerAttributes.HP_MAX:
-                    player.AddValue(PlayerAttributes.HP_MAX, +PlayerAttributes.HP_MAX * percentImprovement);
-                    hpPercentUpgrade = hpPercentUpgrade + percentImprovement;
-                    percentUpgrade.text = hpPercentUpgrade.ToString() + "%";
-                    break;
-                case PlayerAttributes.LUCK:
-                    player.AddValue(PlayerAttributes.LUCK, +PlayerAttributes.LUCK * percentImprovement);
-                    luckPercentUpgrade = luckPercentUpgrade + percentImprovement;
-                    percentUpgrade.text = luckPercentUpgrade.ToString() + "%";
-                    break;
-                case PlayerAttributes.MAGAZINE_CAPACITY:
-                    player.AddValue(PlayerAttributes.MAGAZINE_CAPACITY, +PlayerAttributes.MAGAZINE_CAPACITY * percentImprovement);
-                    magazineCapacityPercentUpgrade = magazineCapacityPercentUpgrade + percentImprovement;
-                    percentUpgrade.text = magazineCapacityPercentUpgrade.ToString() + "%";
-                    break;
-                case PlayerAttributes.ADDITIONAL_DAMAGE:
-                    player.AddValue(PlayerAttributes.ADDITIONAL_DAMAGE, +PlayerAttributes.ADDITIONAL_DAMAGE * percentImprovement);
-                    additionalDamagePercentUpgrade = additionalDamagePercentUpgrade + percentImprovement;
-                    percentUpgrade.text = additionalDamagePercentUpgrade.ToString() + "%";
-                    break;
-            }
-            */
-            
         }
     }
 }

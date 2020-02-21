@@ -61905,12 +61905,12 @@ PrefabInstance:
     - target: {fileID: 4001986205273639566, guid: 7ded5fe0b52062846954c4dd9cf441e8,
         type: 3}
       propertyPath: startLevelPosition.x
-      value: -1230.51
+      value: -1237
       objectReference: {fileID: 0}
     - target: {fileID: 4001986205273639566, guid: 7ded5fe0b52062846954c4dd9cf441e8,
         type: 3}
       propertyPath: startLevelPosition.y
-      value: 235.78
+      value: 255.6062
       objectReference: {fileID: 0}
     - target: {fileID: 4001986205273639566, guid: 7ded5fe0b52062846954c4dd9cf441e8,
         type: 3}
@@ -61920,7 +61920,7 @@ PrefabInstance:
     - target: {fileID: 4001986205273639566, guid: 7ded5fe0b52062846954c4dd9cf441e8,
         type: 3}
       propertyPath: isOpenGame
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ded5fe0b52062846954c4dd9cf441e8, type: 3}

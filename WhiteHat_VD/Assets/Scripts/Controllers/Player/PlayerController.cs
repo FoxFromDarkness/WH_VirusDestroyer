@@ -353,6 +353,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void AddValue(PlayerAttributes item, int amount)
+    {
+        switch (item)
+        {
+            case PlayerAttributes.HP_MAX:
+                PlayerStats.HP_Max = amount;
+                break;
+            case PlayerAttributes.LUCK:
+                //ADD TO PLAYE
+                break;
+            case PlayerAttributes.MAGAZINE_CAPACITY:
+                //ADD TO PLAYE
+                break;
+            case PlayerAttributes.ADDITIONAL_DAMAGE:
+                //ADD TO PLAYE
+                break;
+        }
+    }
+
     public int GetItemAmount(InventoryItems item)
     {
         switch (item)
