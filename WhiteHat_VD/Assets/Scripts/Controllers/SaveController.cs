@@ -45,8 +45,6 @@ public class SaveController : MonoBehaviour
         Prefs.Add("HP", player.PlayerStats.HP +"");
         Prefs.Add("HP_Max", player.PlayerStats.HP_Max +"");
         Prefs.Add("Level", player.PlayerStats.Level +"");
-        Prefs.Add("Exp", player.PlayerStats.Exp +"");
-        Prefs.Add("ExpToNextLvl", player.PlayerStats.ExpToNextLvl +"");
 
         Prefs.Add("BlackCristals", player.PlayerStats.BlackCristals + "");
 
@@ -133,8 +131,6 @@ public class SaveController : MonoBehaviour
         player.ChangeAttribute(PlayerAttributes.HP, float.Parse(Prefs["HP"]));
         player.ChangeAttribute(PlayerAttributes.HP_MAX, float.Parse(Prefs["HP_Max"]));
         player.ChangeAttribute(PlayerAttributes.LEVEL, float.Parse(Prefs["Level"]));
-        player.ChangeAttribute(PlayerAttributes.EXP, float.Parse(Prefs["Exp"]));
-        player.ChangeAttribute(PlayerAttributes.EXP_TO_NEXT_LVL, float.Parse(Prefs["ExpToNextLvl"]));
 
         player.ChangeItemAmount(InventoryItems.BLACK_CRISTALS, int.Parse(Prefs["BlackCristals"]));
 

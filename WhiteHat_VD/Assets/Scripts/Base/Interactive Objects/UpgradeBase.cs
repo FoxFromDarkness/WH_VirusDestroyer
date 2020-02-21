@@ -13,7 +13,6 @@ public class UpgradeBase : MonoBehaviour
 
     private InventoryItems InventoryItems;
 
-    [SerializeField]
     private PlayerController player;
     [SerializeField]
     private Text percentUpgrade;
@@ -26,37 +25,23 @@ public class UpgradeBase : MonoBehaviour
 
     public void Start()
     {
+        player = FindObjectOfType<PlayerController>();
         percentUpgrade.text = actualPercentUpgrade.ToString() + "%";
     }
 
     public void OnClick()
     {
-        if (player.GetItemAmount(InventoryItems.BLACK_CRISTALS) > itemPrice)
+        Debug.Log("Try to buy upgrade: " + PlayerAttributes);
+        if (player.GetItemAmount(InventoryItems.BLACK_CRISTALS) >= itemPrice)
         {
+            Debug.Log("You bought upgrade: " + PlayerAttributes);
             player.AddItem(InventoryItems.BLACK_CRISTALS, -itemPrice);  // test
-            switch (PlayerAttributes)
-            {
-                case PlayerAttributes.HP_MAX:
-                    player.AddValue(PlayerAttributes.HP_MAX, int.Parse(PlayerAttributes.HP_MAX.ToString()) * percentImprovement);
-                    hpPercentUpgrade = hpPercentUpgrade + percentImprovement;
-                    percentUpgrade.text = hpPercentUpgrade.ToString() + "%";
-                    break;
-                case PlayerAttributes.LUCK:
-                    player.AddValue(PlayerAttributes.LUCK, int.Parse(PlayerAttributes.LUCK.ToString()) * percentImprovement);
-                    luckPercentUpgrade = luckPercentUpgrade + percentImprovement;
-                    percentUpgrade.text = luckPercentUpgrade.ToString() + "%";
-                    break;
-                case PlayerAttributes.MAGAZINE_CAPACITY:
-                    player.AddValue(PlayerAttributes.MAGAZINE_CAPACITY, int.Parse(PlayerAttributes.MAGAZINE_CAPACITY.ToString()) * percentImprovement);
-                    magazineCapacityPercentUpgrade = magazineCapacityPercentUpgrade + percentImprovement;
-                    percentUpgrade.text = magazineCapacityPercentUpgrade.ToString() + "%";
-                    break;
-                case PlayerAttributes.ADDITIONAL_DAMAGE:
-                    player.AddValue(PlayerAttributes.ADDITIONAL_DAMAGE, int.Parse(PlayerAttributes.ADDITIONAL_DAMAGE.ToString()) * percentImprovement);
-                    additionalDamagePercentUpgrade = additionalDamagePercentUpgrade + percentImprovement;
-                    percentUpgrade.text = additionalDamagePercentUpgrade.ToString() + "%";
-                    break;
-            }
+            player.AddAttribute(PlayerAttributes, percentImprovement);
+        }
+        else
+        {
+            Debug.Log("Not enought money: " + PlayerAttributes);
+            Debug.Log("You have: " + player.GetItemAmount(InventoryItems.BLACK_CRISTALS) + " BC");
         }
     }
 }

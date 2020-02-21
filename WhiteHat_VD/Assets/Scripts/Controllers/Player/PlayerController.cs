@@ -210,12 +210,6 @@ public class PlayerController : MonoBehaviour
             case PlayerAttributes.LEVEL:
                 PlayerStats.Level = amount;
                 break;
-            case PlayerAttributes.EXP:
-                PlayerStats.Exp = amount;
-                break;
-            case PlayerAttributes.EXP_TO_NEXT_LVL:
-                PlayerStats.ExpToNextLvl = amount;
-                break;
         }
     }
 
@@ -236,12 +230,6 @@ public class PlayerController : MonoBehaviour
             case PlayerAttributes.LEVEL:
                 PlayerStats.Level += amount;
                 break;
-            case PlayerAttributes.EXP:
-                PlayerStats.Exp += amount;
-                break;
-            case PlayerAttributes.EXP_TO_NEXT_LVL:
-                PlayerStats.ExpToNextLvl += amount;
-                break;
         }
     }
 
@@ -255,10 +243,6 @@ public class PlayerController : MonoBehaviour
                 return PlayerStats.HP_Max;
             case PlayerAttributes.LEVEL:
                 return PlayerStats.Level;
-            case PlayerAttributes.EXP:
-                return PlayerStats.Exp;
-            case PlayerAttributes.EXP_TO_NEXT_LVL:
-                return PlayerStats.ExpToNextLvl;
             default:
                 return -1;
         }
@@ -349,25 +333,6 @@ public class PlayerController : MonoBehaviour
                 AddAttribute(PlayerAttributes.HP, amount);
                 break;
             case InventoryItems.NULL:
-                break;
-        }
-    }
-
-    public void AddValue(PlayerAttributes item, int amount)
-    {
-        switch (item)
-        {
-            case PlayerAttributes.HP_MAX:
-                PlayerStats.HP_Max = amount;
-                break;
-            case PlayerAttributes.LUCK:
-                //ADD TO PLAYE
-                break;
-            case PlayerAttributes.MAGAZINE_CAPACITY:
-                //ADD TO PLAYE
-                break;
-            case PlayerAttributes.ADDITIONAL_DAMAGE:
-                //ADD TO PLAYE
                 break;
         }
     }
