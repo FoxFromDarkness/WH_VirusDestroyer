@@ -77,9 +77,14 @@ public class UIPanelController : PanelBase
         blackCristals.BcText.text = bcAmount + "";
     }
 
-    public void ShowHelperPanel(string info, float showTimeSek)
+    public void ShowHelperPanel( string info, float showTimeSek)
     {
-        StartCoroutine(CoShowHelperPanel(info, showTimeSek));
+        StartCoroutine(CoShowHelperPanel( info, showTimeSek));
+    }
+
+    public void ShowHelperPanelAmmo(Sprite spr, string info, float showTimeSek)
+    {
+        StartCoroutine(CoShowHelperPanelAmmo(spr, info, showTimeSek));
     }
 
     public void HideObjects()
@@ -90,6 +95,8 @@ public class UIPanelController : PanelBase
 
     public void HideHelperPanel()
     {
+        helperPanel.AmmoImageL.gameObject.SetActive(false);
+        helperPanel.AmmoImageR.gameObject.SetActive(false);
         helperPanel.gameObject.SetActive(false);
     }
 
@@ -119,6 +126,8 @@ public class UIPanelController : PanelBase
 
     private IEnumerator CoShowHelperPanel(string info, float showTimeSek)
     {
+        helperPanel.AmmoImageL.gameObject.SetActive(false);
+        helperPanel.AmmoImageR.gameObject.SetActive(false);
         helperPanel.HelpText.text = info;
         helperPanel.gameObject.SetActive(true);
 
@@ -128,4 +137,25 @@ public class UIPanelController : PanelBase
             helperPanel.gameObject.SetActive(false);
         }
     }
+
+    private IEnumerator CoShowHelperPanelAmmo(Sprite spr, string info, float showTimeSek)
+    {
+        if (spr != null)
+        {
+            helperPanel.AmmoImageL.sprite = spr;
+            helperPanel.AmmoImageR.sprite = spr;
+            helperPanel.AmmoImageL.gameObject.SetActive(true);
+            helperPanel.AmmoImageR.gameObject.SetActive(true);
+        }
+
+        helperPanel.HelpText.text = info;
+        helperPanel.gameObject.SetActive(true);
+
+        if (showTimeSek != 0)
+        {
+            yield return new WaitForSeconds(showTimeSek);
+            helperPanel.gameObject.SetActive(false);
+        }
+    }
+
 }

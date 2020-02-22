@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerTriggerBehaviour : MonoBehaviour
 {
@@ -145,7 +146,9 @@ public class PlayerTriggerBehaviour : MonoBehaviour
             collision.gameObject.SetActive(false);
             int amountItem = collision.GetComponent<ItemBoxBase>().ItemAmount;
             InventoryItems itemType = collision.GetComponent<ItemBoxBase>().ItemType;
-            HeadPanelController.Instance.uiPanel.ShowHelperPanel(itemType.ToString() + ": " + amountItem, 2f);
+            Sprite spr = collision.GetComponent<ItemBoxBase>().sprite;
+            
+            HeadPanelController.Instance.uiPanel.ShowHelperPanelAmmo(spr,"+" + amountItem, 2f);
             player.AddItem(itemType, amountItem);
         }
     }

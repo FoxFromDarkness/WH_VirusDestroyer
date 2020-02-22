@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class UpgradeBase : MonoBehaviour
@@ -15,7 +16,7 @@ public class UpgradeBase : MonoBehaviour
 
     private PlayerController player;
     [SerializeField]
-    private Text percentUpgrade;
+    private TextMeshProUGUI percentUpgrade;
     [SerializeField]
     private PlayerAttributes PlayerAttributes;
     [SerializeField]
@@ -37,6 +38,8 @@ public class UpgradeBase : MonoBehaviour
             Debug.Log("You bought upgrade: " + PlayerAttributes);
             player.AddItem(InventoryItems.BLACK_CRISTALS, -itemPrice);  // test
             player.AddAttribute(PlayerAttributes, percentImprovement);
+            actualPercentUpgrade = actualPercentUpgrade + percentImprovement;
+            percentUpgrade.text = actualPercentUpgrade.ToString() + "%";
         }
         else
         {
