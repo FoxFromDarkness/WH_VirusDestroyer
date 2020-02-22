@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class CasualEnemyController : MonoBehaviour
 {
+    public enum EnemyBody
+    {
+        BLACK,
+        RED,
+        DEFAULT
+    }
+
     public enum EnemyType
     {
         PATROL, //patroluje teren
@@ -32,11 +39,15 @@ public class CasualEnemyController : MonoBehaviour
 
     [Header("General")]
     [SerializeField] private Transform body;
+    [SerializeField] private Sprite[] bodyImages;
     private SpriteRenderer bodyImage;
     [SerializeField] private Collider2D bodyCollider;
+    public RuntimeAnimatorController[] animators;
+    private Animator animator;
     private HP_Canvas hpCanvas;
     [Space]
     [Header("Type")]
+    [SerializeField] private EnemyBody enemyBody;
     [SerializeField] private EnemyType enemyType;
     [Tooltip("Only for information")]
     [SerializeField] private EnemyMovement enemyMovement = EnemyMovement.IDLE;
@@ -57,10 +68,17 @@ public class CasualEnemyController : MonoBehaviour
     [SerializeField] private bool canAttack = true;
     [SerializeField] private bool isActive = true;
     [Space]
+    [Header("Animator")]
+    [SerializeField] private bool _isAim;
+    public bool IsAim { get { return _isAim; } set { _isAim = value; SetAnimator(_isAim, _currentState); } }
+    [SerializeField] private int _currentState;
+    public int CurrentState { get { return _currentState; } set { _currentState = value; SetAnimator(_isAim, _currentState); } }
+    [Space]
     [Header("Weapons")]
     [SerializeField] private BulletEnemyController enemyBullet;
     [SerializeField] private BulletEnemyController enemyLaser;
     private Vector2 enemyLaserStartPos;
+    private Vector2 enemyHPStartPos;
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private GameObject damageEffect;
 
@@ -77,13 +95,36 @@ public class CasualEnemyController : MonoBehaviour
         currentHealthPoints = maxHealthPoints;
 
         bodyImage = body.GetComponent<SpriteRenderer>();
+        animator = body.GetComponent<Animator>();
 
         hpCanvas = body.GetComponentInChildren<HP_Canvas>();
         hpCanvas.gameObject.SetActive(false);
 
         enemyLaserStartPos = enemyLaser.transform.localPosition;
+        enemyHPStartPos = hpCanvas.transform.localPosition;
 
         target = FindObjectOfType<PlayerController>();
+
+        if (enemyType == EnemyType.TOWER) return;
+
+        switch (enemyBody)
+        {
+            case EnemyBody.BLACK:
+                bodyImage.sprite = bodyImages[0];
+                animator.runtimeAnimatorController = animators[0];
+                break;
+            case EnemyBody.RED:
+                bodyImage.sprite = bodyImages[1];
+                animator.runtimeAnimatorController = animators[1];
+                break;
+            default:
+                bodyImage.sprite = bodyImages[2];
+                animator.runtimeAnimatorController = animators[2];
+                break;
+        }
+
+        IsAim = _isAim;
+        CurrentState = _currentState;
     }
 
     void Update()
@@ -111,7 +152,8 @@ public class CasualEnemyController : MonoBehaviour
     private void Idle()
     {
         if (!canMove) return;
-
+        CurrentState = 1;
+        IsAim = false;
         switch (enemyType)
         {
             case EnemyType.PATROL:
@@ -140,8 +182,8 @@ public class CasualEnemyController : MonoBehaviour
         if (currentEnemyAttackTime < enemyAttackSpeed) return;
 
         currentEnemyAttackTime = 0;
-
-        
+        CurrentState = 0;
+        IsAim = true;
 
         switch (enemyAttack)
         {
@@ -172,6 +214,7 @@ public class CasualEnemyController : MonoBehaviour
         copyEnemyBullet.isMoving = true;
         copyEnemyBullet.speed *= movingRight == true ? 1 : -1;
         copyEnemyBullet.gameObject.SetActive(true);
+        animator?.Play("Shoot");
     }
 
     private IEnumerator CoRepeatingAttack()
@@ -231,9 +274,13 @@ public class CasualEnemyController : MonoBehaviour
     {
         currentHealthPoints -= damage;
         hpCanvas.SetHP_Canvas(currentHealthPoints / maxHealthPoints);
-        if(!hpCanvas.gameObject.activeSelf) hpCanvas.gameObject.SetActive(true);
+        if (!hpCanvas.gameObject.activeSelf)
+        {
+            hpCanvas.gameObject.SetActive(true);
+            hpCanvas.transform.localPosition = new Vector2(movingRight == true ? enemyHPStartPos.x : enemyHPStartPos.x * -1, hpCanvas.transform.localPosition.y);
+        }
 
-        if (currentHealthPoints <= 0)
+            if (currentHealthPoints <= 0)
         {
             hpCanvas.gameObject.SetActive(false);
             enemyMovement = EnemyMovement.DIE;
@@ -251,12 +298,15 @@ public class CasualEnemyController : MonoBehaviour
             case EnemyType.PATROL:
                 movingRight = !movingRight;
                 bodyImage.flipX = !bodyImage.flipX; //flipX ==> false (movingRight = true)
+                hpCanvas.transform.localPosition = new Vector2(movingRight == true ? enemyHPStartPos.x : enemyHPStartPos.x * -1, hpCanvas.transform.localPosition.y);
                 CorrectLaserPosition();
                 break;
             case EnemyType.GUARD:
                 canMove = false;
+                CurrentState = 0;
                 bodyImage.flipX = !bodyImage.flipX;
                 CorrectLaserPosition();
+                hpCanvas.transform.localPosition = new Vector2(movingRight == true ? enemyHPStartPos.x : enemyHPStartPos.x * -1, hpCanvas.transform.localPosition.y);
                 break;
             //case EnemyType.TOWER:
             //    break;
@@ -272,12 +322,15 @@ public class CasualEnemyController : MonoBehaviour
         isTargetInArea = isTargetEnter;
         movingRight = isRightArea;
         bodyImage.flipX = !movingRight;
+        hpCanvas.transform.localPosition = new Vector2(movingRight == true ? enemyHPStartPos.x : enemyHPStartPos.x * -1, hpCanvas.transform.localPosition.y);
         CorrectLaserPosition();
+
 
         if (isTargetInArea)
         {
             StopCoroutine(EnemyBackToIdle(0));
             enemyMovement = EnemyMovement.ATTACK;
+            animator.Play("Idle_Aim");
         }
         else
         {
@@ -288,6 +341,17 @@ public class CasualEnemyController : MonoBehaviour
     private IEnumerator EnemyBackToIdle(float time)
     {
         yield return new WaitForSeconds(time);
-        if (!isTargetInArea) enemyMovement = EnemyMovement.IDLE;
+        if (!isTargetInArea)
+        {
+            enemyMovement = EnemyMovement.IDLE;
+        }
+    }
+
+    public void SetAnimator(bool isAim, int stateIdx)
+    {
+        if (animator == null) return;
+
+        animator.SetBool("isAim", isAim);
+        animator.SetInteger("State", stateIdx);
     }
 }
