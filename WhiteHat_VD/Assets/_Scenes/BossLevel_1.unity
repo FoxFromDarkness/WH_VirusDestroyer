@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -37066,6 +37066,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1110409832}
     m_Modifications:
+    - target: {fileID: 723013517762351488, guid: be08b74eed5c7904ca81c1f82841b9b4,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 1812464297968278342, guid: 2eb5ba4f77a2cc14d9886527059abd73,
+        type: 2}
     - target: {fileID: 5859271242153488163, guid: be08b74eed5c7904ca81c1f82841b9b4,
         type: 3}
       propertyPath: m_Name
