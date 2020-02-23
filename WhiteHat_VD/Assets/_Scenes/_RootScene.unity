@@ -1945,6 +1945,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _GameManager: {fileID: 1438499956}
   bulletsParent: {fileID: 1697480860}
+  bulletsSFX:
+  - {fileID: 8300000, guid: 852683222b9253846b64dffbbfb41233, type: 3}
+  - {fileID: 8300000, guid: 9e88134cea48c8f4fa754464df155929, type: 3}
 --- !u!61 &2071335609
 BoxCollider2D:
   m_ObjectHideFlags: 0

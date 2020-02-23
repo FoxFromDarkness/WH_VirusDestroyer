@@ -657,6 +657,8 @@ MonoBehaviour:
   isAnimation: 0
   speedOfAnim: 0.1
   ortographicSize: 5
+  bgSprite: {fileID: 0}
+  bgScale: {x: 0, y: 0}
 --- !u!4 &778911779
 Transform:
   m_ObjectHideFlags: 0

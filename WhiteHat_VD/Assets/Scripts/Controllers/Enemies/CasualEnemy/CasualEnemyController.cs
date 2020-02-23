@@ -287,7 +287,7 @@ public class CasualEnemyController : MonoBehaviour
         }
         else
         {
-            damageEffect.GetComponent<ParticleSystem>().Play();
+            //damageEffect.GetComponent<ParticleSystem>().Play();
         }
     }
 

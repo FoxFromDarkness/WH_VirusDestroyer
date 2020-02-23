@@ -32,7 +32,8 @@ public class PlayerController : MonoBehaviour
     //
     [SerializeField]
     private GameObject bulletsParent;
-    private AudioSource bulletSFX;
+    private AudioSource audioSource;
+    public AudioClip[] bulletsSFX;
     private BulletPlayerController[] bullets;
     private bool isShot;
     private float bulletLoadingTime = LOADING_TIME_FOR_RIFLES;
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour
     {
         PlayerStats = GetComponent<PlayerBase>();
         bullets = bulletsParent.GetComponentsInChildren<BulletPlayerController>();
-        bulletSFX = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         foreach (var item in bullets)
         {
             item.gameObject.SetActive(false);
@@ -53,11 +54,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (currentLoadingTime < 2)
-        {
-            currentLoadingTime += Time.deltaTime;
-            Debug.Log("currentLoadingTime: " + currentLoadingTime);
-        }
+        if (currentLoadingTime < 2) currentLoadingTime += Time.deltaTime;
 
         if (!GameController.IsInputEnable) return;
 
@@ -142,18 +139,26 @@ public class PlayerController : MonoBehaviour
 
     private void Shooting()
     {
-        Debug.Log("bulletLoadingTime: " + bulletLoadingTime);
         if (isShot && currentLoadingTime >= bulletLoadingTime)
         {
             GetComponent<PlatformerCharacter2D>().ShotAnim();
             isShot = false;
             var copy_bullet = Instantiate(bullets[GetActiveWeapon() == InventoryItems.NULL ? 0 : (int)GetActiveWeapon()], bulletsParent.transform.parent);
             copy_bullet.GetComponent<BulletPlayerController>().InitBullet(GetActiveWeapon(), GetAttribute(PlayerAttributes.ADDITIONAL_DAMAGE));
-            bulletSFX.Play();
+            PlayBulletSFX();
             AddItem(GetActiveWeapon(), -1);
             isShot = false;
             currentLoadingTime = 0;
         }
+    }
+
+    private void PlayBulletSFX()
+    {
+        if (GetActiveWeapon() == InventoryItems.AMMO_TYPE_4 || GetActiveWeapon() == InventoryItems.AMMO_TYPE_1)
+            audioSource.clip = bulletsSFX[1];
+        else
+            audioSource.clip = bulletsSFX[0];
+        audioSource.Play();
     }
 
     private InventoryItems GetActiveWeapon()
