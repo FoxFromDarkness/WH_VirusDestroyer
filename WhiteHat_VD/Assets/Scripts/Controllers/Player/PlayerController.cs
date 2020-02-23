@@ -6,6 +6,9 @@ using UnityStandardAssets._2D;
 
 public class PlayerController : MonoBehaviour
 {
+    private const float LOADING_TIME_FOR_RIFLES = 0.25f;
+    private const float LOADING_TIME_FOR_HEAVY_GUNS = 0.5f;
+
     [Header("Player Options")]
     private bool godMode;
     public GameObject _GameManager;
@@ -32,6 +35,8 @@ public class PlayerController : MonoBehaviour
     private AudioSource bulletSFX;
     private BulletPlayerController[] bullets;
     private bool isShot;
+    private float bulletLoadingTime = LOADING_TIME_FOR_RIFLES;
+    private float currentLoadingTime;
 
     public static bool IsSlotChangeImageKey;
 
@@ -48,6 +53,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (currentLoadingTime < 2)
+        {
+            currentLoadingTime += Time.deltaTime;
+            Debug.Log("currentLoadingTime: " + currentLoadingTime);
+        }
+
         if (!GameController.IsInputEnable) return;
 
         if (GetComponent<Platformer2DUserControl>().IsShotKey && !CanOpenSavePlace)
@@ -131,17 +142,17 @@ public class PlayerController : MonoBehaviour
 
     private void Shooting()
     {
-        if (isShot)
+        Debug.Log("bulletLoadingTime: " + bulletLoadingTime);
+        if (isShot && currentLoadingTime >= bulletLoadingTime)
         {
             GetComponent<PlatformerCharacter2D>().ShotAnim();
-            Debug.Log("GetActiveWeapon(): " + GetActiveWeapon());
-            Debug.Log("bullets.Length: " + bullets.Length);
             isShot = false;
             var copy_bullet = Instantiate(bullets[GetActiveWeapon() == InventoryItems.NULL ? 0 : (int)GetActiveWeapon()], bulletsParent.transform.parent);
             copy_bullet.GetComponent<BulletPlayerController>().InitBullet(GetActiveWeapon(), GetAttribute(PlayerAttributes.ADDITIONAL_DAMAGE));
             bulletSFX.Play();
             AddItem(GetActiveWeapon(), -1);
             isShot = false;
+            currentLoadingTime = 0;
         }
     }
 
@@ -177,7 +188,22 @@ public class PlayerController : MonoBehaviour
             HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, -1);
 
         ChangeHeroAnim();
-        HeadPanelController.Instance.uiPanel.UnlockSlot(0, ItemsDataBase.Instance.GetSpriteByItemType(GetActiveWeapon()));
+        InventoryItems tmp = GetActiveWeapon();
+        switch (tmp)
+        {
+            case InventoryItems.NULL:
+            case InventoryItems.AMMO_TYPE_3:
+                bulletLoadingTime = LOADING_TIME_FOR_RIFLES;
+                break;
+            case InventoryItems.AMMO_TYPE_1:
+            case InventoryItems.AMMO_TYPE_2:
+            case InventoryItems.AMMO_TYPE_4:
+                bulletLoadingTime = LOADING_TIME_FOR_HEAVY_GUNS;
+                break;
+            default:
+                break;
+        }
+        HeadPanelController.Instance.uiPanel.UnlockSlot(0, ItemsDataBase.Instance.GetSpriteByItemType(tmp));
         IsSlotChangeImageKey = false;
     }
 
@@ -202,7 +228,6 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
-
 
     #endregion
 
