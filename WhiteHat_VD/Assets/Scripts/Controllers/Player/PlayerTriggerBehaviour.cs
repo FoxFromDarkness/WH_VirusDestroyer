@@ -17,7 +17,6 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         QuestionDoorBehavior(collision);
         DeadZoneBehavior(collision);
         BlackCristalBehavior(collision);
-        HelperBoxBehavior(collision); 
         SavePlaceBehavior_Enter(collision);
         ParticleSystemBehavior_Enter(collision);
         PortalBehaviour_Enter(collision);
@@ -28,7 +27,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         PlatformEffector_Enter(collision);
         EnemyIdleArea_Enter(collision);
         ItemBoxBehavior_Enter(collision);
-        HelperBoxBehavior(collision);
+        HelperBoxBehavior_Enter(collision);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -39,6 +38,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         ChestBehavior_Exit(collision);
         PlatformEffector_Exit(collision);
         EnemyIdleArea_Exit(collision);
+        HelperBoxBehavior_Exit(collision);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -64,14 +64,19 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         }
     }
 
-    private void HelperBoxBehavior(Collider2D collision)
+    private void HelperBoxBehavior_Enter(Collider2D collision)
     {
         if (collision.GetComponent<HelperBoxBase>())
         {
             var helperBox = collision.GetComponent<HelperBoxBase>();
-            HeadPanelController.Instance.uiPanel.ShowHelperPanel(helperBox.description, 2f);
+            HeadPanelController.Instance.uiPanel.ShowHelperPanel(helperBox.description);
         }
         
+    }
+
+    private void HelperBoxBehavior_Exit(Collider2D collision)
+    {
+        HeadPanelController.Instance.uiPanel.HideHelperPanel();
     }
 
     private void ChestBehavior_Enter(Collider2D collision)
@@ -148,7 +153,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
             InventoryItems itemType = collision.GetComponent<ItemBoxBase>().ItemType;
             Sprite spr = collision.GetComponent<ItemBoxBase>().sprite;
             
-            HeadPanelController.Instance.uiPanel.ShowHelperPanelAmmo(spr,"+" + amountItem, 2f);
+            HeadPanelController.Instance.uiPanel.ShowHelperPanel("+" + amountItem, 2f, spr);
             player.AddItem(itemType, amountItem);
         }
     }

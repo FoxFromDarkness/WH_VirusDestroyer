@@ -77,14 +77,29 @@ public class UIPanelController : PanelBase
         blackCristals.BcText.text = bcAmount + "";
     }
 
-    public void ShowHelperPanel( string info, float showTimeSek)
+    private float helperShowTime;
+    public void ShowHelperPanel(string info, float showTimeSek = 0, Sprite spr = null)
     {
-        StartCoroutine(CoShowHelperPanel( info, showTimeSek));
-    }
+        if (spr != null)
+        {
+            helperPanel.AmmoImageL.sprite = spr;
+            helperPanel.AmmoImageR.sprite = spr;
+        }
 
-    public void ShowHelperPanelAmmo(Sprite spr, string info, float showTimeSek)
-    {
-        StartCoroutine(CoShowHelperPanelAmmo(spr, info, showTimeSek));
+        helperPanel.AmmoImageL.gameObject.SetActive(spr == null ? false : true);
+        helperPanel.AmmoImageR.gameObject.SetActive(spr == null ? false : true);
+        helperPanel.HelpText.text = info;
+        helperPanel.gameObject.SetActive(true);
+
+        helperShowTime = showTimeSek;
+        if (showTimeSek != 0 && !isCoroutineRun)
+            StartCoroutine(CoHideHelperPanel());
+
+        if (showTimeSek == 0)
+        {
+            StopCoroutine(CoHideHelperPanel());
+            helperShowTime = 60;
+        }
     }
 
     public void HideObjects()
@@ -95,8 +110,6 @@ public class UIPanelController : PanelBase
 
     public void HideHelperPanel()
     {
-        helperPanel.AmmoImageL.gameObject.SetActive(false);
-        helperPanel.AmmoImageR.gameObject.SetActive(false);
         helperPanel.gameObject.SetActive(false);
     }
 
@@ -124,38 +137,17 @@ public class UIPanelController : PanelBase
         }
     }
 
-    private IEnumerator CoShowHelperPanel(string info, float showTimeSek)
+    private bool isCoroutineRun = false;
+    private IEnumerator CoHideHelperPanel()
     {
-        helperPanel.AmmoImageL.gameObject.SetActive(false);
-        helperPanel.AmmoImageR.gameObject.SetActive(false);
-        helperPanel.HelpText.text = info;
-        helperPanel.gameObject.SetActive(true);
-
-        if (showTimeSek != 0)
+        isCoroutineRun = true;
+        while (helperShowTime > 0)
         {
-            yield return new WaitForSeconds(showTimeSek);
-            helperPanel.gameObject.SetActive(false);
+            yield return new WaitForSeconds(1f);
+            helperShowTime -= 1;
         }
+        
+        helperPanel.gameObject.SetActive(false);
+        isCoroutineRun = false;
     }
-
-    private IEnumerator CoShowHelperPanelAmmo(Sprite spr, string info, float showTimeSek)
-    {
-        if (spr != null)
-        {
-            helperPanel.AmmoImageL.sprite = spr;
-            helperPanel.AmmoImageR.sprite = spr;
-            helperPanel.AmmoImageL.gameObject.SetActive(true);
-            helperPanel.AmmoImageR.gameObject.SetActive(true);
-        }
-
-        helperPanel.HelpText.text = info;
-        helperPanel.gameObject.SetActive(true);
-
-        if (showTimeSek != 0)
-        {
-            yield return new WaitForSeconds(showTimeSek);
-            helperPanel.gameObject.SetActive(false);
-        }
-    }
-
 }

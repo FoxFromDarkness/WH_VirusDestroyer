@@ -8,7 +8,9 @@ public class GameController : MonoBehaviour
 {
     public static bool IsInputEnable { get; set; }
     public static GameController Instance;
-    public GameObject player;
+
+    [SerializeField] private GameObject player;
+    [SerializeField] private SpriteRenderer currentBackgroundImage;
 
     [Space]
     [Header("Audio Options")]
@@ -17,12 +19,23 @@ public class GameController : MonoBehaviour
     [SerializeField] private float lastSFXVolume;
     [SerializeField] private bool isMute = false;
 
-
-
     private void Start()
     {
         if (Instance == null)
             Instance = this.GetComponent<GameController>();
+    }
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+#if !UNITY_EDITOR
+            if (!player.gameObject.activeSelf) return;
+#else
+            if (!player.gameObject.activeSelf) player.gameObject.SetActive(true);
+#endif
+            ShowHideMainMenu();
+        }
     }
 
     public void StartNewGame(bool isLoading)
@@ -30,7 +43,7 @@ public class GameController : MonoBehaviour
         player.SetActive(true);
         player.GetComponent<PlayerBase>().StartPosition = new Vector3(-1240.0f, 255.0f);
         GetComponent<SceneController>().UnloadAllScenes(false);
-        GetComponent<SceneController>().LoadScene(false, "GameLevel_TestLevel", SetCharacterPosition);
+        GetComponent<SceneController>().LoadScene(false, "Level_Tutorial", SetCharacterPosition);
         player.GetComponent<PlayerBase>().SetStartPlayerOptions();
 
         if (isLoading)
@@ -38,15 +51,20 @@ public class GameController : MonoBehaviour
         else
             SavePlayerPrefs();
 
-        AppController.Instance.ShowHideMainMenu();
-        IsInputEnable = true;
+        ShowHideMainMenu();
+    }
+
+    public void ShowHideMainMenu()
+    {
+        HeadPanelController.Instance.startPanel.CloseSubPanels();
+        HeadPanelController.Instance.startPanel.ChangeVisibility();
     }
 
     private void SavePlayerPrefs()
     {
         HeadPanelController.Instance.uiPanel.DeactiveSlots();
         HeadPanelController.Instance.uiPanel.SetAmmo(-1);
-        SaveController.Instance.SavePrefs();
+        SaveController.Instance.SaveDefaultPrefs();
     }
 
     private void LoadPlayerPrefs()
@@ -77,8 +95,20 @@ public class GameController : MonoBehaviour
         audioMixer.SetFloat("sfxVolume", value == true ? -80 : lastSFXVolume);
     }
 
+    public void SetCurrentBackground(Sprite bg, Vector2 scale)
+    {
+        currentBackgroundImage.sprite = bg;
+        currentBackgroundImage.transform.localScale = new Vector2(scale.x, scale.y);
+    }
+
     private void SetCharacterPosition()
     {
         player.transform.position = player.GetComponent<PlayerBase>().StartPosition;
+    }
+
+    public void ExitApplication()
+    {
+        Debug.Log("Application Exit");
+        Application.Quit();
     }
 }

@@ -424,7 +424,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -20
-  m_Sprite: {fileID: 21300000, guid: 3d4b362cca36215479e0b342efe1ceda, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -432,7 +432,7 @@ SpriteRenderer:
   m_Size: {x: 2.5, y: 2.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &613981714
@@ -591,6 +591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 60526114}
+  currentBackgroundImage: {fileID: 613981713}
   audioMixer: {fileID: 24100000, guid: 59423ad33fb09e246863e2c5c1484464, type: 2}
   lastMusicVolume: 0
   lastSFXVolume: 0
@@ -1091,6 +1092,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CharacterBoy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4575670696701520957, guid: 15eaddd04fdc80d4e8d31ae71cc77c3e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4575670696722306591, guid: 15eaddd04fdc80d4e8d31ae71cc77c3e,
         type: 3}

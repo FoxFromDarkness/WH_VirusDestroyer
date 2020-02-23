@@ -43,7 +43,7 @@ public class BossLevel1 : LevelBase
         yield return new WaitForSeconds(2.0f);
         HeadPanelController.Instance.uiPanel.HideObjects();
         HeadPanelController.Instance.uiPanel.ShowHelperPanel("You Win!", 2.0f);
-        levelPortal.IsActive = true;
+        //levelPortal.IsActive = true;
         player.AddItem(InventoryItems.BLACK_CRISTALS, 1000);
         ortographicSize = DEFAULT_ORTOGRAPHIC_SIZE;
         isAnimation = true;
