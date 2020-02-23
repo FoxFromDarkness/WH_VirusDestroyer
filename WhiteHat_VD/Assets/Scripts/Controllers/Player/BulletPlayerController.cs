@@ -29,7 +29,7 @@ public class BulletPlayerController : BulletBase
             this.transform.Translate(new Vector3(1, 0) * speed);
     }
 
-    public void InitBullet(InventoryItems weaponAmmo) {
+    public void InitBullet(InventoryItems weaponAmmo, float additionalDamage) {
 
         this.gameObject.SetActive(true);
         isMoving = true;
@@ -54,6 +54,7 @@ public class BulletPlayerController : BulletBase
             case InventoryItems.NULL:
                 damage = 1;
                 break;
-        }       
+        }
+        damage += additionalDamage / 10;
     }
 }

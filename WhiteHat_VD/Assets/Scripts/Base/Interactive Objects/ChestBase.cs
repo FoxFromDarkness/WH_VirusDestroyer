@@ -11,7 +11,8 @@ public class ChestBase : MonoBehaviour
     [SerializeField]
     private Sprite questionChestSprite, correctChestSprite, incorrectChestSprite;
 
-    [SerializeField]  private int awardAmount;
+    [SerializeField] private int awardAmount;
+    private int additionalAwardAmount;
 
     // Start is called before the first frame update
     void Start()
@@ -38,11 +39,16 @@ public class ChestBase : MonoBehaviour
         }
     }
 
+    public void SetAdditionalAward(int luck)
+    {
+        additionalAwardAmount = awardAmount * (luck / 10);
+    }
+
     private IEnumerator OpenChest()
     {
         yield return new WaitForSeconds(2.0f);
 
         Debug.Log("Animacja otwarcia skrzyni");
-        Debug.Log("Wysyp " + awardAmount + " bitcoinów");
+        Debug.Log("Wysyp " + (awardAmount + additionalAwardAmount) + " bitcoinów");
     }
 }

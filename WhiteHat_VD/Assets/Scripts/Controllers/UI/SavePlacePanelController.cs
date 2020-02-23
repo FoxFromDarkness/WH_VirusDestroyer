@@ -4,11 +4,24 @@ using UnityEngine;
 
 public class SavePlacePanelController : PanelBase
 {
+    [SerializeField] private GameObject upgradeBasesParent;
+    private UpgradeBase[] upgradeBases;
     private BlackCristalUI blackCristals;
     void Start()
     {
-        this.gameObject.SetActive(false);
         blackCristals = GetComponentInChildren<BlackCristalUI>();
+        upgradeBases = upgradeBasesParent.GetComponentsInChildren<UpgradeBase>();
+        this.gameObject.SetActive(false);
+    }
+
+    public void SetUpgradeBasesInfo()
+    {
+        Debug.Log(upgradeBases.Length);
+        foreach (var item in upgradeBases)
+        {
+            Debug.Log(item.playerAttributes + " updated");
+            item.UpdateInfo();
+        }
     }
 
     public void SetBlackCristals(int bcAmount)

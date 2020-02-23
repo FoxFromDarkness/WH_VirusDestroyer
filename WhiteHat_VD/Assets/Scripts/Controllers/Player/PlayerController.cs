@@ -17,7 +17,8 @@ public class PlayerController : MonoBehaviour
     public bool CanOpenChest { get; set; }
     public bool CanMoveDownPlatform { get; set; }
 
-    public static ChestBase Chest { get; set; }
+    private static ChestBase _chest;
+    public static ChestBase Chest { get { return _chest; } set { _chest = value; _chest.SetAdditionalAward(PlayerBase.Luck); } }
     public PlatformEffector2DBase Platform { get; set; }
 
     //Portals
@@ -126,7 +127,7 @@ public class PlayerController : MonoBehaviour
         {
             GetComponent<PlatformerCharacter2D>().ShotAnim();
             var copy_bullet = Instantiate(bullet, bullet.transform.parent);
-            copy_bullet.GetComponent<BulletPlayerController>().InitBullet(GetActiveWeapon());
+            copy_bullet.GetComponent<BulletPlayerController>().InitBullet(GetActiveWeapon(), GetAttribute(PlayerAttributes.ADDITIONAL_DAMAGE));
             AddItem(GetActiveWeapon(), -1);
             isShot = false;
         }
@@ -210,6 +211,12 @@ public class PlayerController : MonoBehaviour
             case PlayerAttributes.LEVEL:
                 PlayerStats.Level = amount;
                 break;
+            case PlayerAttributes.LUCK:
+                PlayerBase.Luck = (int)amount;
+                break;
+            case PlayerAttributes.ADDITIONAL_DAMAGE:
+                PlayerStats.AdditionalDamage = amount;
+                break;
         }
     }
 
@@ -230,6 +237,12 @@ public class PlayerController : MonoBehaviour
             case PlayerAttributes.LEVEL:
                 PlayerStats.Level += amount;
                 break;
+            case PlayerAttributes.LUCK:
+                PlayerBase.Luck += (int)amount;
+                break;
+            case PlayerAttributes.ADDITIONAL_DAMAGE:
+                PlayerStats.AdditionalDamage += amount;
+                break;
         }
     }
 
@@ -243,6 +256,10 @@ public class PlayerController : MonoBehaviour
                 return PlayerStats.HP_Max;
             case PlayerAttributes.LEVEL:
                 return PlayerStats.Level;
+            case PlayerAttributes.LUCK:
+                return PlayerBase.Luck;
+            case PlayerAttributes.ADDITIONAL_DAMAGE:
+                return PlayerStats.AdditionalDamage;
             default:
                 return -1;
         }

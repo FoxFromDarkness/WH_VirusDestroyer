@@ -822,7 +822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   percentUpgrade: {fileID: 159448060}
-  PlayerAttributes: 5
+  playerAttributes: 5
   itemPrice: 5
   percentImprovement: 1
 --- !u!114 &90593140
@@ -7469,7 +7469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &927684964
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9699,7 +9699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   percentUpgrade: {fileID: 454568738}
-  PlayerAttributes: 4
+  playerAttributes: 0
   itemPrice: 5
   percentImprovement: 1
 --- !u!114 &1149432436
@@ -10950,9 +10950,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   percentUpgrade: {fileID: 1954831196}
-  PlayerAttributes: 0
+  playerAttributes: 1
   itemPrice: 5
-  percentImprovement: 1
+  percentImprovement: 10
 --- !u!114 &1234124906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11099,6 +11099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2319770e498f45046b6b2facbf12afef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeBasesParent: {fileID: 729650135}
 --- !u!114 &1237482216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16675,9 +16676,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 729650135}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1237482215}
+        m_MethodName: SetUpgradeBasesInfo
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -17360,7 +17372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   percentUpgrade: {fileID: 1243573926}
-  PlayerAttributes: 3
+  playerAttributes: 3
   itemPrice: 5
   percentImprovement: 1
 --- !u!114 &1902969010
@@ -19635,7 +19647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -442}
+  m_AnchoredPosition: {x: 381, y: -442}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2100098637

@@ -7,8 +7,9 @@ public class PlayerBase : MonoBehaviour
     public float HP { get; set; }
     public float HP_Max { get; set; }
     public float Level { get; set; }
-    public float Exp { get; set; }
-    public float ExpToNextLvl { get; set; }
+    public static int Luck { get; set; }
+    public float MagazineCapacity { get; set; }
+    public float AdditionalDamage { get; set; }
 
     public int BlackCristals { get; set; }
     public WeaponBase[] WeaponMods { get; set; }
@@ -27,8 +28,9 @@ public class PlayerBase : MonoBehaviour
         HP_Max = 100;
         HP = HP_Max;
         Level = 0;
-        ExpToNextLvl = 500;
-        Exp = 0;
+        Luck = 0;
+        MagazineCapacity = 10;
+        AdditionalDamage = 0;
 
         WeaponMods = new WeaponBase[4];
         AmmoBoxSupply = new int[4];
