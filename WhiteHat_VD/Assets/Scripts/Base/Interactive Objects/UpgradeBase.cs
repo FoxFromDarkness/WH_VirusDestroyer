@@ -19,6 +19,8 @@ public class UpgradeBase : MonoBehaviour
 
     public void UpdateInfo()
     {
+        if (player == null) player = FindObjectOfType<PlayerController>();
+
         if (playerAttributes == PlayerAttributes.HP_MAX)
         {
             percentUpgrade.text = ((player.GetAttribute(playerAttributes)-100)/10) + "";

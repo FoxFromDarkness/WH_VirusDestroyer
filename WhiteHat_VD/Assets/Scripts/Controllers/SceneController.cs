@@ -12,7 +12,7 @@ public class SceneController : MonoBehaviour
         if (rootScene)
             SceneManager.LoadScene("_RootScene");
 
-        StartCoroutine(LoadSceneAsynchronously(sceneName, nextMethod));
+        StartCoroutine(LoadSceneAsynchronously(rootScene, sceneName, nextMethod));
         
     }
 
@@ -40,9 +40,10 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene("_UI", LoadSceneMode.Additive);
     }
 
-    private IEnumerator LoadSceneAsynchronously (string sceneName, Action nextMethod)
+    private IEnumerator LoadSceneAsynchronously (bool uiscene, string sceneName, Action nextMethod)
     {
-        yield return StartCoroutine(LoadUIScene());
+        if(uiscene)
+            yield return StartCoroutine(LoadUIScene());
 
         yield return new WaitForSeconds(0.3f);
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);

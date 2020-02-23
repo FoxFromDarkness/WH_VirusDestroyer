@@ -2111,7 +2111,7 @@ SpriteRenderer:
   m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &658514230
@@ -3456,7 +3456,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAnimation: 0
   speedOfAnim: 2
-  ortographicSize: 15
+  ortographicSize: 10
+  bgSprite: {fileID: 0}
+  bgScale: {x: 0, y: 0}
   levelPortal: {fileID: 0}
 --- !u!1 &1110409831
 GameObject:

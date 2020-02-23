@@ -28,14 +28,22 @@ public class PlayerController : MonoBehaviour
     public static LevelPortalController LevelPortalController { get; set; }
     //
     [SerializeField]
-    private BulletPlayerController bullet;
+    private GameObject bulletsParent;
+    private AudioSource bulletSFX;
+    private BulletPlayerController[] bullets;
     private bool isShot;
 
     public static bool IsSlotChangeImageKey;
 
     private void Start()
     {
-        PlayerStats = GetComponent<PlayerBase>();      
+        PlayerStats = GetComponent<PlayerBase>();
+        bullets = bulletsParent.GetComponentsInChildren<BulletPlayerController>();
+        bulletSFX = GetComponent<AudioSource>();
+        foreach (var item in bullets)
+        {
+            item.gameObject.SetActive(false);
+        }
     }
 
     private void Update()
@@ -126,8 +134,12 @@ public class PlayerController : MonoBehaviour
         if (isShot)
         {
             GetComponent<PlatformerCharacter2D>().ShotAnim();
-            var copy_bullet = Instantiate(bullet, bullet.transform.parent);
+            Debug.Log("GetActiveWeapon(): " + GetActiveWeapon());
+            Debug.Log("bullets.Length: " + bullets.Length);
+            isShot = false;
+            var copy_bullet = Instantiate(bullets[GetActiveWeapon() == InventoryItems.NULL ? 0 : (int)GetActiveWeapon()], bulletsParent.transform.parent);
             copy_bullet.GetComponent<BulletPlayerController>().InitBullet(GetActiveWeapon(), GetAttribute(PlayerAttributes.ADDITIONAL_DAMAGE));
+            bulletSFX.Play();
             AddItem(GetActiveWeapon(), -1);
             isShot = false;
         }
