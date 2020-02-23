@@ -8,7 +8,8 @@ public class GameController : MonoBehaviour
 {
     public static bool IsInputEnable { get; set; }
     public static GameController Instance;
-
+    private bool wasStart = false;
+    
     [SerializeField] private GameObject player;
     [SerializeField] private SpriteRenderer currentBackgroundImage;
 
@@ -25,15 +26,15 @@ public class GameController : MonoBehaviour
             Instance = this.GetComponent<GameController>();
     }
 
+
     void Update()
     {
+#if !UNITY_EDITOR
+        if(!wasStart) return;
+#endif
+
         if (Input.GetButtonDown("Cancel"))
         {
-#if !UNITY_EDITOR
-            if (!player.gameObject.activeSelf) return;
-#else
-            if (!player.gameObject.activeSelf) player.gameObject.SetActive(true);
-#endif
             ShowHideMainMenu();
         }
     }
@@ -52,6 +53,7 @@ public class GameController : MonoBehaviour
             SavePlayerPrefs();
 
         ShowHideMainMenu();
+        wasStart = true;
     }
 
     public void ShowHideMainMenu()
