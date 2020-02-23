@@ -1494,7 +1494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAnimation: 0
   speedOfAnim: 0.1
-  ortographicSize: 5
+  ortographicSize: 6.5
 --- !u!4 &778911779
 Transform:
   m_ObjectHideFlags: 0

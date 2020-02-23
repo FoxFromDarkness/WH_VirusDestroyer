@@ -10,6 +10,7 @@ public class StartPanelController : PanelBase
     public GameObject playPanel;
     public GameObject optionPanel;
 
+
     private void Start()
     {
         playPanel.SetActive(false);
@@ -31,6 +32,21 @@ public class StartPanelController : PanelBase
                 optionPanel.SetActive(true);
                 break;
         }
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        GameController.Instance.SetMusicVolume(volume);
+    }
+
+    public void SetSfxVolume(float volume)
+    {
+        GameController.Instance.SetSfxVolume(volume);
+    }
+
+    public void Mute(bool value)
+    {
+        GameController.Instance.Mute(value);
     }
 
     public void CloseSubPanels()

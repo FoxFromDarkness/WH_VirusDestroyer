@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 99416639}
   - component: {fileID: 99416638}
   m_Layer: 0
-  m_Name: Audio
+  m_Name: BgMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,7 +201,7 @@ AudioSource:
   m_GameObject: {fileID: 99416637}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 4923105863922000851, guid: 2eb5ba4f77a2cc14d9886527059abd73,
+  OutputAudioMixerGroup: {fileID: 4923105863922000851, guid: 59423ad33fb09e246863e2c5c1484464,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 69031119cd3b2d540882dfb1f5c6bb2e, type: 3}
   m_PlayOnAwake: 1
@@ -591,6 +591,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 60526114}
+  audioMixer: {fileID: 24100000, guid: 59423ad33fb09e246863e2c5c1484464, type: 2}
+  lastMusicVolume: 0
+  lastSFXVolume: 0
+  isMute: 0
 --- !u!1 &1581510726
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,7 +920,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 6.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

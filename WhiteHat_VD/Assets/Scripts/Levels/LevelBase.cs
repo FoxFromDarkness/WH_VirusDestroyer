@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class LevelBase : MonoBehaviour
 {
-    public const float DEFAULT_ORTOGRAPHIC_SIZE = 5;
+    public const float DEFAULT_ORTOGRAPHIC_SIZE = 6.5f;
     public bool isAnimation;
     public float speedOfAnim = 0.1f;
-    public float ortographicSize = 5;
+    public float ortographicSize;
 
     protected virtual void Start()
     {
@@ -32,4 +32,5 @@ public class LevelBase : MonoBehaviour
             }
         }
     }
+
 }

@@ -1,14 +1,8 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:WhiteHat_VD/Assets/Images/CasualEnemy_Anims/en1.meta
-guid: 7f88113e9ae0e144fa7990e6075a2ce3
-folderAsset: yes
-DefaultImporter:
-=======
-guid: 2eb5ba4f77a2cc14d9886527059abd73
+guid: 59423ad33fb09e246863e2c5c1484464
 NativeFormatImporter:
->>>>>>> master:WhiteHat_VD/Assets/Sounds/AudioMixer.mixer.meta
   externalObjects: {}
-  mainObjectFileID: 24100000
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
