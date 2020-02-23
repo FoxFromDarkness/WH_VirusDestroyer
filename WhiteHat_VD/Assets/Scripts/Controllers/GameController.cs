@@ -7,7 +7,7 @@ using UnityEngine.Audio;
 public class GameController : MonoBehaviour
 {
     public static bool IsInputEnable { get; set; }
-    public static GameController Instance;
+    public static GameController Instance { get; private set; }
     private bool wasStart = false;
     
     [SerializeField] private GameObject player;
@@ -20,10 +20,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private float lastSFXVolume;
     [SerializeField] private bool isMute = false;
 
-    private void Start()
+    private void Awake()
     {
-        if (Instance == null)
-            Instance = this.GetComponent<GameController>();
+        Instance = this;
     }
 
 
