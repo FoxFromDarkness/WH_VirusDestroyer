@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletEnemyController : BulletBase
 {
     public bool isLaser;
+    [SerializeField] private bool isTowerBullet;
 
     private void FixedUpdate()
     {
@@ -13,7 +14,10 @@ public class BulletEnemyController : BulletBase
         DestroyMoment();
 
         if (isMoving)
-            this.transform.Translate(new Vector3(1, 0) * speed);
+        {
+            if(isTowerBullet) this.transform.Translate(new Vector3(1, 0) * speed);
+            else this.transform.Translate(new Vector3(0, 1) * speed);
+        }
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

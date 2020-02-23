@@ -75,8 +75,14 @@ public class CasualEnemyController : MonoBehaviour
     public int CurrentState { get { return _currentState; } set { _currentState = value; SetAnimator(_isAim, _currentState); } }
     [Space]
     [Header("Weapons")]
-    [SerializeField] private BulletEnemyController enemyBullet;
+    [SerializeField] private BulletEnemyController enemyRiflegunBullet;
+    [SerializeField] private BulletEnemyController enemyShotgunBullet;
+    [SerializeField] private BulletEnemyController enemyRocketBullet;
     [SerializeField] private BulletEnemyController enemyLaser;
+    private Vector2 enemyRifleBulletStartPos;
+    private Vector2 enemyRifleBulletStartScale;
+    private Vector2 enemyShotgunBulletStartPos;
+    private Vector2 enemyRocketStartPos;
     private Vector2 enemyLaserStartPos;
     private Vector2 enemyHPStartPos;
     [SerializeField] private GameObject explosionEffect;
@@ -92,6 +98,8 @@ public class CasualEnemyController : MonoBehaviour
 
     private void Start()
     {
+        target = FindObjectOfType<PlayerController>();
+
         currentHealthPoints = maxHealthPoints;
 
         bodyImage = body.GetComponent<SpriteRenderer>();
@@ -100,10 +108,12 @@ public class CasualEnemyController : MonoBehaviour
         hpCanvas = body.GetComponentInChildren<HP_Canvas>();
         hpCanvas.gameObject.SetActive(false);
 
+        if (enemyRiflegunBullet != null) enemyRifleBulletStartPos = enemyRiflegunBullet.transform.localPosition;
+        if (enemyRiflegunBullet != null) enemyRifleBulletStartScale = enemyRiflegunBullet.transform.localScale;
+        if(enemyShotgunBullet != null) enemyShotgunBulletStartPos = enemyShotgunBullet.transform.localPosition;
+        if(enemyRocketBullet != null) enemyRocketStartPos = enemyRocketBullet.transform.localPosition;
         enemyLaserStartPos = enemyLaser.transform.localPosition;
         enemyHPStartPos = hpCanvas.transform.localPosition;
-
-        target = FindObjectOfType<PlayerController>();
 
         if (enemyType == EnemyType.TOWER) return;
 
@@ -205,9 +215,25 @@ public class CasualEnemyController : MonoBehaviour
         }
 
     }
+    public BulletEnemyController GetEnemyBullet()
+    {
+        if (enemyRocketBullet == null)
+        {
+            switch (enemyBody)
+            {
+                case EnemyBody.BLACK:
+                    return enemyShotgunBullet;
+                default:
+                    return enemyRiflegunBullet;
+            }
+        }
+        else
+            return enemyRocketBullet;
+    }
 
     private void CreateEnemyBullet()
     {
+        var enemyBullet = GetEnemyBullet();
         var copyEnemyBullet = Instantiate(enemyBullet, enemyBullet.transform.parent);
         copyEnemyBullet.transform.position = enemyBullet.transform.position;
         copyEnemyBullet.transform.rotation = enemyBullet.transform.rotation;
@@ -239,8 +265,28 @@ public class CasualEnemyController : MonoBehaviour
         canMove = true;
     }
 
-    private void CorrectLaserPosition()
+    private void CorrectAmmoPosition()
     {
+        if (enemyRiflegunBullet != null)
+        {
+            enemyRiflegunBullet.transform.localPosition = enemyRifleBulletStartPos;
+            enemyRiflegunBullet.transform.localPosition = new Vector3(enemyRiflegunBullet.transform.localPosition.x * (movingRight == true ? 1 : -1), enemyRiflegunBullet.transform.localPosition.y, 0);
+            enemyRiflegunBullet.transform.localScale = enemyRifleBulletStartScale;
+            enemyRiflegunBullet.transform.localScale = new Vector2(enemyRiflegunBullet.transform.localScale.x, enemyRiflegunBullet.transform.localScale.y * (movingRight == true ? 1 : -1));
+        }
+
+        if (enemyShotgunBullet != null)
+        {
+            enemyShotgunBullet.transform.localPosition = enemyShotgunBulletStartPos;
+            enemyShotgunBullet.transform.localPosition = new Vector3(enemyShotgunBullet.transform.localPosition.x * (movingRight == true ? 1 : -1), enemyShotgunBullet.transform.localPosition.y, 0);
+        }
+
+        if (enemyRocketBullet != null)
+        {
+            enemyRocketBullet.transform.localPosition = enemyRocketStartPos;
+            enemyRocketBullet.transform.localPosition = new Vector3(enemyRocketBullet.transform.localPosition.x * (movingRight == true ? 1 : -1), enemyRocketBullet.transform.localPosition.y, 0);
+        }
+
         if (enemyAttack == EnemyAttack.LASER)
         {
             enemyLaser.transform.localPosition = enemyLaserStartPos;
@@ -299,13 +345,13 @@ public class CasualEnemyController : MonoBehaviour
                 movingRight = !movingRight;
                 bodyImage.flipX = !bodyImage.flipX; //flipX ==> false (movingRight = true)
                 hpCanvas.transform.localPosition = new Vector2(movingRight == true ? enemyHPStartPos.x : enemyHPStartPos.x * -1, hpCanvas.transform.localPosition.y);
-                CorrectLaserPosition();
+                CorrectAmmoPosition();
                 break;
             case EnemyType.GUARD:
                 canMove = false;
                 CurrentState = 0;
                 bodyImage.flipX = !bodyImage.flipX;
-                CorrectLaserPosition();
+                CorrectAmmoPosition();
                 hpCanvas.transform.localPosition = new Vector2(movingRight == true ? enemyHPStartPos.x : enemyHPStartPos.x * -1, hpCanvas.transform.localPosition.y);
                 break;
             //case EnemyType.TOWER:
@@ -323,7 +369,7 @@ public class CasualEnemyController : MonoBehaviour
         movingRight = isRightArea;
         bodyImage.flipX = !movingRight;
         hpCanvas.transform.localPosition = new Vector2(movingRight == true ? enemyHPStartPos.x : enemyHPStartPos.x * -1, hpCanvas.transform.localPosition.y);
-        CorrectLaserPosition();
+        CorrectAmmoPosition();
 
 
         if (isTargetInArea)
