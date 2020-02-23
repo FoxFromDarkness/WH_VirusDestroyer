@@ -20,8 +20,7 @@ public class PlayerController : MonoBehaviour
     public bool CanOpenChest { get; set; }
     public bool CanMoveDownPlatform { get; set; }
 
-    private static ChestBase _chest;
-    public static ChestBase Chest { get { return _chest; } set { _chest = value; _chest.SetAdditionalAward(PlayerBase.Luck); } }
+    public static ChestBase Chest { get; set; }
     public PlatformEffector2DBase Platform { get; set; }
 
     //Portals
@@ -32,12 +31,18 @@ public class PlayerController : MonoBehaviour
     //
     [SerializeField]
     private GameObject bulletsParent;
-    private AudioSource audioSource;
-    public AudioClip[] bulletsSFX;
     private BulletPlayerController[] bullets;
     private bool isShot;
     private float bulletLoadingTime = LOADING_TIME_FOR_RIFLES;
     private float currentLoadingTime;
+
+    [Space]
+    [Header("Sounds")]
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip[] bulletsSFX;
+    [SerializeField] private AudioClip bonusSFX;
+    [SerializeField] private AudioClip changeWeaponSFX;
+    [SerializeField] private AudioClip teleportSFX;
 
     public static bool IsSlotChangeImageKey;
 
@@ -152,14 +157,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void PlayBulletSFX()
-    {
-        if (GetActiveWeapon() == InventoryItems.AMMO_TYPE_4 || GetActiveWeapon() == InventoryItems.AMMO_TYPE_1)
-            audioSource.clip = bulletsSFX[1];
-        else
-            audioSource.clip = bulletsSFX[0];
-        audioSource.Play();
-    }
 
     private InventoryItems GetActiveWeapon()
     {
@@ -193,6 +190,7 @@ public class PlayerController : MonoBehaviour
             HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, -1);
 
         ChangeHeroAnim();
+        PlayChangeWeaponSFX();
         InventoryItems tmp = GetActiveWeapon();
         switch (tmp)
         {
@@ -496,6 +494,37 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    #region SFX_METHODS
+
+    private void PlayBulletSFX()
+    {
+        if (GetActiveWeapon() == InventoryItems.AMMO_TYPE_4 || GetActiveWeapon() == InventoryItems.AMMO_TYPE_1)
+            audioSource.clip = bulletsSFX[1];
+        else
+            audioSource.clip = bulletsSFX[0];
+        audioSource.Play();
+    }
+
+    public void PlayBonusSFX()
+    {
+        audioSource.clip = bonusSFX;
+        audioSource.Play();
+    }
+
+    public void PlayChangeWeaponSFX()
+    {
+        audioSource.clip = changeWeaponSFX;
+        audioSource.Play();
+    }
+
+    public void PlayTeleportSFX()
+    {
+        audioSource.clip = teleportSFX;
+        audioSource.Play();
+    }
+
+    #endregion
+
     #region TRIGGER_OPERATIONS
 
     private void SavePlaceEnter()
@@ -530,6 +559,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
             {
                 this.transform.position = newPosition;
+                PlayTeleportSFX();
                 InPortal = false;
             }
         }
@@ -544,6 +574,7 @@ public class PlayerController : MonoBehaviour
                 if (LevelPortalController.IsActive)
                 {
                     InLevelPortal = false;
+                    PlayTeleportSFX();
                     HeadPanelController.Instance.uiPanel.HideHelperPanel();
                     _GameManager.GetComponent<SceneController>().UnloadScene(LevelPortalController.thisSceneName);
                     _GameManager.GetComponent<SceneController>().LoadScene(false, LevelPortalController.nextSceneName, SetCharacterPositionAfterChangeLevel);

@@ -58,8 +58,15 @@ public class GameController : MonoBehaviour
 
     public void ShowHideMainMenu()
     {
-        HeadPanelController.Instance.startPanel.CloseSubPanels();
-        HeadPanelController.Instance.startPanel.ChangeVisibility();
+        if (HeadPanelController.Instance.savePlacePanel.gameObject.activeSelf)
+        {
+            HeadPanelController.Instance.savePlacePanel.ChangeVisibility(false);
+        }
+        else
+        {
+            HeadPanelController.Instance.startPanel.CloseSubPanels();
+            HeadPanelController.Instance.startPanel.ChangeVisibility();
+        }
     }
 
     private void SavePlayerPrefs()
