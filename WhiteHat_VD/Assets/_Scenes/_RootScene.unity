@@ -1948,6 +1948,9 @@ MonoBehaviour:
   bulletsSFX:
   - {fileID: 8300000, guid: 852683222b9253846b64dffbbfb41233, type: 3}
   - {fileID: 8300000, guid: 9e88134cea48c8f4fa754464df155929, type: 3}
+  bonusSFX: {fileID: 8300000, guid: 5e55acd7aa4bd4248bdcdba67866d6bd, type: 3}
+  changeWeaponSFX: {fileID: 8300000, guid: 847f6327a5302ad4392833437c5f6890, type: 3}
+  teleportSFX: {fileID: 8300000, guid: f2058bede9858314cbfbc8c30c9d36b2, type: 3}
 --- !u!61 &2071335609
 BoxCollider2D:
   m_ObjectHideFlags: 0

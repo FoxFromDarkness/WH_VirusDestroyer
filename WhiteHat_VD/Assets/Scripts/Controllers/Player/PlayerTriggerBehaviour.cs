@@ -14,11 +14,11 @@ public class PlayerTriggerBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        QuestionDoorBehavior(collision);
+        //QuestionDoorBehavior(collision);
         DeadZoneBehavior(collision);
         BlackCristalBehavior(collision);
         SavePlaceBehavior_Enter(collision);
-        ParticleSystemBehavior_Enter(collision);
+        //ParticleSystemBehavior_Enter(collision);
         PortalBehaviour_Enter(collision);
         LevelPortalBehaviour_Enter(collision);
         EnemyBullet_Enter(collision);
@@ -140,6 +140,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         if (collision.GetComponent<BlackCristalBase>())
         {
             player.AddItem(InventoryItems.BLACK_CRISTALS, 1);
+            player.PlayBonusSFX();
             collision.gameObject.SetActive(false);
         }
     }
@@ -152,7 +153,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
             int amountItem = collision.GetComponent<ItemBoxBase>().ItemAmount;
             InventoryItems itemType = collision.GetComponent<ItemBoxBase>().ItemType;
             Sprite spr = collision.GetComponent<ItemBoxBase>().sprite;
-            
+            player.PlayBonusSFX();
             HeadPanelController.Instance.uiPanel.ShowHelperPanel("+" + amountItem, 2f, spr);
             player.AddItem(itemType, amountItem);
         }
@@ -163,6 +164,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         if (collision.GetComponent<SavePlaceBase>())
         {
             HeadPanelController.Instance.uiPanel.ShowHelperPanel("Press 'Up arrow' to enter", 0f);
+            player.PlayTeleportSFX();
             player.CanOpenSavePlace = true;
         }
     }
