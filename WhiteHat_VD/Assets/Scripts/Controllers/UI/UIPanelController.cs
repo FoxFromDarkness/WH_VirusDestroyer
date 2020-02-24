@@ -16,6 +16,8 @@ public class UIPanelController : PanelBase
     private AmmoUI ammunition;
     private BlackCristalUI blackCristals;
     private HelperPanelUI helperPanel;
+    private GameOverPanelUI gameOverPanel;
+
     public HPBossUI hpBossUI { get; set; }
 
     private void Start()
@@ -25,6 +27,7 @@ public class UIPanelController : PanelBase
         blackCristals = GetComponentInChildren<BlackCristalUI>();
         helperPanel = GetComponentInChildren<HelperPanelUI>();
         hpBossUI = GetComponentInChildren<HPBossUI>();
+        gameOverPanel = GetComponentInChildren<GameOverPanelUI>();
         HideObjects();
 
         DeactiveSlots();
@@ -106,6 +109,7 @@ public class UIPanelController : PanelBase
     {
         helperPanel.gameObject.SetActive(false);
         hpBossUI.gameObject.SetActive(false);
+        gameOverPanel.gameObject.SetActive(false);
     }
 
     public void HideHelperPanel()
@@ -149,5 +153,26 @@ public class UIPanelController : PanelBase
         
         helperPanel.gameObject.SetActive(false);
         isCoroutineRun = false;
+    }
+
+    public void ShowGameOver(bool gameResult)
+    {
+        if (gameResult == true)
+        {
+            gameOverPanel.SetColor(255, 0, 0);
+            gameOverPanel.result.text = "YOU WIN";
+        }
+        else
+        {
+            gameOverPanel.SetColor(0, 255, 0);
+            gameOverPanel.result.text = "YOU LOST";
+        }
+        gameOverPanel.gameObject.SetActive(true);
+
+    }
+
+    public void HideGameOver()
+    {
+        gameOverPanel.gameObject.SetActive(false);
     }
 }

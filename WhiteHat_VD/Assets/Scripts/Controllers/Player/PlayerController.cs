@@ -422,7 +422,7 @@ public class PlayerController : MonoBehaviour
             GameController.IsInputEnable = false;
             //gameObject.SetActive(false);
             GetComponent<PlatformerCharacter2D>().DeadAnim();
-            HeadPanelController.Instance.uiPanel.ShowHelperPanel("GAME OVER!", 2.0f);
+            HeadPanelController.Instance.uiPanel.ShowGameOver(false);
         }
     }
 
