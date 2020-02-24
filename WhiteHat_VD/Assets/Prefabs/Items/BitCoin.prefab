@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1088291524867466890}
   - component: {fileID: 1088291524867466895}
   - component: {fileID: 1088291524867466892}
+  - component: {fileID: 5679068524844858140}
   - component: {fileID: 1088291524867466893}
   m_Layer: 0
   m_Name: BitCoin
@@ -92,6 +93,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 905dc284e1796e34d82b1a64db5195e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5679068524844858140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088291524867466891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a60ce3d8eb5d874c9612b9def1dd4cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!58 &1088291524867466893

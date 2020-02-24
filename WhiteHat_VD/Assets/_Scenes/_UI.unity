@@ -1477,6 +1477,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194841052}
   m_CullTransparentMesh: 0
+--- !u!1 &199741489 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4627824838305889681, guid: 4840a001135e2924f8df7c95e28a9cc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1208116488}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &199741496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199741489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &201242227
 GameObject:
   m_ObjectHideFlags: 0
@@ -2998,6 +3017,7 @@ GameObject:
   - component: {fileID: 378578658}
   - component: {fileID: 378578657}
   - component: {fileID: 378578660}
+  - component: {fileID: 378578663}
   m_Layer: 5
   m_Name: ButtonBuyAmmo2
   m_TagString: Untagged
@@ -3131,6 +3151,19 @@ MonoBehaviour:
   InventoryItems: 2
   itemPrice: 2
   itemAmount: 10
+--- !u!114 &378578663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378578655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &382513327
 GameObject:
   m_ObjectHideFlags: 0
@@ -4842,6 +4875,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547740214}
   m_CullTransparentMesh: 0
+--- !u!1 &564664535 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4627824838305889681, guid: 4840a001135e2924f8df7c95e28a9cc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2131955934}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &564664538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564664535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &568327452
 GameObject:
   m_ObjectHideFlags: 0
@@ -8629,6 +8681,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputField: {fileID: 257681488}
   button: {fileID: 1151521864}
+--- !u!1 &1049446805 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4627824838305889681, guid: 4840a001135e2924f8df7c95e28a9cc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1904695948}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1049446812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049446805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &1055523703
 GameObject:
   m_ObjectHideFlags: 0
@@ -9168,6 +9239,7 @@ GameObject:
   - component: {fileID: 1094088027}
   - component: {fileID: 1094088026}
   - component: {fileID: 1094088025}
+  - component: {fileID: 1094088031}
   m_Layer: 5
   m_Name: ButtonBuyAmmo1
   m_TagString: Untagged
@@ -9301,6 +9373,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094088023}
   m_CullTransparentMesh: 0
+--- !u!114 &1094088031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094088023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1001 &1098377557
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18791,6 +18876,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 4627824838305889685, guid: 4840a001135e2924f8df7c95e28a9cc6,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627824838305889685, guid: 4840a001135e2924f8df7c95e28a9cc6,
+        type: 3}
       propertyPath: m_Colors.m_SelectedColor.r
       value: 1
       objectReference: {fileID: 0}
@@ -18823,6 +18913,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 0.8392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627824838305889685, guid: 4840a001135e2924f8df7c95e28a9cc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627824838305889685, guid: 4840a001135e2924f8df7c95e28a9cc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627824838305889685, guid: 4840a001135e2924f8df7c95e28a9cc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627824838305889685, guid: 4840a001135e2924f8df7c95e28a9cc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627824838305889685, guid: 4840a001135e2924f8df7c95e28a9cc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627824838305889685, guid: 4840a001135e2924f8df7c95e28a9cc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4627824838802973132, guid: 4840a001135e2924f8df7c95e28a9cc6,
         type: 3}
@@ -19079,6 +19199,7 @@ GameObject:
   - component: {fileID: 1993931752}
   - component: {fileID: 1993931751}
   - component: {fileID: 1993931750}
+  - component: {fileID: 1993931756}
   m_Layer: 5
   m_Name: ButtonBuyAmmo4
   m_TagString: Untagged
@@ -19212,6 +19333,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1993931748}
   m_CullTransparentMesh: 0
+--- !u!114 &1993931756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993931748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &2004504157
 GameObject:
   m_ObjectHideFlags: 0
@@ -19335,6 +19469,7 @@ GameObject:
   - component: {fileID: 2066859099}
   - component: {fileID: 2066859098}
   - component: {fileID: 2066859097}
+  - component: {fileID: 2066859103}
   m_Layer: 5
   m_Name: ButtonBuyAmmo3
   m_TagString: Untagged
@@ -19468,6 +19603,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066859095}
   m_CullTransparentMesh: 0
+--- !u!114 &2066859103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066859095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &2068460042
 GameObject:
   m_ObjectHideFlags: 0

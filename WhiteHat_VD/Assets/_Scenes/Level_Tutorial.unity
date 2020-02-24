@@ -19017,12 +19017,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemBoxAmmo
       objectReference: {fileID: 0}
-    - target: {fileID: 2776499795008649038, guid: 24a2766d5b53c3240b801d212bdf03e4,
-        type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 1785245751339426255, guid: 2eb5ba4f77a2cc14d9886527059abd73,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24a2766d5b53c3240b801d212bdf03e4, type: 3}
 --- !u!1001 &7980293935457421868

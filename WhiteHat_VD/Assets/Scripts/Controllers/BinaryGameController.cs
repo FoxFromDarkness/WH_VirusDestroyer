@@ -33,6 +33,8 @@ public class BinaryGameController : MonoBehaviour
                 toggle.GetComponent<Toggle>().isOn = false;
             }
             transform.parent.gameObject.SetActive(false);
+            
+            HeadPanelController.Instance.uiPanel.ShowHelperPanel("Press 'Up arrow' to enter", 0f);
             PlayerController.LevelPortalController.IsActive = true;
         }
     }
