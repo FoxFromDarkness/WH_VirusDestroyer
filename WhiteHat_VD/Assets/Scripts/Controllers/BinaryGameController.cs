@@ -12,6 +12,8 @@ public class BinaryGameController : MonoBehaviour
     private BinaryGameCalculator calculator;
     [SerializeField]
     private PlayerController player;
+    [SerializeField]
+    private GameObject toggles;
     private int targetNumber;
 
     private void ChooseNewNumber()
@@ -25,6 +27,11 @@ public class BinaryGameController : MonoBehaviour
         if (calculator.Total == targetNumber)
         {
             targetNumber = -1;
+            var allToggles = toggles.GetComponentsInChildren<BinaryGameToggleBase>();
+            foreach (var toggle in allToggles)
+            {
+                toggle.GetComponent<Toggle>().isOn = false;
+            }
             transform.parent.gameObject.SetActive(false);
             PlayerController.LevelPortalController.IsActive = true;
         }
