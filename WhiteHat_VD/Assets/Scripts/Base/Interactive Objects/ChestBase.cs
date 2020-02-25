@@ -39,7 +39,7 @@ public class ChestBase : MonoBehaviour
         }
     }
 
-    private int SetAdditionalAward(int luck)
+    public int SetAdditionalAward(int luck)
     {
         return additionalAwardAmount = awardAmount * (luck / 10);
     }
@@ -51,10 +51,8 @@ public class ChestBase : MonoBehaviour
         var hero = FindObjectOfType<PlayerController>();
 
         hero.PlayBonusSFX();
-        int tmpbc = SetAdditionalAward(PlayerBase.Luck);
+        int tmpbc = awardAmount + SetAdditionalAward(PlayerBase.Luck);
         HeadPanelController.Instance.uiPanel.ShowHelperPanel("+ " + tmpbc + " BTC", 2);
         hero.AddItem(InventoryItems.BLACK_CRISTALS, tmpbc);
-        Debug.Log("Animacja otwarcia skrzyni");
-        Debug.Log("Wysyp " + (awardAmount + additionalAwardAmount) + " bitcoinów");
     }
 }
