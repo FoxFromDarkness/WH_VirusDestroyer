@@ -7,12 +7,7 @@ using UnityEngine.UI;
 public class GameOverPanelUI : MonoBehaviour
 {
     public TextMeshProUGUI result;
-    Image img;
-
-    private void Start()
-    {
-        img = GameObject.Find("GameOver").GetComponent<Image>();
-    }
+    public Image img;
 
     public void SetColor(byte r, byte g, byte b)
     {

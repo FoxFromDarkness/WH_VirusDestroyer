@@ -14600,6 +14600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   result: {fileID: 1404585591}
+  img: {fileID: 1397766127}
 --- !u!1 &1404585589
 GameObject:
   m_ObjectHideFlags: 0

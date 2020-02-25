@@ -159,12 +159,12 @@ public class UIPanelController : PanelBase
     {
         if (gameResult == true)
         {
-            gameOverPanel.SetColor(255, 0, 0);
+            gameOverPanel.SetColor(0, 255, 0);
             gameOverPanel.result.text = "YOU WIN";
         }
         else
         {
-            gameOverPanel.SetColor(0, 255, 0);
+            gameOverPanel.SetColor(255, 0, 0);
             gameOverPanel.result.text = "YOU LOST";
         }
         gameOverPanel.gameObject.SetActive(true);

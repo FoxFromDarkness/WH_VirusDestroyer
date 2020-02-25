@@ -19,7 +19,6 @@ public class SavePlacePanelController : PanelBase
         Debug.Log(upgradeBases.Length);
         foreach (var item in upgradeBases)
         {
-            Debug.Log(item.playerAttributes + " updated");
             item.UpdateInfo();
         }
     }
