@@ -88,6 +88,11 @@ public class CasualEnemyController : MonoBehaviour
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] private GameObject damageEffect;
 
+    [Space]
+    [Header("Sounds")]
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip[] bulletsSFX;
+
     //
     private PlayerController target;
     private bool isTargetInArea;
@@ -114,22 +119,30 @@ public class CasualEnemyController : MonoBehaviour
         if(enemyRocketBullet != null) enemyRocketStartPos = enemyRocketBullet.transform.localPosition;
         enemyLaserStartPos = enemyLaser.transform.localPosition;
         enemyHPStartPos = hpCanvas.transform.localPosition;
+        audioSource = GetComponent<AudioSource>();
 
-        if (enemyType == EnemyType.TOWER) return;
+        if (enemyType == EnemyType.TOWER)
+        {
+            audioSource.clip = bulletsSFX[0];
+            return;
+        }
 
         switch (enemyBody)
         {
             case EnemyBody.BLACK:
                 bodyImage.sprite = bodyImages[0];
                 animator.runtimeAnimatorController = animators[0];
+                audioSource.clip = bulletsSFX[0];
                 break;
             case EnemyBody.RED:
                 bodyImage.sprite = bodyImages[1];
                 animator.runtimeAnimatorController = animators[1];
+                audioSource.clip = bulletsSFX[1];
                 break;
             default:
                 bodyImage.sprite = bodyImages[2];
                 animator.runtimeAnimatorController = animators[2];
+                audioSource.clip = bulletsSFX[1];
                 break;
         }
 
@@ -241,6 +254,7 @@ public class CasualEnemyController : MonoBehaviour
         copyEnemyBullet.speed *= movingRight == true ? 1 : -1;
         copyEnemyBullet.gameObject.SetActive(true);
         animator?.Play("Shoot");
+        audioSource.Play();
     }
 
     private IEnumerator CoRepeatingAttack()

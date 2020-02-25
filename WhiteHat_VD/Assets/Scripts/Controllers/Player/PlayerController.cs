@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
 
     [Space]
     [Header("Sounds")]
-    private AudioSource audioSource;
+    private AudioSource[] audioSources;
     [SerializeField] private AudioClip[] bulletsSFX;
     [SerializeField] private AudioClip bonusSFX;
     [SerializeField] private AudioClip changeWeaponSFX;
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     {
         PlayerStats = GetComponent<PlayerBase>();
         bullets = bulletsParent.GetComponentsInChildren<BulletPlayerController>();
-        audioSource = GetComponent<AudioSource>();
+        audioSources = GetComponents<AudioSource>();
         foreach (var item in bullets)
         {
             item.gameObject.SetActive(false);
@@ -499,28 +499,28 @@ public class PlayerController : MonoBehaviour
     private void PlayBulletSFX()
     {
         if (GetActiveWeapon() == InventoryItems.AMMO_TYPE_4 || GetActiveWeapon() == InventoryItems.AMMO_TYPE_1)
-            audioSource.clip = bulletsSFX[1];
+            audioSources[0].clip = bulletsSFX[1];
         else
-            audioSource.clip = bulletsSFX[0];
-        audioSource.Play();
+            audioSources[0].clip = bulletsSFX[0];
+        audioSources[0].Play();
     }
 
     public void PlayBonusSFX()
     {
-        audioSource.clip = bonusSFX;
-        audioSource.Play();
+        audioSources[1].clip = bonusSFX;
+        audioSources[1].Play();
     }
 
     public void PlayChangeWeaponSFX()
     {
-        audioSource.clip = changeWeaponSFX;
-        audioSource.Play();
+        audioSources[2].clip = changeWeaponSFX;
+        audioSources[2].Play();
     }
 
     public void PlayTeleportSFX()
     {
-        audioSource.clip = teleportSFX;
-        audioSource.Play();
+        audioSources[1].clip = teleportSFX;
+        audioSources[1].Play();
     }
 
     #endregion
