@@ -153,6 +153,7 @@ public class CasualEnemyController : MonoBehaviour
     void Update()
     {
         if (!isActive) return;
+        if(!GameController.IsInputEnable) return;
 
         switch (enemyMovement)
         {
@@ -246,6 +247,8 @@ public class CasualEnemyController : MonoBehaviour
 
     private void CreateEnemyBullet()
     {
+        if (!GameController.IsInputEnable) return;
+
         var enemyBullet = GetEnemyBullet();
         var copyEnemyBullet = Instantiate(enemyBullet, enemyBullet.transform.parent);
         copyEnemyBullet.transform.position = enemyBullet.transform.position;

@@ -25,7 +25,7 @@ public class SetAmountTypeBase : MonoBehaviour
 
     public void OnClick()
     {
-        if (player.GetItemAmount(InventoryItems.BLACK_CRISTALS) > shopItem.itemPrice)
+        if (player.GetItemAmount(InventoryItems.BLACK_CRISTALS) >= shopItem.itemPrice)
         {
             player.AddItem(InventoryItems.BLACK_CRISTALS, -itemPrice);
             switch (InventoryItems)

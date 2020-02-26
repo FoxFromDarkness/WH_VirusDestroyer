@@ -14,4 +14,19 @@ public class GameOverPanelUI : MonoBehaviour
         Color32 color = new Color32(r, g, b, 52);
         img.color = color;
     }
+
+    public void OnClick(int choose)
+    {
+        switch (choose)
+        {
+            case 0:
+                GameController.Instance.StartNewGame(true);
+                break;
+            case 1:
+                HeadPanelController.Instance.startPanel.CloseSubPanels();
+                HeadPanelController.Instance.startPanel.ChangeVisibility(true);
+                GameController.Instance.wasStart = false;
+                break;
+        }
+    }
 }

@@ -6,9 +6,13 @@ using UnityEngine.Audio;
 
 public class GameController : MonoBehaviour
 {
-    public static bool IsInputEnable { get; set; }
+    private static bool isInputEnable;
+    public static bool IsInputEnable {
+        get { return isInputEnable; }
+        set { isInputEnable = value; Cursor.visible = !isInputEnable; }
+    }
     public static GameController Instance { get; private set; }
-    private bool wasStart = false;
+    public bool wasStart = false;
     
     [SerializeField] private GameObject player;
     [SerializeField] private SpriteRenderer currentBackgroundImage;
@@ -44,7 +48,6 @@ public class GameController : MonoBehaviour
         player.GetComponent<PlayerBase>().StartPosition = new Vector3(-1240.0f, 255.0f);
         GetComponent<SceneController>().UnloadAllScenes(false);
         GetComponent<SceneController>().LoadScene(false, "Level_Tutorial", SetCharacterPosition);
-        player.GetComponent<PlayerBase>().SetStartPlayerOptions();
 
         if (isLoading)
             LoadPlayerPrefs();
@@ -52,14 +55,17 @@ public class GameController : MonoBehaviour
             SavePlayerPrefs();
 
         ShowHideMainMenu();
+        player.GetComponent<PlayerBase>().SetStartPlayerOptions();
         wasStart = true;
     }
 
     public void ShowHideMainMenu()
     {
-        if (HeadPanelController.Instance.savePlacePanel.gameObject.activeSelf)
+        if (HeadPanelController.Instance.savePlacePanel.gameObject.activeSelf 
+            || HeadPanelController.Instance.questionPanel.gameObject.activeSelf)
         {
             HeadPanelController.Instance.savePlacePanel.ChangeVisibility(false);
+            HeadPanelController.Instance.questionPanel.ChangeVisibility(false);
         }
         else
         {

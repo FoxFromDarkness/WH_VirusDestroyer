@@ -59,6 +59,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        Cheats();
+
         if (currentLoadingTime < 2) currentLoadingTime += Time.deltaTime;
 
         if (!GameController.IsInputEnable) return;
@@ -74,7 +76,7 @@ public class PlayerController : MonoBehaviour
         OpenChestOperation();
         PlatformJumpDown();
 
-        Cheats();
+        
     }
 
     #region WEAPONS_SYSTEM
@@ -135,6 +137,8 @@ public class PlayerController : MonoBehaviour
 
     public void SetFullWeapon(int idx, string data)
     {
+        if (data == "null") return;
+
         string[] weaponsInfo = data.Split('|');
         if (weaponsInfo[0] == "False") return;
 
@@ -181,10 +185,10 @@ public class PlayerController : MonoBehaviour
             ChangingSlotOperation();
     }
 
-    private void ChangingSlotOperation()
+    public void ChangingSlotOperation(bool setDefault = false)
     {
         var numberSlot = Platformer2DUserControl.NumberSlotKey;
-        if (numberSlot != -1 && PlayerStats.WeaponMods[numberSlot].IsUnlock)
+        if (numberSlot != -1 && PlayerStats.WeaponMods[numberSlot].IsUnlock && !setDefault)
             HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, PlayerStats.WeaponMods[numberSlot].AmmoAmount);
         else
             HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, -1);
@@ -608,11 +612,19 @@ public class PlayerController : MonoBehaviour
 
     private void Cheats()
     {
-        if(Input.GetKeyDown(KeyCode.F12))
+        if (Input.GetKeyDown(KeyCode.F11))
+        {
+            Debug.Log("Player Debug:");
+            Debug.Log("IsInputEnable: " + GameController.IsInputEnable);
+            Debug.Log("Player.HP: " + PlayerAttributes.HP);
+        }
+
+        if (Input.GetKeyDown(KeyCode.F12))
         {
             godMode = !godMode;
             Debug.Log("godMode" + godMode);
         }
+
     }
 
 }

@@ -25,10 +25,13 @@ public class SceneController : MonoBehaviour
     {
         Scene[] scenes = SceneManager.GetAllScenes();
 
-        if(rootScene)
+        if (rootScene)
+        {
             SceneManager.UnloadSceneAsync(0);
+            SceneManager.UnloadSceneAsync(1); // UI
+        }
 
-        for (int i = 1; i < scenes.Length; i++)
+        for (int i = 2; i < scenes.Length; i++)
         {
             SceneManager.UnloadSceneAsync(scenes[i]);
         }

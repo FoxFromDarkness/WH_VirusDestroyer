@@ -14,8 +14,9 @@ public class SaveController : MonoBehaviour
     public PlayerController player;
 
     private Dictionary<string, string> Prefs = new Dictionary<string, string>();
-    private readonly string[] saveFilenames = { "48h50", "48h50h5fh4dh61h78", "4ch65h76h65h6c", "45h78h70",
-                                        "45h78h70h54h6fh4eh65h78h74h4ch76h6c", "42h6ch61h63h6bh43h72h69h73h74h61h6ch73",
+    private readonly string[] saveFilenames = { "53h61h76h65h49h44",
+                                        "48h50", "48h50h5fh4dh61h78", "4ch65h76h65h6c", "4ch75h63h6b",
+                                        "41h64h64h69h74h69h6fh6eh61h6ch44h61h6dh61h67h65", "42h6ch61h63h6bh43h72h69h73h74h61h6ch73",
                                         "57h70h5fh30", "57h70h5fh31", "57h70h5fh32", "57h70h5fh33",
                                         "41h6dh6dh6fh42h6fh78h5fh30", "41h6dh6dh6fh42h6fh78h5fh31", "41h6dh6dh6fh42h6fh78h5fh32", "41h6dh6dh6fh42h6fh78h5fh33"};
 
@@ -29,10 +30,10 @@ public class SaveController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F5) && GameController.IsInputEnable)
+        if (Input.GetKeyDown(KeyCode.F5))
             SavePrefs();
 
-        if (Input.GetKeyDown(KeyCode.F9) && GameController.IsInputEnable)
+        if (Input.GetKeyDown(KeyCode.F9))
             LoadPrefs();
     }
 
@@ -45,6 +46,8 @@ public class SaveController : MonoBehaviour
         Prefs.Add("HP", player.PlayerStats.HP +"");
         Prefs.Add("HP_Max", player.PlayerStats.HP_Max +"");
         Prefs.Add("Level", player.PlayerStats.Level +"");
+        Prefs.Add("Luck", PlayerBase.Luck +"");
+        Prefs.Add("AdditionalDamage", player.PlayerStats.AdditionalDamage +"");
 
         Prefs.Add("BlackCristals", player.PlayerStats.BlackCristals + "");
 
@@ -60,7 +63,8 @@ public class SaveController : MonoBehaviour
 
         Dictionary<string, string>.ValueCollection valueColl = Prefs.Values;
 
-        int i = 0;
+        SaveToFile(saveFilenames[0], saveNumber+"");
+        int i = 1;
         foreach (string value in valueColl)
         {
             SaveToFile(saveFilenames[i], value);
@@ -76,8 +80,8 @@ public class SaveController : MonoBehaviour
         Prefs.Add("HP", 100 + "");
         Prefs.Add("HP_Max", 100 + "");
         Prefs.Add("Level", 0 + "");
-        Prefs.Add("Exp", 0 + "");
-        Prefs.Add("ExpToNextLvl", 500 + "");
+        Prefs.Add("Luck", 0 + "");
+        Prefs.Add("AdditionalDamage", 0 + "");
 
         Prefs.Add("BlackCristals", 0 + "");
 
@@ -93,7 +97,8 @@ public class SaveController : MonoBehaviour
 
         Dictionary<string, string>.ValueCollection valueColl = Prefs.Values;
 
-        int i = 0;
+        SaveToFile(saveFilenames[0], saveNumber + "");
+        int i = 1;
         foreach (string value in valueColl)
         {
             SaveToFile(saveFilenames[i], value);
@@ -105,23 +110,23 @@ public class SaveController : MonoBehaviour
     {
         Prefs.Clear();
 
-        Prefs.Add("HP", ReadFromFile(saveFilenames[0]));
-        Prefs.Add("HP_Max", ReadFromFile(saveFilenames[1]));
-        Prefs.Add("Level", ReadFromFile(saveFilenames[2]));
-        Prefs.Add("Exp", ReadFromFile(saveFilenames[3]));
-        Prefs.Add("ExpToNextLvl", ReadFromFile(saveFilenames[4]));
+        Prefs.Add("HP", ReadFromFile(saveFilenames[1]));
+        Prefs.Add("HP_Max", ReadFromFile(saveFilenames[2]));
+        Prefs.Add("Level", ReadFromFile(saveFilenames[3]));
+        Prefs.Add("Luck", ReadFromFile(saveFilenames[4]));
+        Prefs.Add("AdditionalDamage", ReadFromFile(saveFilenames[5]));
 
-        Prefs.Add("BlackCristals", ReadFromFile(saveFilenames[5]));
+        Prefs.Add("BlackCristals", ReadFromFile(saveFilenames[6]));
 
-        Prefs.Add("Weapon_0", ReadFromFile(saveFilenames[6]));
-        Prefs.Add("Weapon_1", ReadFromFile(saveFilenames[7]));
-        Prefs.Add("Weapon_2", ReadFromFile(saveFilenames[8]));
-        Prefs.Add("Weapon_3", ReadFromFile(saveFilenames[9]));
+        Prefs.Add("Weapon_0", ReadFromFile(saveFilenames[7]));
+        Prefs.Add("Weapon_1", ReadFromFile(saveFilenames[8]));
+        Prefs.Add("Weapon_2", ReadFromFile(saveFilenames[9]));
+        Prefs.Add("Weapon_3", ReadFromFile(saveFilenames[10]));
 
-        Prefs.Add("AmmoBoxSupply_0", ReadFromFile(saveFilenames[10]));
-        Prefs.Add("AmmoBoxSupply_1", ReadFromFile(saveFilenames[11]));
-        Prefs.Add("AmmoBoxSupply_2", ReadFromFile(saveFilenames[12]));
-        Prefs.Add("AmmoBoxSupply_3", ReadFromFile(saveFilenames[13]));
+        Prefs.Add("AmmoBoxSupply_0", ReadFromFile(saveFilenames[11]));
+        Prefs.Add("AmmoBoxSupply_1", ReadFromFile(saveFilenames[12]));
+        Prefs.Add("AmmoBoxSupply_2", ReadFromFile(saveFilenames[13]));
+        Prefs.Add("AmmoBoxSupply_3", ReadFromFile(saveFilenames[14]));
 
         SetPlayerPrefs();
     }
@@ -131,6 +136,8 @@ public class SaveController : MonoBehaviour
         player.ChangeAttribute(PlayerAttributes.HP, float.Parse(Prefs["HP"]));
         player.ChangeAttribute(PlayerAttributes.HP_MAX, float.Parse(Prefs["HP_Max"]));
         player.ChangeAttribute(PlayerAttributes.LEVEL, float.Parse(Prefs["Level"]));
+        player.ChangeAttribute(PlayerAttributes.LUCK, float.Parse(Prefs["Luck"]));
+        player.ChangeAttribute(PlayerAttributes.ADDITIONAL_DAMAGE, float.Parse(Prefs["AdditionalDamage"]));
 
         player.ChangeItemAmount(InventoryItems.BLACK_CRISTALS, int.Parse(Prefs["BlackCristals"]));
 
@@ -170,6 +177,24 @@ public class SaveController : MonoBehaviour
     {
         string path = CONSTANS.SAVES_PATH + "Save_" + saveNumber + "©" + saveNickName;
         using (BinaryReader binaryReader = new BinaryReader(new FileStream(path + "/" + filename + ".whvd", FileMode.Open)))
+        {
+            try
+            {
+                return binaryReader.ReadString();
+
+            }
+            catch (IOException e)
+            {
+                Debug.LogError(e.Message);
+                return "null";
+            }
+        }
+    }
+
+    public string ReadSaveIdFromFile(string directorypath)
+    {
+        string path = directorypath;
+        using (BinaryReader binaryReader = new BinaryReader(new FileStream(path + "/" + "53h61h76h65h49h44" + ".whvd", FileMode.Open)))
         {
             try
             {

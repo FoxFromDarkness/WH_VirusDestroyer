@@ -59,17 +59,17 @@ public class SlotPanelController : PanelBase
         {
             case SlotPanelMode.NEW_GAME:
                 SetTextGameMode("New Game");
-                listOfSaveSlots.Add(InitSaveSlotController(directoryInfo.Length, null));
+                listOfSaveSlots.Add(InitSaveSlotController(directoryInfo.Length, null, false));
                 break;
             case SlotPanelMode.LOAD_GAME:
                 SetTextGameMode("Load Game");
                 for (int i = 0; i < directoryInfo.Length; i++)
-                    listOfSaveSlots.Add(InitSaveSlotController(i, directoryInfo[i]));
+                    listOfSaveSlots.Add(InitSaveSlotController(i, directoryInfo[i], true));
                 break;
             case SlotPanelMode.DELETE_GAME:
                 SetTextGameMode("Delete Game");
                 for (int i = 0; i < directoryInfo.Length; i++)
-                    listOfSaveSlots.Add(InitSaveSlotController(i, directoryInfo[i]));
+                    listOfSaveSlots.Add(InitSaveSlotController(i, directoryInfo[i], true));
                 break;
             default:
                 break;
@@ -89,10 +89,16 @@ public class SlotPanelController : PanelBase
         listOfSaveSlots.Clear();
     }
 
-    private SaveSlotController InitSaveSlotController(int idx, string saveDirectoryPath)
+    private SaveSlotController InitSaveSlotController(int idx, string saveDirectoryPath, bool readIdFromSave)
     {
         copyOfSaveSlot = Instantiate(saveSlotBase, saveSlotBase.transform.parent);
-        copyOfSaveSlot.saveIdx = idx;
+        if (readIdFromSave)
+        {
+            copyOfSaveSlot.saveIdx = int.Parse(SaveController.Instance.ReadSaveIdFromFile(saveDirectoryPath));
+        }
+        else
+            copyOfSaveSlot.saveIdx = idx;
+        
         copyOfSaveSlot.gameObject.SetActive(true);
         copyOfSaveSlot.SetSaveDirectory(saveDirectoryPath);
         return copyOfSaveSlot;

@@ -995,6 +995,21 @@ PrefabInstance:
       propertyPath: maxHealthPoints
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1912921177847723235, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
+        type: 3}
+      propertyPath: enemyAttack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912921177847723235, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
+        type: 3}
+      propertyPath: amountBulletsInSingleSeries
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912921177847723235, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
+        type: 3}
+      propertyPath: enemyAttackSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1912921177847723236, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets._2D;
 
 public class PlayerBase : MonoBehaviour
 {
@@ -8,7 +9,6 @@ public class PlayerBase : MonoBehaviour
     public float HP_Max { get; set; }
     public float Level { get; set; }
     public static int Luck { get; set; }
-    public float MagazineCapacity { get; set; }
     public float AdditionalDamage { get; set; }
 
     public int BlackCristals { get; set; }
@@ -29,7 +29,6 @@ public class PlayerBase : MonoBehaviour
         HP = HP_Max;
         Level = 0;
         Luck = 0;
-        MagazineCapacity = 10;
         AdditionalDamage = 0;
 
         WeaponMods = new WeaponBase[4];
@@ -38,6 +37,13 @@ public class PlayerBase : MonoBehaviour
         BlackCristals = 0;
         InitPlayerWeaponMods();
         //StartPosition = new Vector3(0, 0);
+
+        if (HeadPanelController.Instance != null) //restart or loadgame
+        {
+            GameController.IsInputEnable = true;
+            HeadPanelController.Instance.uiPanel.HideGameOver();
+            GetComponent<PlayerController>().ChangingSlotOperation(true);
+        }
     }
 
     public string GetWeaponInfo(int idx)

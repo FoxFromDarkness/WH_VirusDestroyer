@@ -42,6 +42,8 @@ public class Boss1Behaviour : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (!GameController.IsInputEnable) return;
+
         if (isMoving) PlayerFollowing();
         if (isShooting) Shooting();
     }
