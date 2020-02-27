@@ -52,7 +52,10 @@ namespace UnityStandardAssets._2D
             m_Jump = false;
 
             //shooting
-            IsShotKey = Input.GetKeyDown(KeyCode.Z);
+            if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.LeftAlt))
+                IsShotKey = true;
+            else
+                IsShotKey = false;
         }
 
         private bool CheckSlotChangeImageKey()

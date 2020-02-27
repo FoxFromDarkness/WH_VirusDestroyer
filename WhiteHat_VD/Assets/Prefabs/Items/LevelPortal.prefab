@@ -9817,6 +9817,7 @@ GameObject:
   - component: {fileID: 4001986205273639554}
   - component: {fileID: 4001986205273639558}
   - component: {fileID: 4001986205273639566}
+  - component: {fileID: 8262780100636538021}
   m_Layer: 0
   m_Name: LevelPortal
   m_TagString: Untagged
@@ -9950,3 +9951,15 @@ MonoBehaviour:
   doorR: {fileID: 1308707903}
   doorStartPos: {x: 0.094, y: -0.016}
   doorEndPos: {x: 0.19, y: -0.016}
+--- !u!114 &8262780100636538021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4001986205273639555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a60ce3d8eb5d874c9612b9def1dd4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

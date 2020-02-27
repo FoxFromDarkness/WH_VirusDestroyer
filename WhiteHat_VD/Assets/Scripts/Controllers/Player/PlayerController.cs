@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private const float LOADING_TIME_FOR_HEAVY_GUNS = 0.5f;
 
     [Header("Player Options")]
+    private bool isCheatEnabled = false;
     private bool godMode;
     public GameObject _GameManager;
 
@@ -75,8 +76,7 @@ public class PlayerController : MonoBehaviour
         SavePlaceEnter();
         OpenChestOperation();
         PlatformJumpDown();
-
-        
+        SwitchCheatEnabled();
     }
 
     #region WEAPONS_SYSTEM
@@ -610,13 +610,23 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    private void SwitchCheatEnabled()
+    {
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            isCheatEnabled = !isCheatEnabled;
+            HeadPanelController.Instance.uiPanel.ShowHelperPanel(isCheatEnabled == true ? "Cheats enabled" : "Cheats disabled", 2f);
+        }
+    }
+
     private void Cheats()
     {
+        if (!isCheatEnabled) return;
+
         if (Input.GetKeyDown(KeyCode.F11))
         {
-            Debug.Log("Player Debug:");
-            Debug.Log("IsInputEnable: " + GameController.IsInputEnable);
-            Debug.Log("Player.HP: " + PlayerAttributes.HP);
+            AddItem(InventoryItems.BLACK_CRISTALS, 100);
+            Debug.Log("MoreMoney");
         }
 
         if (Input.GetKeyDown(KeyCode.F12))

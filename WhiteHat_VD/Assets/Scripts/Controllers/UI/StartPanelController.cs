@@ -54,4 +54,9 @@ public class StartPanelController : PanelBase
         playPanel.SetActive(false);
         optionPanel.SetActive(false);
     }
+
+    public void OnExitClick()
+    {
+        GameController.Instance.ExitApplication();
+    }
 }

@@ -37,7 +37,12 @@ public class SceneController : MonoBehaviour
         }
     }
 
-    private IEnumerator LoadUIScene()
+    public void LoadUIScene()
+    {
+        StartCoroutine(CoLoadUIScene());
+    }
+
+    private IEnumerator CoLoadUIScene()
     {
         yield return null;
         SceneManager.LoadScene("_UI", LoadSceneMode.Additive);
@@ -46,7 +51,7 @@ public class SceneController : MonoBehaviour
     private IEnumerator LoadSceneAsynchronously (bool uiscene, string sceneName, Action nextMethod)
     {
         if(uiscene)
-            yield return StartCoroutine(LoadUIScene());
+            yield return StartCoroutine(CoLoadUIScene());
 
         yield return new WaitForSeconds(0.3f);
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
@@ -58,12 +63,17 @@ public class SceneController : MonoBehaviour
         {
             yield return new WaitForSeconds(0.3f);
             HeadPanelController.Instance.loadingScreen.SetSliderValue(operation.progress);
-            yield return new WaitForSeconds(0.3f);//null;
+            yield return new WaitForSeconds(1f);//null;
         }
 
         
         HeadPanelController.Instance.loadingScreen.gameObject.SetActive(false);
         nextMethod();
+    }
+
+    public bool IsSceneLoaded(string name)
+    {
+        return SceneManager.GetSceneByName(name).isLoaded;
     }
 
 }

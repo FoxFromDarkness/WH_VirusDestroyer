@@ -13,7 +13,8 @@ public class GameController : MonoBehaviour
     }
     public static GameController Instance { get; private set; }
     public bool wasStart = false;
-    
+    private SceneController sceneController;
+
     [SerializeField] private GameObject player;
     [SerializeField] private SpriteRenderer currentBackgroundImage;
 
@@ -29,7 +30,18 @@ public class GameController : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        sceneController = GetComponent<SceneController>();
 
+        if (!sceneController.IsSceneLoaded("_UI"))
+        {
+#if !UNITY_EDITOR
+            player.GetComponent<SpriteRenderer>().enabled = false;
+#endif
+            sceneController.LoadUIScene();
+        }
+    }
     void Update()
     {
 #if !UNITY_EDITOR
@@ -45,9 +57,10 @@ public class GameController : MonoBehaviour
     public void StartNewGame(bool isLoading)
     {
         player.SetActive(true);
+        player.GetComponent<SpriteRenderer>().enabled = true;
         player.GetComponent<PlayerBase>().StartPosition = new Vector3(-1240.0f, 255.0f);
-        GetComponent<SceneController>().UnloadAllScenes(false);
-        GetComponent<SceneController>().LoadScene(false, "Level_Tutorial", SetCharacterPosition);
+        sceneController.UnloadAllScenes(false);
+        sceneController.LoadScene(false, "Level_Tutorial", SetCharacterPosition);
 
         if (isLoading)
             LoadPlayerPrefs();

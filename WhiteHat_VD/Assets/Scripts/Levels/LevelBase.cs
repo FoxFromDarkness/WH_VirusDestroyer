@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelBase : MonoBehaviour
 {
+    private Camera mainCamera;
     public const float DEFAULT_ORTOGRAPHIC_SIZE = 6.5f;
     [Header("Camera options")]
     public bool isAnimation;
@@ -16,7 +17,8 @@ public class LevelBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        Camera.main.orthographicSize = DEFAULT_ORTOGRAPHIC_SIZE;
+        mainCamera = FindObjectOfType<Camera>();
+        mainCamera.orthographicSize = DEFAULT_ORTOGRAPHIC_SIZE;
     }
 
     private void OnEnable()
@@ -32,14 +34,14 @@ public class LevelBase : MonoBehaviour
         {
             if (ortographicSize > DEFAULT_ORTOGRAPHIC_SIZE)
             {
-                Camera.main.orthographicSize += speedOfAnim * Time.deltaTime;
-                if (Camera.main.orthographicSize >= ortographicSize)
+                mainCamera.orthographicSize += speedOfAnim * Time.deltaTime;
+                if (mainCamera.orthographicSize >= ortographicSize)
                     isAnimation = false;
             }
             else
             {
-                Camera.main.orthographicSize -= speedOfAnim * Time.deltaTime;
-                if (Camera.main.orthographicSize <= ortographicSize)
+                mainCamera.orthographicSize -= speedOfAnim * Time.deltaTime;
+                if (mainCamera.orthographicSize <= ortographicSize)
                     isAnimation = false;
             }
         }

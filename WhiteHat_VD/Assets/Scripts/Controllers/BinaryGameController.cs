@@ -33,7 +33,8 @@ public class BinaryGameController : MonoBehaviour
                 toggle.GetComponent<Toggle>().isOn = false;
             }
             transform.parent.gameObject.SetActive(false);
-            
+            GameController.IsInputEnable = true;
+
             HeadPanelController.Instance.uiPanel.ShowHelperPanel("Press 'Up arrow' to enter", 0f);
             PlayerController.LevelPortalController.IsActive = true;
         }
@@ -42,6 +43,7 @@ public class BinaryGameController : MonoBehaviour
     internal void StartGame()
     {
         this.transform.parent.gameObject.SetActive(true);
+        GameController.IsInputEnable = false;
         ChooseNewNumber();
     }
 }
