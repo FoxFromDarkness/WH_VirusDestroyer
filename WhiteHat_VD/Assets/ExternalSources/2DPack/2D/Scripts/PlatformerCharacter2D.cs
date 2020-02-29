@@ -19,6 +19,7 @@ namespace UnityStandardAssets._2D
         const float k_CeilingRadius = .01f; // Radius of the overlap circle to determine if the player can stand up
         private Animator m_Anim;            // Reference to the player's animator component.
         public RuntimeAnimatorController[] animControllers;
+        public RuntimeAnimatorController currentAnimController;
         private Rigidbody2D m_Rigidbody2D;
         private bool m_FacingRight = true;  // For determining which way the player is currently facing.
         private float m_move;
@@ -54,7 +55,11 @@ namespace UnityStandardAssets._2D
 
         public void SetAnimController(int idx)
         {
-            m_Anim.runtimeAnimatorController = animControllers[idx];
+            if (currentAnimController != animControllers[idx])
+            {
+                currentAnimController = animControllers[idx];
+                m_Anim.runtimeAnimatorController = currentAnimController;
+            }
         }
 
 

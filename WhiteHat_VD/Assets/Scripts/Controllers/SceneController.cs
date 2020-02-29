@@ -53,22 +53,22 @@ public class SceneController : MonoBehaviour
         if(uiscene)
             yield return StartCoroutine(CoLoadUIScene());
 
+        HeadPanelController.Instance.loadingScreen.ChangeVisibility(true);
+        
+
         yield return new WaitForSeconds(0.3f);
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
-
-        HeadPanelController.Instance.startPanel.gameObject.SetActive(false);
-        HeadPanelController.Instance.loadingScreen.gameObject.SetActive(true);
 
         while (!operation.isDone)
         {
             yield return new WaitForSeconds(0.3f);
             HeadPanelController.Instance.loadingScreen.SetSliderValue(operation.progress);
-            yield return new WaitForSeconds(1f);//null;
+            yield return new WaitForSeconds(0.3f);
         }
 
-        
-        HeadPanelController.Instance.loadingScreen.gameObject.SetActive(false);
         nextMethod();
+        HeadPanelController.Instance.loadingScreen.ChangeVisibility(false);
+        HeadPanelController.Instance.startPanel.ChangeVisibility(false);
     }
 
     public bool IsSceneLoaded(string name)

@@ -60,7 +60,7 @@ public class CasualEnemyController : MonoBehaviour
     [SerializeField] private float enemyAttackSpeed = 2;
     [Tooltip("Only for 'Repeating Attack'")]
     [SerializeField] private int amountBulletsInSingleSeries = 3; //Ilość pocisków w serii (Repeating Atack)
-    private float currentEnemyAttackTime = 0;
+    private float currentEnemyAttackTime = 5;
     [Space]
     [Header("Permissions")]
     [SerializeField] private bool movingRight = true;
@@ -343,7 +343,7 @@ public class CasualEnemyController : MonoBehaviour
             hpCanvas.transform.localPosition = new Vector2(movingRight == true ? enemyHPStartPos.x : enemyHPStartPos.x * -1, hpCanvas.transform.localPosition.y);
         }
 
-            if (currentHealthPoints <= 0)
+        if (currentHealthPoints <= 0)
         {
             hpCanvas.gameObject.SetActive(false);
             enemyMovement = EnemyMovement.DIE;
