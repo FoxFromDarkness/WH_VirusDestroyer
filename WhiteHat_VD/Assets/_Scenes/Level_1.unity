@@ -2807,12 +2807,12 @@ PrefabInstance:
     - target: {fileID: 4001986205273639566, guid: 7ded5fe0b52062846954c4dd9cf441e8,
         type: 3}
       propertyPath: thisSceneName
-      value: Level_1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4001986205273639566, guid: 7ded5fe0b52062846954c4dd9cf441e8,
         type: 3}
       propertyPath: nextSceneName
-      value: BossLevel_1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4001986205273639566, guid: 7ded5fe0b52062846954c4dd9cf441e8,
         type: 3}

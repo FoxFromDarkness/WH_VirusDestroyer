@@ -592,8 +592,10 @@ public class PlayerController : MonoBehaviour
                     InLevelPortal = false;
                     PlayTeleportSFX();
                     HeadPanelController.Instance.uiPanel.HideHelperPanel();
-                    _GameManager.GetComponent<SceneController>().UnloadScene(LevelPortalController.thisSceneName);
-                    _GameManager.GetComponent<SceneController>().LoadScene(false, LevelPortalController.nextSceneName, SetCharacterPositionAfterChangeLevel);
+                    GameController.CurrentWorld = LevelPortalController.nextSceneName;
+                    SaveController.Instance.SavePrefs();
+                    _GameManager.GetComponent<SceneController>().UnloadScene(LevelPortalController.thisSceneName.ToString());
+                    _GameManager.GetComponent<SceneController>().LoadScene(false, LevelPortalController.nextSceneName.ToString(), SetCharacterPositionAfterChangeLevel);
                 }
                 else if(LevelPortalController.isOpenGame)
                 {
