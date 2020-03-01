@@ -194,7 +194,9 @@ public class PlayerController : MonoBehaviour
             HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, -1);
 
         ChangeHeroAnim();
-        PlayChangeWeaponSFX();
+        if(!setDefault)
+            PlayChangeWeaponSFX();
+
         InventoryItems tmp = GetActiveWeapon();
         switch (tmp)
         {
