@@ -58,9 +58,11 @@ public class GameController : MonoBehaviour
     {
         player.SetActive(true);
         player.GetComponent<SpriteRenderer>().enabled = true;
+        player.GetComponent<PlayerController>().SetDefaultSprite();
         player.GetComponent<PlayerBase>().StartPosition = new Vector3(-1240.0f, 255.0f);
         sceneController.UnloadAllScenes(false);
         sceneController.LoadScene(false, "Level_Tutorial", SetCharacterPosition);
+        player.GetComponent<PlayerBase>().SetStartPlayerOptions();
 
         if (isLoading)
             LoadPlayerPrefs();
@@ -68,7 +70,6 @@ public class GameController : MonoBehaviour
             SavePlayerPrefs();
 
         ShowHideMainMenu();
-        player.GetComponent<PlayerBase>().SetStartPlayerOptions();
         wasStart = true;
     }
 

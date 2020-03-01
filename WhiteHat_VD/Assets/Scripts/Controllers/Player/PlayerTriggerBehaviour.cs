@@ -175,6 +175,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         {
             HeadPanelController.Instance.uiPanel.HideHelperPanel();
             player.CanOpenSavePlace = false;
+            SaveController.Instance.SavePrefs();
         }
     }
 

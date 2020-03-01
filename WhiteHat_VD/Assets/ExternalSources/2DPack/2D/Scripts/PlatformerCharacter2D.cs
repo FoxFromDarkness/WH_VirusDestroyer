@@ -53,9 +53,11 @@ namespace UnityStandardAssets._2D
             m_Anim.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
         }
 
-        public void SetAnimController(int idx)
+        public void SetAnimController(int idx, bool forceChange)
         {
-            if (currentAnimController != animControllers[idx])
+            if(forceChange) m_Anim.SetBool("AfterDeadEnd", true);
+
+            if (currentAnimController != animControllers[idx] || forceChange)
             {
                 currentAnimController = animControllers[idx];
                 m_Anim.runtimeAnimatorController = currentAnimController;
@@ -135,7 +137,8 @@ namespace UnityStandardAssets._2D
 
         public void DeadAnim()
         {
-            m_Anim.Play("Dead");
+            m_Anim.SetBool("AfterDeadEnd", false);
+            m_Anim.Play("Dead"); 
         }
     }
 }

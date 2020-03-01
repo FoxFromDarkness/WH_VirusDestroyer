@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player Options")]
     private bool isCheatEnabled = false;
     private bool godMode;
+    private Sprite startHeroSprite;
     public GameObject _GameManager;
 
     public PlayerBase PlayerStats { get; private set; }
@@ -50,6 +51,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         PlayerStats = GetComponent<PlayerBase>();
+        startHeroSprite = GetComponent<SpriteRenderer>().sprite;
         bullets = bulletsParent.GetComponentsInChildren<BulletPlayerController>();
         audioSources = GetComponents<AudioSource>();
         foreach (var item in bullets)
@@ -143,7 +145,7 @@ public class PlayerController : MonoBehaviour
         if (weaponsInfo[0] == "False") return;
 
         InventoryItems typeOfAmmo = (InventoryItems)int.Parse(weaponsInfo[1]);
-        SetBoughtItem(int.Parse(weaponsInfo[3]), typeOfAmmo, int.Parse(weaponsInfo[2]), ItemsDataBase.Instance.GetSpriteByItemType(typeOfAmmo));
+        SetBoughtItem(int.Parse(weaponsInfo[3]), typeOfAmmo, int.Parse(weaponsInfo[2]), ItemsDataBase.Instance.GetAmmoSpriteByItemType(typeOfAmmo));
     }
 
     private void Shooting()
@@ -188,6 +190,7 @@ public class PlayerController : MonoBehaviour
     public void ChangingSlotOperation(bool setDefault = false)
     {
         var numberSlot = Platformer2DUserControl.NumberSlotKey;
+
         if (numberSlot != -1 && PlayerStats.WeaponMods[numberSlot].IsUnlock && !setDefault)
             HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, PlayerStats.WeaponMods[numberSlot].AmmoAmount);
         else
@@ -212,28 +215,28 @@ public class PlayerController : MonoBehaviour
             default:
                 break;
         }
-        HeadPanelController.Instance.uiPanel.UnlockSlot(0, ItemsDataBase.Instance.GetSpriteByItemType(tmp));
+        HeadPanelController.Instance.uiPanel.UnlockSlot(0, ItemsDataBase.Instance.GetWeaponSpriteByItemType(tmp));
         IsSlotChangeImageKey = false;
     }
 
-    private void ChangeHeroAnim()
+    private void ChangeHeroAnim(bool forceChange = false)
     {
         switch (GetActiveWeapon())
         {
             case InventoryItems.AMMO_TYPE_1:
-                this.GetComponent<PlatformerCharacter2D>().SetAnimController(1);
+                this.GetComponent<PlatformerCharacter2D>().SetAnimController(1, forceChange);
                 break;
             case InventoryItems.AMMO_TYPE_2:
-                this.GetComponent<PlatformerCharacter2D>().SetAnimController(2);
+                this.GetComponent<PlatformerCharacter2D>().SetAnimController(2, forceChange);
                 break;
             case InventoryItems.AMMO_TYPE_3:
-                this.GetComponent<PlatformerCharacter2D>().SetAnimController(3);
+                this.GetComponent<PlatformerCharacter2D>().SetAnimController(3, forceChange);
                 break;
             case InventoryItems.AMMO_TYPE_4:
-                this.GetComponent<PlatformerCharacter2D>().SetAnimController(4);
+                this.GetComponent<PlatformerCharacter2D>().SetAnimController(4, forceChange);
                 break;
             case InventoryItems.NULL:
-                this.GetComponent<PlatformerCharacter2D>().SetAnimController(0);
+                this.GetComponent<PlatformerCharacter2D>().SetAnimController(0, forceChange);
                 break;
         }
     }
@@ -310,7 +313,6 @@ public class PlayerController : MonoBehaviour
                 return -1;
         }
     }
-
 
     public void ChangeItemAmount(InventoryItems item, int amount)
     {
@@ -432,6 +434,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void SetDefaultSprite()
+    {
+        ChangeHeroAnim(true);
+        GetComponent<SpriteRenderer>().sprite = startHeroSprite;
+    }
+
     #endregion
 
     #region SAVE_PLACE_SYSTEM
@@ -476,6 +484,7 @@ public class PlayerController : MonoBehaviour
         PlayerStats.WeaponMods[idx].TypeOfAmmo = item;
         PlayerStats.WeaponMods[idx].AmmoAmount = amount;
         PlayerStats.WeaponMods[idx].IsUnlock = true;
+        HeadPanelController.Instance.savePlacePanel.SetItemBought(item);
 
         switch (item)
         {
@@ -635,6 +644,12 @@ public class PlayerController : MonoBehaviour
         {
             godMode = !godMode;
             Debug.Log("godMode" + godMode);
+        }
+
+        if(Input.GetKeyDown(KeyCode.F10))
+        {
+            PlayerStats.WeaponMods[0].IsUnlock = true;
+            Debug.Log("PlayerStats.WeaponMods[0].IsUnlock = true;");
         }
 
     }

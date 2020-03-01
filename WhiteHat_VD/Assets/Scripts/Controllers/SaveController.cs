@@ -22,20 +22,18 @@ public class SaveController : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("F5 -> Save");
-
         if (Instance == null)
             Instance = FindObjectOfType<SaveController>();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F5))
-            SavePrefs();
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.F5))
+    //        SavePrefs();
 
-        if (Input.GetKeyDown(KeyCode.F9))
-            LoadPrefs();
-    }
+    //    if (Input.GetKeyDown(KeyCode.F9))
+    //        LoadPrefs();
+    //}
 
     public void SavePrefs()
     {

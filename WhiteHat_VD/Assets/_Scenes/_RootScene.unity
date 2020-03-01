@@ -268,6 +268,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: b335f586e667a4741b7cf07910b658fc, type: 2}
   - {fileID: 9100000, guid: 27d73dde422620942aa99e3fc3347bfd, type: 2}
   - {fileID: 9100000, guid: beaa84f45cff32047ad1936efffea606, type: 2}
+  currentAnimController: {fileID: 0}
 --- !u!1 &60526114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1743,11 +1744,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e2e7c615a99da447b97e93367ea3e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemsSprites:
+  weaponSprites:
   - {fileID: 21300000, guid: 3dc29b6e5a526d845b6b7517196f8823, type: 3}
   - {fileID: 21300000, guid: 5faf8fb98e344014fae49082c0d1e6fc, type: 3}
   - {fileID: 21300000, guid: 14c3696a69372d244816c13f9deb415d, type: 3}
   - {fileID: 21300000, guid: 9841527ec00576942930647cdd408a05, type: 3}
+  ammoSprites:
+  - {fileID: 21300000, guid: eac4d5896b184f540b04f2dda72d3dfb, type: 3}
+  - {fileID: 21300000, guid: af0d27c530cd7274183004a57fbb4859, type: 3}
+  - {fileID: 21300000, guid: 298198ac013935c4fa7564dfbb346a54, type: 3}
+  - {fileID: 21300000, guid: 7f02849b96b037740a69a14a5569198e, type: 3}
   defaultSprite: {fileID: 21300000, guid: cab2de88c0adf1c489eaa3a248978a13, type: 3}
 --- !u!1 &1697480860
 GameObject:

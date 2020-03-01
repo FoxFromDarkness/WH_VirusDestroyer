@@ -3818,7 +3818,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47eb6b0ecf66b164f82dd396d2205e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopItem: {fileID: 11400000, guid: 18f668ce6a29a14409749942e34a175d, type: 2}
   InventoryItems: 2
   itemPrice: 2
   itemAmount: 10
@@ -11321,7 +11320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47eb6b0ecf66b164f82dd396d2205e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopItem: {fileID: 11400000, guid: 1d74046eaae8f304682e5fc0fa4abfc2, type: 2}
   InventoryItems: 1
   itemPrice: 1
   itemAmount: 10
@@ -13229,6 +13227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeBasesParent: {fileID: 729650135}
+  contentGuns: {fileID: 1809363886}
 --- !u!114 &1237482216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22627,7 +22626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47eb6b0ecf66b164f82dd396d2205e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopItem: {fileID: 11400000, guid: be65427a03ffb4a45913f002fb941301, type: 2}
   InventoryItems: 4
   itemPrice: 8
   itemAmount: 10
@@ -22897,7 +22895,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47eb6b0ecf66b164f82dd396d2205e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopItem: {fileID: 11400000, guid: 5a22f58297458ff4a8929d22cb2e0c40, type: 2}
   InventoryItems: 3
   itemPrice: 4
   itemAmount: 10

@@ -8,9 +8,6 @@ public class SetAmountTypeBase : MonoBehaviour
     private PlayerController player;
 
     [SerializeField]
-    private ShopItemBase shopItem;
-
-    [SerializeField]
     private InventoryItems InventoryItems;
 
     [SerializeField]
@@ -25,7 +22,7 @@ public class SetAmountTypeBase : MonoBehaviour
 
     public void OnClick()
     {
-        if (player.GetItemAmount(InventoryItems.BLACK_CRISTALS) >= shopItem.itemPrice)
+        if (player.GetItemAmount(InventoryItems.BLACK_CRISTALS) >= itemPrice)
         {
             player.AddItem(InventoryItems.BLACK_CRISTALS, -itemPrice);
             switch (InventoryItems)

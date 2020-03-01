@@ -43,4 +43,10 @@ public class ShopItemDisplay : MonoBehaviour
             btn.GetComponent<Image>().color = Color.grey;
         }
     }
+
+    public void SetBoughtItem()
+    {
+        isBought = true;
+        btn.GetComponent<Image>().color = Color.grey;
+    }
 }
