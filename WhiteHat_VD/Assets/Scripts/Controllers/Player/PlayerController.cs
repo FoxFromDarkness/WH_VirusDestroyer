@@ -431,6 +431,7 @@ public class PlayerController : MonoBehaviour
             //gameObject.SetActive(false);
             GetComponent<PlatformerCharacter2D>().DeadAnim();
             HeadPanelController.Instance.uiPanel.ShowGameOver(false);
+            GameController.Instance.wasStart = false;
         }
     }
 

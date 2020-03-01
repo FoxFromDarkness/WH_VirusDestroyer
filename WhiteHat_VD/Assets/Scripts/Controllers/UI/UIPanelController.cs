@@ -168,7 +168,6 @@ public class UIPanelController : PanelBase
             gameOverPanel.result.text = "YOU LOST";
         }
         gameOverPanel.gameObject.SetActive(true);
-
     }
 
     public void HideGameOver()

@@ -25,7 +25,6 @@ public class GameOverPanelUI : MonoBehaviour
             case 1:
                 HeadPanelController.Instance.startPanel.CloseSubPanels();
                 HeadPanelController.Instance.startPanel.ChangeVisibility(true);
-                GameController.Instance.wasStart = false;
                 break;
         }
     }

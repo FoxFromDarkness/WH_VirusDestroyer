@@ -41,7 +41,10 @@ public class ShopItemDisplay : MonoBehaviour
             player.BuyItem(shopItem.itemName, shopItem.sprite);
             isBought = true;
             btn.GetComponent<Image>().color = Color.grey;
+            HeadPanelController.Instance.PlayUISFX(true);
         }
+        else
+            HeadPanelController.Instance.PlayUISFX(false);
     }
 
     public void SetBoughtItem()

@@ -40,6 +40,9 @@ public class SetAmountTypeBase : MonoBehaviour
                     player.AddItem(InventoryItems.AMMO_TYPE_4, +itemAmount);
                     break;
             }
+            HeadPanelController.Instance.PlayUISFX(true);
         }
+        else
+            HeadPanelController.Instance.PlayUISFX(false);
     }
 }

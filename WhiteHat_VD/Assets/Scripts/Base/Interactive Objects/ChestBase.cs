@@ -29,10 +29,12 @@ public class ChestBase : MonoBehaviour
                 break;
             case QuestionStatus.CORRECT:
                 this.GetComponent<SpriteRenderer>().sprite = correctChestSprite;
+                HeadPanelController.Instance.PlayUISFX(true);
                 StartCoroutine(OpenChest());
                 break;
             case QuestionStatus.INCORRECT:
                 this.GetComponent<SpriteRenderer>().sprite = incorrectChestSprite;
+                HeadPanelController.Instance.PlayUISFX(false);
                 break;
             default:
                 break;

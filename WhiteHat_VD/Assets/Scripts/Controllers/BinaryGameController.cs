@@ -34,6 +34,7 @@ public class BinaryGameController : MonoBehaviour
             }
             transform.parent.gameObject.SetActive(false);
             GameController.IsInputEnable = true;
+            HeadPanelController.Instance.PlayUISFX(true);
 
             HeadPanelController.Instance.uiPanel.ShowHelperPanel("Press 'Up arrow' to enter", 0f);
             PlayerController.LevelPortalController.IsActive = true;

@@ -37,11 +37,13 @@ public class UpgradeBase : MonoBehaviour
             Debug.Log("You bought upgrade: " + playerAttributes);
             player.AddItem(InventoryItems.BLACK_CRISTALS, -itemPrice);  // test
             player.AddAttribute(playerAttributes, percentImprovement);
+            HeadPanelController.Instance.PlayUISFX(true);
         }
         else
         {
             Debug.Log("Not enought money: " + playerAttributes);
             Debug.Log("You have: " + player.GetItemAmount(InventoryItems.BLACK_CRISTALS) + " BC");
+            HeadPanelController.Instance.PlayUISFX(false);
         }
 
         UpdateInfo();
