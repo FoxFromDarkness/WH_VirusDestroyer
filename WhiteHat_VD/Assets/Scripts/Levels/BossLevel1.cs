@@ -14,17 +14,16 @@ public class BossLevel1 : LevelBase
     {
         base.Start();
         player = FindObjectOfType<PlayerController>();
-
-        Invoke("ActivateBoss", 2.0f);
+        smallBosses = GetComponentsInChildren<Boss1Behaviour>();
+        //Invoke("ActivateBoss", 3.0f);
     }
 
     public void ActivateBoss()
     {
-
-        SaveController.Instance.SavePrefs();
-        smallBosses = GetComponentsInChildren<Boss1Behaviour>();
         HeadPanelController.Instance.uiPanel.hpBossUI.InitHpBossSlider(CheckHPOfChildren(), default, default);
         base.isAnimation = true;
+        foreach (var item in smallBosses)
+            item.isShooting = true;
     }
 
     public float CheckHPOfChildren()

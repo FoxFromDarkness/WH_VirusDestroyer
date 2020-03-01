@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
         player.GetComponent<SpriteRenderer>().enabled = true;
         player.GetComponent<PlayerController>().SetDefaultSprite();
         HeadPanelController.Instance.savePlacePanel.ClearBoughtItems();
-        player.GetComponent<PlayerBase>().StartPosition = new Vector3(-1255.0f, 255.0f);
+        player.GetComponent<PlayerBase>().StartPosition = new Vector3(-1240.0f, 255.0f);
         player.GetComponent<PlayerBase>().SetStartPlayerOptions();
 
         if (isLoading)

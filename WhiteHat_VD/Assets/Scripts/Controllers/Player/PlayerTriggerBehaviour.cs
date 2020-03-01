@@ -28,6 +28,7 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         EnemyIdleArea_Enter(collision);
         ItemBoxBehavior_Enter(collision);
         HelperBoxBehavior_Enter(collision);
+        BossInvoke_Enter(collision);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -279,6 +280,14 @@ public class PlayerTriggerBehaviour : MonoBehaviour
         if (collision.GetComponent<EnemyIdleArea>())
         {
             collision.GetComponent<EnemyIdleArea>().EnemyAreaTrigger(false);
+        }
+    }
+
+    private void BossInvoke_Enter(Collider2D collision)
+    {
+        if (collision.GetComponent<BossInvoke>())
+        {
+            collision.GetComponent<BossInvoke>().ActivateBoss();
         }
     }
 }
