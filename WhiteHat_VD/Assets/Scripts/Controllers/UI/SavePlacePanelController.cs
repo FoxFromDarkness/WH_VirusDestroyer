@@ -49,4 +49,12 @@ public class SavePlacePanelController : PanelBase
                 break;
         }
     }
+
+    public void ClearBoughtItems()
+    {
+        shopItemDisplays[0].ClearBoughtItem();
+        shopItemDisplays[1].ClearBoughtItem();
+        shopItemDisplays[2].ClearBoughtItem();
+        shopItemDisplays[3].ClearBoughtItem();
+    }
 }

@@ -39,7 +39,7 @@ public class BulletPlayerController : BulletBase
                 movingDirection = new Vector3(0, 1);
                 break;
         }
-        damage += additionalDamage / 10;
+        damage += additionalDamage;
 
         isMoving = true;
     }

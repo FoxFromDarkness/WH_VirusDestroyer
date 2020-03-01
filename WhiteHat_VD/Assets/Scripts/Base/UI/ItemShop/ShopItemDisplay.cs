@@ -52,4 +52,10 @@ public class ShopItemDisplay : MonoBehaviour
         isBought = true;
         btn.GetComponent<Image>().color = Color.grey;
     }
+
+    public void ClearBoughtItem()
+    {
+        isBought = false;
+        btn.GetComponent<Image>().color = Color.white;
+    }
 }

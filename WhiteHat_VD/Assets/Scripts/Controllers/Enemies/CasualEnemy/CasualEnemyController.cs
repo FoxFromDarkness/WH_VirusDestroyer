@@ -67,6 +67,7 @@ public class CasualEnemyController : MonoBehaviour
     [SerializeField] private bool canMove = true;
     [SerializeField] private bool canAttack = true;
     [SerializeField] private bool isActive = true;
+    [SerializeField] private bool flipAfterGuard = true;
     [Space]
     [Header("Animator")]
     [SerializeField] private bool _isAim;
@@ -367,7 +368,7 @@ public class CasualEnemyController : MonoBehaviour
             case EnemyType.GUARD:
                 canMove = false;
                 CurrentState = 0;
-                bodyImage.flipX = !bodyImage.flipX;
+                if(flipAfterGuard) bodyImage.flipX = !bodyImage.flipX;
                 CorrectAmmoPosition();
                 hpCanvas.transform.localPosition = new Vector2(movingRight == true ? enemyHPStartPos.x : enemyHPStartPos.x * -1, hpCanvas.transform.localPosition.y);
                 break;

@@ -43,7 +43,7 @@ public class ChestBase : MonoBehaviour
 
     public int SetAdditionalAward(int luck)
     {
-        return additionalAwardAmount = awardAmount * (luck / 10);
+        return additionalAwardAmount = awardAmount * (luck/2);
     }
 
     private IEnumerator OpenChest()
