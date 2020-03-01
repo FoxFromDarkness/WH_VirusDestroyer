@@ -69,6 +69,8 @@ public class GameController : MonoBehaviour
         else
             SavePlayerPrefs();
 
+        var playerC = player.GetComponent<PlayerController>();
+        playerC.ChangeAttribute(PlayerAttributes.HP, playerC.GetAttribute(PlayerAttributes.HP_MAX));
         ShowHideMainMenu();
         wasStart = true;
     }

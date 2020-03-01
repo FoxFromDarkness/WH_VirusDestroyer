@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -988,7 +988,7 @@ PrefabInstance:
     - target: {fileID: 1912921177781162564, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.82
+      value: -13.41
       objectReference: {fileID: 0}
     - target: {fileID: 1912921177847723235, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
         type: 3}
@@ -1003,7 +1003,7 @@ PrefabInstance:
     - target: {fileID: 1912921177847723235, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
         type: 3}
       propertyPath: enemyAttack
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1912921177847723235, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
         type: 3}
@@ -1013,7 +1013,7 @@ PrefabInstance:
     - target: {fileID: 1912921177847723235, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
         type: 3}
       propertyPath: enemyAttackSpeed
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1912921177847723236, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
         type: 3}
@@ -1079,6 +1079,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912921179326517084, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912921179326517084, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912921179326517086, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dd5125033b25084aa0f29c45bcf9ed7, type: 3}
@@ -18390,10 +18405,25 @@ PrefabInstance:
       propertyPath: maxHealthPoints
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1912921177847723235, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
+        type: 3}
+      propertyPath: enemyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912921177847723235, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
+        type: 3}
+      propertyPath: enemyAttack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912921177847723235, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
+        type: 3}
+      propertyPath: enemyAttackSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1912921177847723236, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1281.84
+      value: 1278.18
       objectReference: {fileID: 0}
     - target: {fileID: 1912921177847723236, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
         type: 3}
@@ -18453,7 +18483,37 @@ PrefabInstance:
     - target: {fileID: 1912921178365520837, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.19
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912921178581961560, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912921178581961574, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912921178581961574, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912921179326517084, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912921179326517084, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912921179326517086, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -16.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dd5125033b25084aa0f29c45bcf9ed7, type: 3}
