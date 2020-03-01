@@ -6,12 +6,20 @@ using UnityEngine.Audio;
 
 public class GameController : MonoBehaviour
 {
+    public enum PlayableWorld
+    {
+        Level_Tutorial,
+        Level_1,
+        BossLevel_1
+    }
+
     private static bool isInputEnable;
     public static bool IsInputEnable {
         get { return isInputEnable; }
         set { isInputEnable = value; Cursor.visible = !isInputEnable; }
     }
     public static GameController Instance { get; private set; }
+    public static PlayableWorld CurrentWorld { get; set; } = 0;
     public bool wasStart = false;
     private SceneController sceneController;
 
@@ -60,8 +68,6 @@ public class GameController : MonoBehaviour
         player.GetComponent<SpriteRenderer>().enabled = true;
         player.GetComponent<PlayerController>().SetDefaultSprite();
         player.GetComponent<PlayerBase>().StartPosition = new Vector3(-1240.0f, 255.0f);
-        sceneController.UnloadAllScenes(false);
-        sceneController.LoadScene(false, "Level_Tutorial", SetCharacterPosition);
         player.GetComponent<PlayerBase>().SetStartPlayerOptions();
 
         if (isLoading)
@@ -69,6 +75,8 @@ public class GameController : MonoBehaviour
         else
             SavePlayerPrefs();
 
+        sceneController.UnloadAllScenes(false);
+        sceneController.LoadScene(false, CurrentWorld.ToString(), SetCharacterPosition);
         var playerC = player.GetComponent<PlayerController>();
         playerC.ChangeAttribute(PlayerAttributes.HP, playerC.GetAttribute(PlayerAttributes.HP_MAX));
         ShowHideMainMenu();
@@ -94,6 +102,7 @@ public class GameController : MonoBehaviour
     {
         HeadPanelController.Instance.uiPanel.DeactiveSlots();
         HeadPanelController.Instance.uiPanel.SetAmmo(-1);
+        CurrentWorld = 0;
         SaveController.Instance.SaveDefaultPrefs();
     }
 

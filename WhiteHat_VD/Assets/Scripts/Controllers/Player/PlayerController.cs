@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     private const float LOADING_TIME_FOR_HEAVY_GUNS = 0.5f;
 
     [Header("Player Options")]
-    private bool isCheatEnabled = false;
     private bool godMode;
     private Sprite startHeroSprite;
     public GameObject _GameManager;
@@ -78,7 +77,6 @@ public class PlayerController : MonoBehaviour
         SavePlaceEnter();
         OpenChestOperation();
         PlatformJumpDown();
-        SwitchCheatEnabled();
     }
 
     #region WEAPONS_SYSTEM
@@ -592,8 +590,10 @@ public class PlayerController : MonoBehaviour
                     InLevelPortal = false;
                     PlayTeleportSFX();
                     HeadPanelController.Instance.uiPanel.HideHelperPanel();
-                    _GameManager.GetComponent<SceneController>().UnloadScene(LevelPortalController.thisSceneName);
-                    _GameManager.GetComponent<SceneController>().LoadScene(false, LevelPortalController.nextSceneName, SetCharacterPositionAfterChangeLevel);
+                    GameController.CurrentWorld = LevelPortalController.nextSceneName;
+                    SaveController.Instance.SavePrefs();
+                    _GameManager.GetComponent<SceneController>().UnloadScene(LevelPortalController.thisSceneName.ToString());
+                    _GameManager.GetComponent<SceneController>().LoadScene(false, LevelPortalController.nextSceneName.ToString(), SetCharacterPositionAfterChangeLevel);
                 }
                 else if(LevelPortalController.isOpenGame)
                 {
@@ -622,19 +622,8 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    private void SwitchCheatEnabled()
-    {
-        if (Input.GetKeyDown(KeyCode.F2))
-        {
-            isCheatEnabled = !isCheatEnabled;
-            HeadPanelController.Instance.uiPanel.ShowHelperPanel(isCheatEnabled == true ? "Cheats enabled" : "Cheats disabled", 2f);
-        }
-    }
-
     private void Cheats()
     {
-        if (!isCheatEnabled) return;
-
         if (Input.GetKeyDown(KeyCode.F11))
         {
             AddItem(InventoryItems.BLACK_CRISTALS, 100);
@@ -646,13 +635,6 @@ public class PlayerController : MonoBehaviour
             godMode = !godMode;
             Debug.Log("godMode" + godMode);
         }
-
-        if(Input.GetKeyDown(KeyCode.F10))
-        {
-            PlayerStats.WeaponMods[0].IsUnlock = true;
-            Debug.Log("PlayerStats.WeaponMods[0].IsUnlock = true;");
-        }
-
     }
 
 }

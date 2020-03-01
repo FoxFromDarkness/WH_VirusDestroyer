@@ -13,8 +13,8 @@ public class LevelPortalController : MonoBehaviour
     public string descriptionOpen = "Press 'Up arrow' to enter";
     public string descriptionClosed = "Press 'Up arrow' to unlock portal";
     public Vector2 startLevelPosition;
-    public string thisSceneName;
-    public string nextSceneName;
+    public GameController.PlayableWorld thisSceneName;
+    public GameController.PlayableWorld nextSceneName;
     [SerializeField] private Transform doorL;
     [SerializeField] private Transform doorR;
     [SerializeField] private Vector2 doorStartPos = new Vector2(0.094f, -0.016f); //for doorL x*=-1

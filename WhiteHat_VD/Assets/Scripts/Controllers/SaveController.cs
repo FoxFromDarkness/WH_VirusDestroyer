@@ -18,7 +18,8 @@ public class SaveController : MonoBehaviour
                                         "48h50", "48h50h5fh4dh61h78", "4ch65h76h65h6c", "4ch75h63h6b",
                                         "41h64h64h69h74h69h6fh6eh61h6ch44h61h6dh61h67h65", "42h6ch61h63h6bh43h72h69h73h74h61h6ch73",
                                         "57h70h5fh30", "57h70h5fh31", "57h70h5fh32", "57h70h5fh33",
-                                        "41h6dh6dh6fh42h6fh78h5fh30", "41h6dh6dh6fh42h6fh78h5fh31", "41h6dh6dh6fh42h6fh78h5fh32", "41h6dh6dh6fh42h6fh78h5fh33"};
+                                        "41h6dh6dh6fh42h6fh78h5fh30", "41h6dh6dh6fh42h6fh78h5fh31", "41h6dh6dh6fh42h6fh78h5fh32", "41h6dh6dh6fh42h6fh78h5fh33",
+                                        "6ch76h6c"};
 
     private void Start()
     {
@@ -58,6 +59,7 @@ public class SaveController : MonoBehaviour
         Prefs.Add("AmmoBoxSupply_1", player.PlayerStats.GetAmmoBoxSupplyInfo(1));
         Prefs.Add("AmmoBoxSupply_2", player.PlayerStats.GetAmmoBoxSupplyInfo(2));
         Prefs.Add("AmmoBoxSupply_3", player.PlayerStats.GetAmmoBoxSupplyInfo(3));
+        Prefs.Add("CurrentWorld", ((int)GameController.CurrentWorld)+"");
 
         Dictionary<string, string>.ValueCollection valueColl = Prefs.Values;
 
@@ -92,6 +94,7 @@ public class SaveController : MonoBehaviour
         Prefs.Add("AmmoBoxSupply_1", "0");
         Prefs.Add("AmmoBoxSupply_2", "0");
         Prefs.Add("AmmoBoxSupply_3", "0");
+        Prefs.Add("CurrentWorld", "0");
 
         Dictionary<string, string>.ValueCollection valueColl = Prefs.Values;
 
@@ -125,6 +128,7 @@ public class SaveController : MonoBehaviour
         Prefs.Add("AmmoBoxSupply_1", ReadFromFile(saveFilenames[12]));
         Prefs.Add("AmmoBoxSupply_2", ReadFromFile(saveFilenames[13]));
         Prefs.Add("AmmoBoxSupply_3", ReadFromFile(saveFilenames[14]));
+        Prefs.Add("CurrentWorld", ReadFromFile(saveFilenames[15]));
 
         SetPlayerPrefs();
     }
@@ -148,6 +152,8 @@ public class SaveController : MonoBehaviour
         player.SetFullWeapon(1,Prefs["Weapon_1"] != "null" ? Prefs["Weapon_1"] : "null"); 
         player.SetFullWeapon(2,Prefs["Weapon_2"] != "null" ? Prefs["Weapon_2"] : "null"); 
         player.SetFullWeapon(3,Prefs["Weapon_3"] != "null" ? Prefs["Weapon_3"] : "null");
+
+        GameController.CurrentWorld = (GameController.PlayableWorld)int.Parse(Prefs["CurrentWorld"]);
     }
 
     private void SaveToFile(string filename, string value)
