@@ -9816,6 +9816,7 @@ GameObject:
   - component: {fileID: 4001986205273639553}
   - component: {fileID: 4001986205273639554}
   - component: {fileID: 4001986205273639558}
+  - component: {fileID: 4550609964377228941}
   - component: {fileID: 4001986205273639566}
   - component: {fileID: 8262780100636538021}
   m_Layer: 0
@@ -9928,6 +9929,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.004583995}
   m_Size: {x: 0.4412435, y: 0.43733978}
   m_Direction: 0
+--- !u!114 &4550609964377228941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4001986205273639555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a60ce3d8eb5d874c9612b9def1dd4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4001986205273639566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9945,8 +9958,8 @@ MonoBehaviour:
   descriptionOpen: Press 'Up arrow' to enter
   descriptionClosed: Press 'Up arrow' to unlock portal
   startLevelPosition: {x: -1238.68, y: 254.4438}
-  thisSceneName: Level_Tutorial
-  nextSceneName: Level_1
+  thisSceneName: 0
+  nextSceneName: 0
   doorL: {fileID: 1375623734}
   doorR: {fileID: 1308707903}
   doorStartPos: {x: 0.094, y: -0.016}
