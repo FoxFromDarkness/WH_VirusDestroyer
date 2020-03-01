@@ -30,13 +30,14 @@ public class Boss1Behaviour : MonoBehaviour {
     private float angle;
     private Quaternion rotation;
 
-
+    private AudioSource audioSource;
 
     private void Start() {
         actualShotTime = ShootTime();
         enemyBullet = GetComponentInChildren<BulletEnemyTowerController>();
         enemyBullet.gameObject.SetActive(false);
         player = FindObjectOfType<PlayerController>();
+        audioSource = GetComponent<AudioSource>();
         actualHP = HP_Max;
     }
 
@@ -68,6 +69,7 @@ public class Boss1Behaviour : MonoBehaviour {
             copyEnemyBullet.isMoving = true;
             copyEnemyBullet.gameObject.SetActive(true);
             actualShotTime = ShootTime();
+            audioSource.Play();
         }
         else
             actualShotTime -= Time.deltaTime;

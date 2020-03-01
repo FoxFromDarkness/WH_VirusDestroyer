@@ -102,6 +102,7 @@ public class GameController : MonoBehaviour
     {
         HeadPanelController.Instance.uiPanel.DeactiveSlots();
         HeadPanelController.Instance.uiPanel.SetAmmo(-1);
+        CurrentWorld = 0;
         SaveController.Instance.SaveDefaultPrefs();
     }
 
