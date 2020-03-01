@@ -7,12 +7,12 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
 
-    public void LoadScene(bool rootScene, string sceneName, Action nextMethod)
+    public void LoadScene(bool rootScene, string sceneName, Action nextMethod, bool wasStart)
     {
         if (rootScene)
             SceneManager.LoadScene("_RootScene");
 
-        StartCoroutine(LoadSceneAsynchronously(rootScene, sceneName, nextMethod));
+        StartCoroutine(LoadSceneAsynchronously(rootScene, sceneName, nextMethod, wasStart));
         
     }
 
@@ -48,7 +48,7 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene("_UI", LoadSceneMode.Additive);
     }
 
-    private IEnumerator LoadSceneAsynchronously (bool uiscene, string sceneName, Action nextMethod)
+    private IEnumerator LoadSceneAsynchronously (bool uiscene, string sceneName, Action nextMethod, bool wasStart)
     {
         if(uiscene)
             yield return StartCoroutine(CoLoadUIScene());
@@ -65,6 +65,10 @@ public class SceneController : MonoBehaviour
         HeadPanelController.Instance.loadingScreen.SetSliderValue(1);
         yield return new WaitForSeconds(0.3f);
         nextMethod();
+
+        if(!wasStart)
+            yield return new WaitForSeconds(2.5f);
+
         HeadPanelController.Instance.loadingScreen.ChangeVisibility(false);
         HeadPanelController.Instance.startPanel.ChangeVisibility(false);
     }

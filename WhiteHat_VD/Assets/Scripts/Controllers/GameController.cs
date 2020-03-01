@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
         player.GetComponent<SpriteRenderer>().enabled = true;
         player.GetComponent<PlayerController>().SetDefaultSprite();
         HeadPanelController.Instance.savePlacePanel.ClearBoughtItems();
-        player.GetComponent<PlayerBase>().StartPosition = new Vector3(-1240.0f, 255.0f);
+        player.GetComponent<PlayerBase>().StartPosition = new Vector3(-1255.0f, 255.0f);
         player.GetComponent<PlayerBase>().SetStartPlayerOptions();
 
         if (isLoading)
@@ -77,7 +77,7 @@ public class GameController : MonoBehaviour
             SavePlayerPrefs();
 
         sceneController.UnloadAllScenes(false);
-        sceneController.LoadScene(false, CurrentWorld.ToString(), SetCharacterPosition);
+        sceneController.LoadScene(false, CurrentWorld.ToString(), SetCharacterPosition, wasStart);
         var playerC = player.GetComponent<PlayerController>();
         playerC.ChangeAttribute(PlayerAttributes.HP, playerC.GetAttribute(PlayerAttributes.HP_MAX));
         ShowHideMainMenu();

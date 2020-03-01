@@ -593,7 +593,7 @@ public class PlayerController : MonoBehaviour
                     GameController.CurrentWorld = LevelPortalController.nextSceneName;
                     SaveController.Instance.SavePrefs();
                     _GameManager.GetComponent<SceneController>().UnloadScene(LevelPortalController.thisSceneName.ToString());
-                    _GameManager.GetComponent<SceneController>().LoadScene(false, LevelPortalController.nextSceneName.ToString(), SetCharacterPositionAfterChangeLevel);
+                    _GameManager.GetComponent<SceneController>().LoadScene(false, LevelPortalController.nextSceneName.ToString(), SetCharacterPositionAfterChangeLevel, true);
                 }
                 else if(LevelPortalController.isOpenGame)
                 {
