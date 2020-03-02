@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e9d68ee999700e4c9ab04ef2b044d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Welcome in virus wordl!
+  description: Be careful, Slammer is coming!
 --- !u!1001 &153183855
 PrefabInstance:
   m_ObjectHideFlags: 0
