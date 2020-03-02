@@ -95,6 +95,7 @@ public class GameController : MonoBehaviour
         else
         {
             HeadPanelController.Instance.startPanel.CloseSubPanels();
+            HeadPanelController.Instance.binaryGame.transform.parent.gameObject.SetActive(false);
             HeadPanelController.Instance.startPanel.ChangeVisibility();
         }
     }

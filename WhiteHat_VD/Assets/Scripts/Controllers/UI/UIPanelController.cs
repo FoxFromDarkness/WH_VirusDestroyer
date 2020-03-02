@@ -161,11 +161,13 @@ public class UIPanelController : PanelBase
         {
             gameOverPanel.SetColor(0, 255, 0);
             gameOverPanel.result.text = "YOU WIN";
+            gameOverPanel.restartButton.gameObject.SetActive(false);
         }
         else
         {
             gameOverPanel.SetColor(255, 0, 0);
             gameOverPanel.result.text = "YOU LOST";
+            gameOverPanel.restartButton.gameObject.SetActive(true);
         }
         gameOverPanel.gameObject.SetActive(true);
     }

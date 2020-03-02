@@ -8,6 +8,7 @@ public class GameOverPanelUI : MonoBehaviour
 {
     public TextMeshProUGUI result;
     public Image img;
+    public Button restartButton;
 
     public void SetColor(byte r, byte g, byte b)
     {

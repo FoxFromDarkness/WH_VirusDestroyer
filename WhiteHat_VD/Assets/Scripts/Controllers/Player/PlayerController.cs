@@ -187,16 +187,17 @@ public class PlayerController : MonoBehaviour
 
     public void ChangingSlotOperation(bool setDefault = false)
     {
-        var numberSlot = Platformer2DUserControl.NumberSlotKey;
+        var numberSlot = setDefault == false ? Platformer2DUserControl.NumberSlotKey : -1;
 
         if (numberSlot != -1 && PlayerStats.WeaponMods[numberSlot].IsUnlock && !setDefault)
+        {
             HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, PlayerStats.WeaponMods[numberSlot].AmmoAmount);
+            PlayChangeWeaponSFX();
+        }
         else
             HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, -1);
 
         ChangeHeroAnim();
-        if(!setDefault)
-            PlayChangeWeaponSFX();
 
         InventoryItems tmp = GetActiveWeapon();
         switch (tmp)

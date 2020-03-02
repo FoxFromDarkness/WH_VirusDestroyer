@@ -9340,7 +9340,7 @@ RectTransform:
   - {fileID: 1393253175}
   - {fileID: 1828204901}
   m_Father: {fileID: 1008930337}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -11688,9 +11688,9 @@ RectTransform:
   - {fileID: 1146665406}
   - {fileID: 403057164}
   - {fileID: 1237482214}
+  - {fileID: 1812641813}
   - {fileID: 1562161585}
   - {fileID: 772063409}
-  - {fileID: 1812641813}
   m_Father: {fileID: 926598980}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16731,6 +16731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   result: {fileID: 1404585591}
   img: {fileID: 1397766127}
+  restartButton: {fileID: 356758479}
 --- !u!1 &1404585589
 GameObject:
   m_ObjectHideFlags: 0
@@ -18695,7 +18696,7 @@ RectTransform:
   - {fileID: 1013336942}
   - {fileID: 1880951422}
   m_Father: {fileID: 1008930337}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -21865,7 +21866,7 @@ RectTransform:
   - {fileID: 1896271824}
   - {fileID: 992677059}
   m_Father: {fileID: 1008930337}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -23465,7 +23466,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 163d3f98d47125a48a251bc7d6c07e06, type: 2}
   m_sharedMaterial: {fileID: 5276531047899112088, guid: 163d3f98d47125a48a251bc7d6c07e06,
@@ -23532,16 +23533,16 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -2.1284266, w: 0}
+  m_margin: {x: 1.1964636, y: 0, z: -16.48568, w: 0}
   m_textInfo:
     textComponent: {fileID: 1910691765}
-    characterCount: 1
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
