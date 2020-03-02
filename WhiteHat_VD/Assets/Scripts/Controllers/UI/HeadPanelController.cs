@@ -7,6 +7,7 @@ public class HeadPanelController : MonoBehaviour
     public static HeadPanelController Instance;
 
     public UIPanelController uiPanel;
+    public InfoPanelUI infoPanel;
     public QuestionPanelController questionPanel;
     public SavePlacePanelController savePlacePanel;
     public StartPanelController startPanel;

@@ -1080,7 +1080,7 @@ PrefabInstance:
     - target: {fileID: 4001986205273639552, guid: 7ded5fe0b52062846954c4dd9cf441e8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4001986205273639552, guid: 7ded5fe0b52062846954c4dd9cf441e8,
         type: 3}
@@ -1212,7 +1212,7 @@ PrefabInstance:
     - target: {fileID: 1912921177847723236, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1912921177847723236, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
         type: 3}
@@ -1406,7 +1406,7 @@ PrefabInstance:
     - target: {fileID: 4944019773408412815, guid: 401ae2584ff7e2c41bf0bfc913ed54cc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4944019773408412815, guid: 401ae2584ff7e2c41bf0bfc913ed54cc,
         type: 3}
@@ -22841,6 +22841,105 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 598914730}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1647557955
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1670392555}
+    m_Modifications:
+    - target: {fileID: 6386505768372112753, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: superscription
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112753, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: virusName
+      value: Hi Player!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112753, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: info
+      value: We have created this game to bring you the most popular cybersecurity
+        issues. Thanks to us you will learn what dangers are waiting for you in the
+        world of the Internet and how to avoid them. You are a hero who is a kind
+        of program to fight malware. Play smart and be careful! You are the last hope
+        to defeat all viruses.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112753, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: postScriptum
+      value: White Hats
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112754, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_Name
+      value: InfoTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1231
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -240.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe49e898eae2a7346ad6cfbef3bb411f, type: 3}
+--- !u!4 &1647557956 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1647557955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1670392554
 GameObject:
   m_ObjectHideFlags: 0
@@ -22882,6 +22981,7 @@ Transform:
   - {fileID: 1496903525}
   - {fileID: 903404316}
   - {fileID: 1695639531}
+  - {fileID: 1647557956}
   - {fileID: 743508159}
   m_Father: {fileID: 778911779}
   m_RootOrder: 0
@@ -22973,7 +23073,7 @@ PrefabInstance:
     - target: {fileID: 1912921177847723236, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1912921177847723236, guid: 2dd5125033b25084aa0f29c45bcf9ed7,
         type: 3}
@@ -23531,7 +23631,7 @@ PrefabInstance:
     - target: {fileID: 1088291524867466890, guid: 2fead12200bdf054da65d589bde423ec,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1088291524867466890, guid: 2fead12200bdf054da65d589bde423ec,
         type: 3}
@@ -23566,6 +23666,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HelperBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094476490947550372, guid: 2e1f921632538414e97f1d3296bc9e2e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1094476490947550373, guid: 2e1f921632538414e97f1d3296bc9e2e,
         type: 3}
@@ -23743,7 +23848,7 @@ PrefabInstance:
     - target: {fileID: 7980293937153027527, guid: d23f3c17e3a625046946faf526704d16,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7980293937153027527, guid: d23f3c17e3a625046946faf526704d16,
         type: 3}

@@ -87,10 +87,12 @@ public class GameController : MonoBehaviour
     public void ShowHideMainMenu()
     {
         if (HeadPanelController.Instance.savePlacePanel.gameObject.activeSelf 
-            || HeadPanelController.Instance.questionPanel.gameObject.activeSelf)
+            || HeadPanelController.Instance.questionPanel.gameObject.activeSelf
+            || HeadPanelController.Instance.infoPanel.gameObject.activeSelf)
         {
             HeadPanelController.Instance.savePlacePanel.ChangeVisibility(false);
             HeadPanelController.Instance.questionPanel.ChangeVisibility(false);
+            HeadPanelController.Instance.infoPanel.ChangeVisibility(false);
         }
         else
         {

@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -217,7 +217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &95356719
 Transform:
   m_ObjectHideFlags: 0
@@ -2687,6 +2687,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 401ae2584ff7e2c41bf0bfc913ed54cc, type: 3}
+--- !u!4 &1042008393 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6386505767332496442}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1046236359
 GameObject:
   m_ObjectHideFlags: 0
@@ -5594,6 +5600,7 @@ Transform:
   - {fileID: 1483063670}
   - {fileID: 1686746332}
   - {fileID: 496044544}
+  - {fileID: 1042008393}
   m_Father: {fileID: 1071430671}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -36172,3 +36179,91 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1829128240}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6386505767332496442
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1740271016}
+    m_Modifications:
+    - target: {fileID: 6386505768372112753, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: superscription
+      value: YOU FOUND THE WORM'S NEST!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112753, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: info
+      value: 'The worm who wreaking havoc in Europe in 2009, caused huge damage to
+        the French Navy, the British Ministry of Defense and the Norwegian police.
+        He managed to spread over 200 countries, and in them on millions of computers
+        and servers. The worm combined techniques used by viruses and Trojans, which,
+        blocked the possibility of updating the system. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112753, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: postScriptum
+      value: Be careful, this worm is known for attacking programs against malware!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112754, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_Name
+      value: InfoTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386505768372112755, guid: fe49e898eae2a7346ad6cfbef3bb411f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe49e898eae2a7346ad6cfbef3bb411f, type: 3}
