@@ -42,6 +42,8 @@ public class PlayerBase : MonoBehaviour
         {
             GameController.IsInputEnable = true;
             HeadPanelController.Instance.uiPanel.HideGameOver();
+            HeadPanelController.Instance.uiPanel.SetBlackCristals(BlackCristals);
+            HeadPanelController.Instance.savePlacePanel.SetBlackCristals(BlackCristals);
             GetComponent<PlayerController>().ChangingSlotOperation(true);
         }
     }
