@@ -195,7 +195,10 @@ public class PlayerController : MonoBehaviour
             PlayChangeWeaponSFX();
         }
         else
+        {
             HeadPanelController.Instance.uiPanel.SetSlotImage(numberSlot, -1);
+            Platformer2DUserControl.NumberSlotKey = -1;
+        }
 
         ChangeHeroAnim();
 

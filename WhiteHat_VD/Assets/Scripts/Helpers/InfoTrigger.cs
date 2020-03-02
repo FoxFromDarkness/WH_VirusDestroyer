@@ -8,6 +8,7 @@ public class InfoTrigger : MonoBehaviour
     [SerializeField] private string virusName;
     [TextArea]
     [SerializeField] private string info;
+    [TextArea]
     [SerializeField] private string postScriptum;
 
     [SerializeField] private int showTimes = 1;

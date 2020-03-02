@@ -43,7 +43,7 @@ public class BossLevel1 : LevelBase
         HeadPanelController.Instance.uiPanel.HideObjects();
         HeadPanelController.Instance.uiPanel.ShowGameOver(true);
         //levelPortal.IsActive = true;
-        player.AddItem(InventoryItems.BLACK_CRISTALS, 1000);
+        player.AddItem(InventoryItems.BLACK_CRISTALS, 100);
         ortographicSize = DEFAULT_ORTOGRAPHIC_SIZE;
         isAnimation = true;
     }

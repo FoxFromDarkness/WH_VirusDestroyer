@@ -36,7 +36,7 @@ public class PlayerBase : MonoBehaviour
 
         BlackCristals = 0;
         InitPlayerWeaponMods();
-        //StartPosition = new Vector3(0, 0);
+        StartPosition = new Vector3(-1240.0f, 255.0f);
 
         if (HeadPanelController.Instance != null) //restart or loadgame
         {
