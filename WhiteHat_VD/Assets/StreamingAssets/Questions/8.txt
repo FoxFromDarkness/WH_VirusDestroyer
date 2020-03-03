@@ -1,0 +1,1 @@
+What kind of cybersecurity risks can be minimized by using a Virtual Private Network (VPN)?|Use of insecure Wi-Fi networks|Key-logging|De-anonymization by network operators|Phishing attacks|1

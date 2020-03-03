@@ -1,1 +1,1 @@
-Którymi z poniższych programów zabezpieczysz swój komputer?|Programem antywirusowym i przeglądarką internetową|Programem antywirusowym i firewallem|Programem do nagrywania płyt||2
+What does the “https://” at the beginning of a URL denote, as opposed to "http://" (without the “s”)?|That the site has special high definition|That information entered into the site is encrypted|That the site is the newest version available|That the site is not accessible to certain computers|2
