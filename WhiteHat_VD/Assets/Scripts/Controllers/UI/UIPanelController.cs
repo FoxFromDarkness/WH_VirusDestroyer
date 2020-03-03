@@ -169,11 +169,11 @@ public class UIPanelController : PanelBase
             gameOverPanel.result.text = "YOU LOST";
             gameOverPanel.restartButton.gameObject.SetActive(true);
         }
-        gameOverPanel.gameObject.SetActive(true);
+        gameOverPanel.ChangeVisibility(true);
     }
 
     public void HideGameOver()
     {
-        gameOverPanel.gameObject.SetActive(false);
+        gameOverPanel.ChangeVisibility(false);
     }
 }

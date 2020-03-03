@@ -40,7 +40,6 @@ public class PlayerBase : MonoBehaviour
 
         if (HeadPanelController.Instance != null) //restart or loadgame
         {
-            GameController.IsInputEnable = true;
             HeadPanelController.Instance.uiPanel.HideGameOver();
             HeadPanelController.Instance.uiPanel.SetBlackCristals(BlackCristals);
             HeadPanelController.Instance.savePlacePanel.SetBlackCristals(BlackCristals);

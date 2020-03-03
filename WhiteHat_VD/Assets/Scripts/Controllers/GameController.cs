@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
         BossLevel_1
     }
 
-    private static bool isInputEnable;
+    private static bool isInputEnable = false;
     public static bool IsInputEnable {
         get { return isInputEnable; }
         set { isInputEnable = value; Cursor.visible = !isInputEnable; }
@@ -80,6 +80,7 @@ public class GameController : MonoBehaviour
         var playerC = player.GetComponent<PlayerController>();
         playerC.ChangeAttribute(PlayerAttributes.HP, playerC.GetAttribute(PlayerAttributes.HP_MAX));
         ShowHideMainMenu();
+        isInputEnable = false;
         wasStart = true;
     }
 

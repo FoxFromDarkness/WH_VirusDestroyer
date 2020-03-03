@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameOverPanelUI : MonoBehaviour
+public class GameOverPanelUI : PanelBase
 {
     public TextMeshProUGUI result;
     public Image img;
