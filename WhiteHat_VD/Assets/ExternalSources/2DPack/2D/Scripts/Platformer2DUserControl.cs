@@ -23,7 +23,11 @@ namespace UnityStandardAssets._2D
 
         private void Update()
         {
-            if (!GameController.IsInputEnable) return;
+            if (!GameController.IsInputEnable)
+            {
+                m_Character.Move(0, false, false);
+                return;
+            }
 
             if (!m_Jump)
             {
@@ -33,16 +37,6 @@ namespace UnityStandardAssets._2D
 
             //ChangeSlotIamge
             PlayerController.IsSlotChangeImageKey = CheckSlotChangeImageKey();
-        }
-
-
-        private void FixedUpdate()
-        {
-            if (!GameController.IsInputEnable)
-            {
-                m_Character.Move(0, false, false);
-                return;
-            }
 
             // Read the inputs.
             bool crouch = false; // Input.GetKey(KeyCode.LeftControl);
@@ -52,10 +46,7 @@ namespace UnityStandardAssets._2D
             m_Jump = false;
 
             //shooting
-            if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.LeftAlt))
-                IsShotKey = true;
-            else
-                IsShotKey = false;
+            IsShotKey = (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.LeftAlt));
         }
 
         private bool CheckSlotChangeImageKey()
