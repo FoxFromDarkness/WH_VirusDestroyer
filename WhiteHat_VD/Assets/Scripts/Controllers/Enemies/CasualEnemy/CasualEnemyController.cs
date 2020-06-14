@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CasualEnemyController : MonoBehaviour
+public class CasualEnemyController : EnemyStateMovementMachine
 {
     public enum EnemyBody
     {
@@ -20,14 +20,6 @@ public class CasualEnemyController : MonoBehaviour
         NONE
     }
 
-    public enum EnemyMovement
-    {
-        IDLE, //Z dala od gracza
-        ATTACK, //Blisko gracza
-        DIE, //Po zabiciu przez gracza
-        NONE
-    }
-
     public enum EnemyAttack
     {
         SINGLE, //Pojedyńczy strzał
@@ -39,59 +31,63 @@ public class CasualEnemyController : MonoBehaviour
 
     [Header("General")]
     [SerializeField] private Transform body;
+    public Transform Body => body;
     [SerializeField] private Sprite[] bodyImages;
-    private SpriteRenderer bodyImage;
-    [SerializeField] private Collider2D bodyCollider;
+    [HideInInspector] public SpriteRenderer bodyImage;
+    [HideInInspector]  public Collider2D bodyCollider;
     public RuntimeAnimatorController[] animators;
-    private Animator animator;
+    [HideInInspector] public Animator animator;
     private HP_Canvas hpCanvas;
+
     [Space]
     [Header("Type")]
-    [SerializeField] private EnemyBody enemyBody;
-    [SerializeField] private EnemyType enemyType;
+    public EnemyBody enemyBody;
+    public EnemyType enemyType;
     [Tooltip("Only for information")]
-    [SerializeField] private EnemyMovement enemyMovement = EnemyMovement.IDLE;
-    [SerializeField] private EnemyAttack enemyAttack;
+    public EnemyAttack enemyAttack;
+
     [Space]
     [Header("Settings")]
     [SerializeField] private float maxHealthPoints = 100;
     private float currentHealthPoints;
-    [SerializeField] private float enemyMovingSpeed = 2;
-    [SerializeField] private float enemyAttackSpeed = 2;
+    public float enemyMovingSpeed = 2;
+    public float enemyAttackSpeed = 2;
     [Tooltip("Only for 'Repeating Attack'")]
-    [SerializeField] private int amountBulletsInSingleSeries = 3; //Ilość pocisków w serii (Repeating Atack)
-    private float currentEnemyAttackTime = 5;
+    public int amountBulletsInSingleSeries = 3; //Ilość pocisków w serii (Repeating Atack)
+    [HideInInspector] public float currentEnemyAttackTime = 5;
+
     [Space]
     [Header("Permissions")]
-    [SerializeField] private bool movingRight = true;
-    [SerializeField] private bool canMove = true;
-    [SerializeField] private bool canAttack = true;
-    [SerializeField] private bool isActive = true;
+    public bool movingRight = true;
+    public bool canMove = true;
+    public bool canAttack = true;
+    public bool isActive = true;
     [SerializeField] private bool flipAfterGuard = true;
+
     [Space]
     [Header("Animator")]
     [SerializeField] private bool _isAim;
     public bool IsAim { get { return _isAim; } set { _isAim = value; SetAnimator(_isAim, _currentState); } }
     [SerializeField] private int _currentState;
     public int CurrentState { get { return _currentState; } set { _currentState = value; SetAnimator(_isAim, _currentState); } }
+
     [Space]
     [Header("Weapons")]
-    [SerializeField] private BulletEnemyController enemyRiflegunBullet;
-    [SerializeField] private BulletEnemyController enemyShotgunBullet;
-    [SerializeField] private BulletEnemyController enemyRocketBullet;
-    [SerializeField] private BulletEnemyController enemyLaser;
+    public BulletEnemyController enemyRiflegunBullet;
+    public BulletEnemyController enemyShotgunBullet;
+    public BulletEnemyController enemyRocketBullet;
+    public BulletEnemyController enemyLaser;
     private Vector2 enemyRifleBulletStartPos;
     private Vector2 enemyRifleBulletStartScale;
     private Vector2 enemyShotgunBulletStartPos;
     private Vector2 enemyRocketStartPos;
     private Vector2 enemyLaserStartPos;
     private Vector2 enemyHPStartPos;
-    [SerializeField] private GameObject explosionEffect;
-    [SerializeField] private GameObject damageEffect;
+    public GameObject explosionEffect;
 
     [Space]
     [Header("Sounds")]
-    private AudioSource audioSource;
+    [HideInInspector] public AudioSource audioSource;
     [SerializeField] private AudioClip[] bulletsSFX;
 
     //
@@ -147,6 +143,8 @@ public class CasualEnemyController : MonoBehaviour
                 break;
         }
 
+        SetEnemyState(new EnemyStateIdle(this));
+
         IsAim = _isAim;
         CurrentState = _currentState;
     }
@@ -156,131 +154,7 @@ public class CasualEnemyController : MonoBehaviour
         if (!isActive) return;
         if(!GameController.IsInputEnable) return;
 
-        switch (enemyMovement)
-        {
-            case EnemyMovement.IDLE:
-                Idle();
-                break;
-            case EnemyMovement.ATTACK:
-                Attack();
-                break;
-            case EnemyMovement.DIE:
-                Die();
-                break;
-            case EnemyMovement.NONE:
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void Idle()
-    {
-        if (!canMove) return;
-        CurrentState = 1;
-        IsAim = false;
-        switch (enemyType)
-        {
-            case EnemyType.PATROL:
-                    body.Translate(enemyMovingSpeed * Time.deltaTime * (movingRight == true ? 1 : -1), 0, 0);
-                break;
-            case EnemyType.GUARD:
-                    body.Translate(enemyMovingSpeed * Time.deltaTime * (movingRight == true ? 1 : -1), 0, 0);
-                break;
-            case EnemyType.TOWER:
-                    PlayerFollowing();
-                break;
-            case EnemyType.NONE:
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void Attack()
-    {
-        if (!canAttack) return;
-
-        currentEnemyAttackTime += Time.deltaTime;
-
-        if (enemyType == EnemyType.TOWER) PlayerFollowing();
-        if (currentEnemyAttackTime < enemyAttackSpeed) return;
-
-        currentEnemyAttackTime = 0;
-        CurrentState = 0;
-        IsAim = true;
-
-        switch (enemyAttack)
-        {
-            case EnemyAttack.SINGLE:
-                CreateEnemyBullet();
-                break;
-            case EnemyAttack.REPEATING:
-                StartCoroutine(CoRepeatingAttack());
-                break;
-            case EnemyAttack.LASER:
-                StartCoroutine(CoLaserAttack());
-                break;
-            case EnemyAttack.KAMIKADZE:
-                break;
-            case EnemyAttack.NONE:
-                break;
-            default:
-                break;
-        }
-
-    }
-    public BulletEnemyController GetEnemyBullet()
-    {
-        if (enemyRocketBullet == null)
-        {
-            switch (enemyBody)
-            {
-                case EnemyBody.BLACK:
-                    return enemyShotgunBullet;
-                default:
-                    return enemyRiflegunBullet;
-            }
-        }
-        else
-            return enemyRocketBullet;
-    }
-
-    private void CreateEnemyBullet()
-    {
-        if (!GameController.IsInputEnable) return;
-
-        var enemyBullet = GetEnemyBullet();
-        var copyEnemyBullet = Instantiate(enemyBullet, enemyBullet.transform.parent);
-        copyEnemyBullet.transform.position = enemyBullet.transform.position;
-        copyEnemyBullet.transform.rotation = enemyBullet.transform.rotation;
-        copyEnemyBullet.isMoving = true;
-        copyEnemyBullet.speed *= movingRight == true ? 1 : -1;
-        copyEnemyBullet.gameObject.SetActive(true);
-        animator?.Play("Shoot");
-        audioSource.Play();
-    }
-
-    private IEnumerator CoRepeatingAttack()
-    {
-        canAttack = false;
-        for (int i = 0; i < amountBulletsInSingleSeries; i++)
-        {
-            CreateEnemyBullet();
-            yield return new WaitForSeconds(enemyAttackSpeed / amountBulletsInSingleSeries);
-        }
-        canAttack = true;
-    }
-
-    private IEnumerator CoLaserAttack()
-    {
-        canAttack = false;
-        canMove = false;
-        enemyLaser.gameObject.SetActive(true);
-        yield return new WaitForSeconds(enemyAttackSpeed);
-        enemyLaser.gameObject.SetActive(false);
-        canAttack = true;
-        canMove = true;
+        enemyStateMovement.StartStateMovement();
     }
 
     private void CorrectAmmoPosition()
@@ -312,26 +186,12 @@ public class CasualEnemyController : MonoBehaviour
         }
     }
 
-    private void PlayerFollowing()
+    public void PlayerFollowing()
     {
-        Vector2 direction = -target.transform.position + body.transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        direction = -target.transform.position + body.transform.position;
+        angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, enemyMovingSpeed * Time.deltaTime);
-    }
-
-    private void Die()
-    {
-        canAttack = false;
-        canMove = false;
-        isActive = false;
-        bodyImage.enabled = false;
-        Destroy(body.GetComponent<Rigidbody2D>());
-        bodyCollider.enabled = false;
-        explosionEffect.SetActive(true);
-        Destroy(explosionEffect, 4.0f);
-        Destroy(this.gameObject, 7.0f);
-
     }
 
     public void GetDamage(float damage)
@@ -347,7 +207,7 @@ public class CasualEnemyController : MonoBehaviour
         if (currentHealthPoints <= 0)
         {
             hpCanvas.gameObject.SetActive(false);
-            enemyMovement = EnemyMovement.DIE;
+            SetEnemyState(new EnemyStateDie(this));
         }
         else
         {
@@ -393,7 +253,7 @@ public class CasualEnemyController : MonoBehaviour
         if (isTargetInArea)
         {
             StopCoroutine(EnemyBackToIdle(0));
-            enemyMovement = EnemyMovement.ATTACK;
+            SetEnemyState(new EnemyStateAttack(this));
             animator.Play("Idle_Aim");
         }
         else
@@ -406,9 +266,7 @@ public class CasualEnemyController : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         if (!isTargetInArea)
-        {
-            enemyMovement = EnemyMovement.IDLE;
-        }
+            SetEnemyState(new EnemyStateIdle(this));
     }
 
     public void SetAnimator(bool isAim, int stateIdx)
