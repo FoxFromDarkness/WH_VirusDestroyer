@@ -10,6 +10,8 @@ Project of educational-arcade game 2D in Unity3D.
 - [Me](https://github.com/diegomez1296) -> Programmer
 - [FoxFromDarkness](https://github.com/FoxFromDarkness) -> Level / Graphic Designer
 
+### Official Trailer: <a href="https://youtu.be/ePCnsxDJ-kc"><img src="https://i.imgur.com/qlK8mFH.png" title="source: imgur.com" /></a> 
+
 ### Galery:
 <a href="https://imgur.com/voRtPvh"><img src="https://i.imgur.com/voRtPvh.png" title="source: imgur.com" /></a>
 <a href="https://imgur.com/WAAYs8U"><img src="https://i.imgur.com/WAAYs8U.png" title="source: imgur.com" /></a>
